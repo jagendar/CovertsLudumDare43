@@ -191,8 +191,8 @@ MonoBehaviour:
   waterWidth: 10
   sandWidth: 5
   worldSize: 250
-  maxHeight: 15
-  volcanoFalloffChance: 0.75
+  maxHeight: 10
+  volcanoFalloffChance: 0.5
 --- !u!4 &716921527
 Transform:
   m_ObjectHideFlags: 0
