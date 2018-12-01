@@ -7,7 +7,9 @@ namespace Assets.Scripts.Gameplay.World
 
         [SerializeField]
         private bool buildable;
-        
+
+        public Vector2Int Position { get; set; }
+
         public bool IsBuildable
         {
             get { return this.buildable; }
