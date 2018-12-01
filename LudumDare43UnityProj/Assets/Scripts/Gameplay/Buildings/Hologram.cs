@@ -21,9 +21,21 @@ namespace Assets.Scripts.Gameplay.Buildings
             }
         }
 
+        public bool Enabled
+        {
+            set
+            {
+                foreach (var r in renderers)
+                {
+                    r.enabled = value;
+                }
+            }
+        }
+
         public void Start()
         {
             IsValid = true;
+            Enabled = true;
         }
     }
 }

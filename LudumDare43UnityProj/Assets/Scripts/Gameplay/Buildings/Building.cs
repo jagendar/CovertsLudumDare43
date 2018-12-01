@@ -15,7 +15,7 @@ namespace Assets.Scripts.Gameplay.Buildings
         private ResourceCost cost = new ResourceCost(wood: 0, stone: 0, food: 0);
 
         [SerializeField]
-        private GameObject constructionHologram = null;
+        private Hologram constructionHologram = null;
 
         public ResourceCost Cost
         {
@@ -32,7 +32,7 @@ namespace Assets.Scripts.Gameplay.Buildings
             get { return pivot; }
         }
 
-        public GameObject ConstructionHologram
+        public Hologram ConstructionHologram
         {
             get { return constructionHologram; }
         }
