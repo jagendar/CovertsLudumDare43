@@ -36,6 +36,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4088366661765952}
+  - component: {fileID: 114139130852902010}
+  - component: {fileID: 65773233718020040}
   m_Layer: 10
   m_Name: House
   m_TagString: Untagged
@@ -216,6 +218,35 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1838107483979280}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!65 &65773233718020040
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1445935052580056}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3, y: 1, z: 3}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114139130852902010
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1445935052580056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60692e4e4d53cd74fa276309e6f208d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  size: {x: 3, y: 3}
+  pivot: {x: 2, y: 2}
+  cost:
+    Wood: 0
+    Stone: 0
+    Food: 0
 --- !u!198 &198645649691063090
 ParticleSystem:
   m_ObjectHideFlags: 1
