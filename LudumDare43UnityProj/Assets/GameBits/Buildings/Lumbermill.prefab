@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33459620837470394}
   - component: {fileID: 23158182361734796}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Building
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -352,7 +352,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1981016478811352}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -2.000258, y: 0, z: -1.7889185}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4279623707675742}
@@ -912,3 +912,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60692e4e4d53cd74fa276309e6f208d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  size: {x: 3, y: 3}
+  cost:
+    Wood: 0
+    Stone: 0
+    Food: 0
