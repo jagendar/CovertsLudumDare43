@@ -58,14 +58,6 @@ public class PopulateWorld : MonoBehaviour {
         worldArray[halfSize, halfSize].Height = maxHeight;
 
         SetNeighbors(halfSize, halfSize, maxHeight, 1);
-
-        //float heightSub = maxHeight;
-        //for(int i = maxHeight; i >= 0; i-=2)
-        //{
-        //    SetHeights(i, maxHeight - heightSub);
-        //    SetHeights(i - 1, maxHeight - heightSub);
-        //    heightSub-= 0.5f;
-        //}
     }
 
     private void SetNeighbors(int i, int j, float height, int layer)
@@ -92,26 +84,10 @@ public class PopulateWorld : MonoBehaviour {
                             newHeight = height;
                         }
                         worldArray[x, y].Height = newHeight;
-                        // Debug.Log(worldArray[x, y].transform.position);
-                        //SetNeighbors(x, x, newHeight, layer+1);
-
                     }
                 }
             }
         }
 
-    }
-
-
-    private void SetHeights(int volcanoLayer, float height)
-    {
-
-        //for (int i = worldSize / 2 - volcanoLayer; i < worldSize / 2 + volcanoLayer; i++)
-        //{
-        //    for(int j = worldSize / 2 - volcanoLayer; j < worldSize / 2 + volcanoLayer; j++)
-        //    {
-        //        worldArray[i, j].Height = height; 
-        //    }
-        //}
     }
 }
