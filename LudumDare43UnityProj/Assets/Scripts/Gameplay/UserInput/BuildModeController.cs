@@ -13,7 +13,7 @@ namespace Assets.Scripts.Gameplay.UserInput
 
         [SerializeField] private LayerMask layerMask;
 
-        private GameObject hologram;
+        private Hologram hologram;
 
         public void StartBuilding(Building buildingTemplate)
         {
@@ -21,7 +21,6 @@ namespace Assets.Scripts.Gameplay.UserInput
             template = buildingTemplate;
 
             hologram = Instantiate(template.ConstructionHologram);
-            hologram.SetActive(false);
         }
 
         public void CancelBuilding()
@@ -30,7 +29,7 @@ namespace Assets.Scripts.Gameplay.UserInput
             template = null;
             if (hologram != null)
             {
-                Destroy(hologram);
+                Destroy(hologram.gameObject);
                 hologram = null;
             }
         }
@@ -42,23 +41,28 @@ namespace Assets.Scripts.Gameplay.UserInput
             RaycastHit hitInfo = new RaycastHit();
             bool hit = Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hitInfo, float.MaxValue, layerMask);
 
+            Tile tile = null;
+            bool isValidPosition = false;
             if (hit)
             {
-                var tile = hitInfo.transform.parent.gameObject.GetComponent<Tile>();
+                tile = hitInfo.transform.parent.gameObject.GetComponent<Tile>();
                 Debug.Assert(tile != null, "Tile object's collider should be its immediate child");
+            }
 
-                hologram.SetActive(true);
+            if (tile != null)
+            {
+                hologram.Enabled = true;
 
                 // TODO: Account for the pivot of the building... Right now this happens to work cause the it positions based on teh center
                 var holoPos = tile.transform.position;
                 hologram.transform.position = holoPos;
 
-                var hologramComponent = hologram.gameObject.GetComponent<Hologram>();
-                Debug.Assert(hologramComponent != null, "Hologram objects need a Hologram Component");
+                //hologram.IsValid = Util.CanBuildAt()
             }
             else
             {
-                hologram.SetActive(false);
+                hologram.Enabled = false;
+                hologram.IsValid = false;
             }
         }
     }
