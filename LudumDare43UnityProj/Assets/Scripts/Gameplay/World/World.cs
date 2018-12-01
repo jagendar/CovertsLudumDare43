@@ -17,7 +17,7 @@ namespace Assets.Scripts.Gameplay.World
             set { tiles[x, z] = value;  }
         }
 
-        public ITile this[Vector2Int pos]
+        public Tile this[Vector2Int pos]
         {
             get { return this[pos.x, pos.y]; }
             set { this[pos.x, pos.y] = value; }
