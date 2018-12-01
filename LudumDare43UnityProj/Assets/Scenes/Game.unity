@@ -244,6 +244,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   worldPopulator: {fileID: 716921526}
+  currentResources:
+    Wood: 0
+    Stone: 0
+    Food: 0
+    Population: 0
 --- !u!4 &638018102
 Transform:
   m_ObjectHideFlags: 0
@@ -267,7 +272,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4565142847663496, guid: 2e326846ee7432644a69c882e74ce872, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -20
+      value: -52
       objectReference: {fileID: 0}
     - target: {fileID: 4565142847663496, guid: 2e326846ee7432644a69c882e74ce872, type: 2}
       propertyPath: m_LocalPosition.y
@@ -275,7 +280,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4565142847663496, guid: 2e326846ee7432644a69c882e74ce872, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -20
+      value: -52
       objectReference: {fileID: 0}
     - target: {fileID: 4565142847663496, guid: 2e326846ee7432644a69c882e74ce872, type: 2}
       propertyPath: m_LocalRotation.x
