@@ -1,11 +1,10 @@
 ﻿using Assets.Scripts.Gameplay.Buildings;
 using Assets.Scripts.Gameplay.World;
 using UnityEngine;
-using UnityEngine.Experimental.UIElements;
 
 namespace Assets.Scripts.Gameplay.UserInput
 {
-    class BuildModeController : MonoBehaviour
+    public class BuildModeController : MonoBehaviour
     {
         private Building template;
 

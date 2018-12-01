@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Assets.Scripts.Gameplay.World;
 using UnityEngine;
@@ -7,7 +8,7 @@ namespace Assets.Scripts.Gameplay.Buildings
 {
     class Util
     {
-        private static Vector2Int[] PositionsToCheck(Vector2Int position, IBuilding building)
+        private static Vector2Int[] PositionsToCheck(Vector2Int position, Building building)
         {
             var toCheck = new List<Vector2Int>();
 
@@ -15,7 +16,7 @@ namespace Assets.Scripts.Gameplay.Buildings
             {
                 for (var z = 0; z < building.Size.y; z++)
                 {
-                    toCheck.Add(new Vector2Int(position.x + x - building.Pivot.x, position.y + z - building.Pivot.y));
+                    toCheck.Add(new Vector2Int(position.x + x - building.Size.x / 2, position.y + z - building.Size.y / 2));
                 }
             }
 
@@ -29,12 +30,14 @@ namespace Assets.Scripts.Gameplay.Buildings
         /// <param name="position">The position build at (will be adjusted by the buildings pivot).</param>
         /// <param name="building">The building to be built.</param>
         /// <returns>True if the position is a valid build location.</returns>
-        public static bool CanBuildAt(IWorld world, Vector2Int position, IBuilding building)
+        public static bool CanBuildAt(IWorld world, Vector2Int position, Building building)
         {
             // TODO: Maybe this should return a list of invalid squares?
             // TODO: Check z-indexes rather than just buildability
             var toCheck = PositionsToCheck(position, building);
-            return toCheck.All(pos => world[pos].IsBuildable);
+            var validHeight = world[position].Height;
+
+            return toCheck.All(pos => world[pos].IsBuildable && Math.Abs(world[pos].Height - validHeight) < float.Epsilon);
         }
     }
 }
