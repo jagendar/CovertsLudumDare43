@@ -6,6 +6,8 @@ namespace Assets.Scripts.Gameplay.UserInput
 {
     public class CameraControl : MonoBehaviour
     {
+        [SerializeField] LayerMask rotateLayer;
+        [SerializeField] Camera controlledCam;
         [SerializeField] Vector3 minCamera;
         [SerializeField] Vector3 maxCamera;
         
@@ -30,6 +32,24 @@ namespace Assets.Scripts.Gameplay.UserInput
             }
             Vector3 worldMovement = transform.TransformDirection(localMovement);
             transform.position = MathfExtensions.Clamp(worldMovement + transform.position, minCamera, maxCamera);
+
+            if(Input.GetKeyDown(KeyCode.Q))
+            {
+                Rotate(-90);
+            }
+            if(Input.GetKeyDown(KeyCode.E))
+            {
+                Rotate(90);
+            }
+        }
+
+        void Rotate(float degrees)
+        {
+            RaycastHit hitInfo;
+            if(Physics.Raycast(controlledCam.transform.position, controlledCam.transform.forward, out hitInfo, float.MaxValue, rotateLayer))
+            {
+                transform.RotateAround(hitInfo.point, Vector3.up, degrees);
+            }
         }
     }
 }
