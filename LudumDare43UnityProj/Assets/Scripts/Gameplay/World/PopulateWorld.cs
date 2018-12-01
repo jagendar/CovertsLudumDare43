@@ -21,11 +21,12 @@ public class PopulateWorld : MonoBehaviour {
     }
 
     void Start () {
-        Tile thisTile;
+        int halfSize = worldSize / 2;
         for (int x = 0; x < worldSize; x++)
         {
             for (int z = 0; z < worldSize; z++)
             {
+                Tile thisTile;
                 if (worldSize - z < 5 || worldSize - x < 5 || x < 5 || z <5)
                 {
                     thisTile = waterTile;
@@ -41,7 +42,7 @@ public class PopulateWorld : MonoBehaviour {
                 }
 
                 world[x, z] = thisTile;
-                worldArray[x,z] = Instantiate(world[x, z], new Vector3(x, thisTile.Height, z), Quaternion.identity, transform);
+                worldArray[x,z] = Instantiate(world[x, z], new Vector3(x - halfSize, thisTile.Height, z - halfSize), Quaternion.identity, transform);
             }
         }
 
