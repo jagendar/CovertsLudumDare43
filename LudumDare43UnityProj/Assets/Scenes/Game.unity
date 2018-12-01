@@ -147,8 +147,8 @@ MonoBehaviour:
   dirtTile: {fileID: 114014710011479578, guid: 9fc30d68aa9b4cd47bf7f6c9c7fb5b08, type: 2}
   grassTile: {fileID: 114827585679374906, guid: 1676e5f18a1618f47810adbbe5f9c4ca,
     type: 2}
-  worldSize: 100
-  maxHeight: 20
+  worldSize: 250
+  maxHeight: 10
 --- !u!4 &716921527
 Transform:
   m_ObjectHideFlags: 0

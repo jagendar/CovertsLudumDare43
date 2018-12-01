@@ -46,22 +46,22 @@ public class PopulateWorld : MonoBehaviour {
 
     private void SetVolcanoHeights()
     {
-        int heightSub = maxHeight;
-        for(int i = maxHeight; i >= 0; i-=2)
+        float heightSub = maxHeight;
+        for(int i = maxHeight; i >= 0; i-=1)
         {
             SetHeights(i, maxHeight - heightSub);
             SetHeights(i - 1, maxHeight - heightSub);
-            heightSub--;
+            heightSub-= 0.5f;
         }
     }
 
-    private void SetHeights(int volcanoLayer, int height)
+    private void SetHeights(int volcanoLayer, float height)
     {
         for (int i = worldSize / 2 - volcanoLayer; i < worldSize / 2 + volcanoLayer; i++)
         {
             for(int j = worldSize / 2 - volcanoLayer; j < worldSize / 2 + volcanoLayer; j++)
             {
-                worldArray[i, j].Height = height;
+                worldArray[i, j].Height = height; //(int)Random.Range(height, height + 1);
             }
         }
     }
