@@ -89,7 +89,7 @@ public class PopulateWorld : MonoBehaviour {
         }
         else if ((x > volcanoEdgeMin && x < volcanoEdgeMax) && (z > volcanoEdgeMin && z < volcanoEdgeMax))
         {
-            int randomChance = Random.Range(1, 5);
+            int randomChance = Random.Range(1, 6);
             if (randomChance > 2)
             {
                 tile = dirtTile;
@@ -153,7 +153,7 @@ public class PopulateWorld : MonoBehaviour {
         }
         Transform child = t.tile.transform.GetChild(0);
         child.localScale = new Vector3(child.localScale.x, t.height * 2, child.localScale.z);
-        if (t.tile.Height < 0.4)
+        if (t.tile.Height < 0.9)
         {
             return;//no more to do
         }
