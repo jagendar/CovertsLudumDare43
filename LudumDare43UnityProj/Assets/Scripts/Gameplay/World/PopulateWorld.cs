@@ -121,7 +121,7 @@ public class PopulateWorld : MonoBehaviour {
         {
             t.tile.Height = t.height;
         }
-        if(t.tile.Height == 0)
+        if(t.tile.Height <= .4f)
         {
             return;//no more to do
         }
