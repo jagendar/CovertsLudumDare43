@@ -54,7 +54,6 @@ public class PopulateWorld : MonoBehaviour {
         int sandEdge = waterWidth + sandWidth;
         float volcanoEdgeMin = halfSize - maxHeight * 1.7f;
         float volcanoEdgeMax = halfSize + maxHeight * 1.7f;
-        Debug.Log(volcanoEdgeMin + ", " + volcanoEdgeMax);
         if (worldSize - z < waterWidth || worldSize - x < waterWidth || x < waterWidth || z < waterWidth)
         {
             tile = waterTile;
@@ -90,7 +89,15 @@ public class PopulateWorld : MonoBehaviour {
         }
         else if ((x > volcanoEdgeMin && x < volcanoEdgeMax) && (z > volcanoEdgeMin && z < volcanoEdgeMax))
         {
-            tile = dirtTile;
+            int randomChance = Random.Range(1, 5);
+            if (randomChance > 2)
+            {
+                tile = dirtTile;
+            }
+            else
+            {
+                tile = lavaTile;
+            }
         }
         else if((x == volcanoEdgeMin && z >= volcanoEdgeMin && z <= volcanoEdgeMax) || (z == volcanoEdgeMin && x >= volcanoEdgeMin && x <= volcanoEdgeMax) ||
                 (x == volcanoEdgeMax && z >= volcanoEdgeMin && z <= volcanoEdgeMax) || (z == volcanoEdgeMax && x >= volcanoEdgeMin && x <= volcanoEdgeMax))
