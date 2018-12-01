@@ -27,6 +27,7 @@ namespace Assets.Scripts.Gameplay
                 instance = null;
             }
         }
+
         public void Start()
         {
             World = worldPopulator.World;

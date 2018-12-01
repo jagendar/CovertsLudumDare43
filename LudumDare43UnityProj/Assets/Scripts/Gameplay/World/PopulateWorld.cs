@@ -26,9 +26,7 @@ public class PopulateWorld : MonoBehaviour {
     private void Awake()
     {
         World = new World(worldSize, worldSize);
-    }
 
-    void Start () {
         halfSize = worldSize / 2;
 
         for (int x = 0; x < worldSize; x++)
@@ -36,10 +34,8 @@ public class PopulateWorld : MonoBehaviour {
             for (int z = 0; z < worldSize; z++)
             {
                 Tile thisTile = SetTileType(x, z);
-
-                World[x, z] = thisTile;
-
-                Tile tile = Instantiate(World[x, z], new Vector3(x - halfSize, thisTile.Height, z - halfSize), Quaternion.identity, transform);
+                
+                Tile tile = Instantiate(thisTile, new Vector3(x - halfSize, thisTile.Height, z - halfSize), Quaternion.identity, transform);
                 tile.Position = new Vector2Int(x, z);
                 World[x, z] = tile;
             }

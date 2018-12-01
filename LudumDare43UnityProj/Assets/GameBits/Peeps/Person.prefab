@@ -54,6 +54,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4533330007690814}
   - component: {fileID: 114913217010996044}
+  - component: {fileID: 114839715580621996}
   m_Layer: 0
   m_Name: Person
   m_TagString: Untagged
@@ -186,6 +187,22 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1403018600027864}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &114839715580621996
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1980080160653430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec7777ad2a9961340af1a26074140a5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colorer: {fileID: 114913217010996044}
+  tileLayermask:
+    serializedVersion: 2
+    m_Bits: 512
+  testTile: {fileID: 0}
 --- !u!114 &114913217010996044
 MonoBehaviour:
   m_ObjectHideFlags: 1
