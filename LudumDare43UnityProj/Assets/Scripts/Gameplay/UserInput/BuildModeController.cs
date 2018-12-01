@@ -52,6 +52,9 @@ namespace Assets.Scripts.Gameplay.UserInput
                 // TODO: Account for the pivot of the building... Right now this happens to work cause the it positions based on teh center
                 var holoPos = tile.transform.position;
                 hologram.transform.position = holoPos;
+
+                var hologramComponent = hologram.gameObject.GetComponent<Hologram>();
+                Debug.Assert(hologramComponent != null, "Hologram objects need a Hologram Component");
             }
             else
             {
