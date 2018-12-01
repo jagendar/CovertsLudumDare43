@@ -8,6 +8,8 @@ namespace Assets.Scripts.Gameplay
 
         public World.World World { get; private set; }
 
+        public Resources.ResourceCollection currentResources;
+
         public void Start()
         {
             World = worldPopulator.World;

@@ -9,6 +9,6 @@ namespace Assets.Scripts.Gameplay.Buildings
 
         Vector2Int Pivot { get; }
         
-        ResourceCost Cost { get; }
+        ResourceCollection Cost { get; }
     }
 }
