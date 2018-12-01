@@ -12,12 +12,9 @@ namespace Assets.Scripts.Gameplay
 
         public World.World World { get; private set; }
 
-        public List<Building> Buildings { get; private set; }
-        
         public Resources.ResourceCollection currentResources { get; set; }
 
         public int maxPopulation { get; set; }
-
         private void Awake()
         {
             instance = this;
@@ -30,13 +27,6 @@ namespace Assets.Scripts.Gameplay
                 instance = null;
             }
         }
-
-        public GameplayController()
-        {
-            Buildings = new List<Building>();
-
-        }
-
         public void Start()
         {
             World = worldPopulator.World;

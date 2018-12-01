@@ -8,7 +8,7 @@ namespace Assets.Scripts.Gameplay.Buildings
 {
     class Util
     {
-        private static Vector2Int[] PositionsToCheck(Vector2Int position, Building building)
+        public static Vector2Int[] PositionsUnderBuilding(Vector2Int targetPosition, Building building)
         {
             var toCheck = new List<Vector2Int>();
 
@@ -16,7 +16,7 @@ namespace Assets.Scripts.Gameplay.Buildings
             {
                 for (var z = 0; z < building.Size.y; z++)
                 {
-                    toCheck.Add(new Vector2Int(position.x + x - building.Size.x / 2, position.y + z - building.Size.y / 2));
+                    toCheck.Add(new Vector2Int(targetPosition.x + x - building.Size.x / 2, targetPosition.y + z - building.Size.y / 2));
                 }
             }
 
@@ -32,7 +32,7 @@ namespace Assets.Scripts.Gameplay.Buildings
         /// <returns>True if the position is a valid build location.</returns>
         public static bool CanBuildAt(IWorld world, Vector2Int position, Building building)
         {
-            var toCheck = PositionsToCheck(position, building);
+            var toCheck = PositionsUnderBuilding(position, building);
             var validHeight = world[position].Height;
 
             return toCheck.All(pos => world[pos].IsBuildable && Math.Abs(world[pos].Height - validHeight) < float.Epsilon);
