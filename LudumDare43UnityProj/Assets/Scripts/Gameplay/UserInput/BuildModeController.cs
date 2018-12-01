@@ -12,6 +12,7 @@ namespace Assets.Scripts.Gameplay.UserInput
         private Building template;
 
         [SerializeField] private LayerMask layerMask;
+        [SerializeField] private GameplayController gameplayController = null;
 
         private Hologram hologram;
 
@@ -42,7 +43,6 @@ namespace Assets.Scripts.Gameplay.UserInput
             bool hit = Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hitInfo, float.MaxValue, layerMask);
 
             Tile tile = null;
-            bool isValidPosition = false;
             if (hit)
             {
                 tile = hitInfo.transform.parent.gameObject.GetComponent<Tile>();
@@ -57,7 +57,9 @@ namespace Assets.Scripts.Gameplay.UserInput
                 var holoPos = tile.transform.position;
                 hologram.transform.position = holoPos;
 
-                //hologram.IsValid = Util.CanBuildAt()
+                // TODO: Should this be offset to the corner of the building?
+                // TODO: This doesn't check the proper tiles
+                hologram.IsValid = Util.CanBuildAt(gameplayController.World, tile.Position, template);
             }
             else
             {

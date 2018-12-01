@@ -1,21 +1,29 @@
 ﻿using Assets.Scripts.Gameplay.Buildings;
-using Assets.Scripts.Gameplay.UserInput;
 using UnityEngine;
 
-namespace Assets.Scripts.Gameplay.Player
+namespace Assets.Scripts.Gameplay.UserInput
 {
     [RequireComponent(typeof(BuildModeController))]
-    class PlayerController : MonoBehaviour
+    public class PlayerController : MonoBehaviour
     {
         private BuildModeController buildMode;
 
         [SerializeField]
         private Building testBuilding;
 
+        public World.World World { get; set; }
+
         public void Start()
         {
             buildMode = GetComponent<BuildModeController>();
-            buildMode.StartBuilding(testBuilding);
+        }
+
+        public void Update()
+        {
+            if (Input.GetKeyUp(KeyCode.B))
+            {
+                buildMode.StartBuilding(testBuilding);
+            }
         }
     }
 }
