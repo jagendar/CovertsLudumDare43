@@ -9,12 +9,12 @@ namespace Assets.Scripts.Gameplay.Buildings
         private Vector2Int size = new Vector2Int(3, 3);
 
         [SerializeField]
-        private ResourceCost cost = new ResourceCost(wood: 0, stone: 0, food: 0);
+        private ResourceCollection cost = new ResourceCollection(wood: 0, stone: 0, food: 0);
 
         [SerializeField]
         private Hologram constructionHologram = null;
 
-        public ResourceCost Cost
+        public ResourceCollection Cost
         {
             get { return cost; }
         }

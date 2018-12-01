@@ -4,8 +4,14 @@ using UnityEngine;
 using Assets.Scripts.Gameplay.World;
 
 public class PopulateWorld : MonoBehaviour {
-    [SerializeField] private Tile waterTile, lavaTile, sandTile, dirtTile, grassTile;
-    [SerializeField] private int waterWidth, sandWidth;
+    [SerializeField] private Tile waterTile;
+    [SerializeField] private Tile lavaTile;
+    [SerializeField] private Tile sandTile;
+    [SerializeField] private Tile dirtTile;
+    [SerializeField] private Tile grassTile;
+
+    [SerializeField] private int waterWidth;
+    [SerializeField] private int sandWidth;
     [SerializeField] private int worldSize;
     [SerializeField] private int maxHeight;
 
