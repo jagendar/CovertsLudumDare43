@@ -103,6 +103,7 @@ GameObject:
   - component: {fileID: 224875484841267278}
   - component: {fileID: 222552363083134888}
   - component: {fileID: 114748561264339592}
+  - component: {fileID: 114684497448247372}
   m_Layer: 5
   m_Name: Resources
   m_TagString: Untagged
@@ -583,7 +584,20 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 114783630426636592}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_MethodName: Build
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 114776534239860490, guid: 6b402dd95cfa2124ca620fd0dc3c3c1f,
+            type: 2}
+          m_ObjectArgumentAssemblyTypeName: Assets.Scripts.Gameplay.Buildings.Building,
+            Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &114096669902027994
@@ -624,7 +638,20 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 114209672506316588}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_MethodName: Build
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 114251887078148882, guid: be4115518eac56047995afe8df18a506,
+            type: 2}
+          m_ObjectArgumentAssemblyTypeName: Assets.Scripts.Gameplay.Buildings.Building,
+            Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &114139080597382850
@@ -973,6 +1000,22 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114684497448247372
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1177801952721416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0838fc4f0336b44396677f4999f1ac0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controller: {fileID: 0}
+  foodText: {fileID: 114954780452726142}
+  populationText: {fileID: 114246796319360066}
+  woodText: {fileID: 114840114353006988}
+  stoneText: {fileID: 114042576962016216}
 --- !u!114 &114721777231399796
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1092,7 +1135,20 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 114163766290721052}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_MethodName: Build
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 114584067128922742, guid: 48edbd22a30179044aa727b751348c42,
+            type: 2}
+          m_ObjectArgumentAssemblyTypeName: Assets.Scripts.Gameplay.Buildings.Building,
+            Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &114840114353006988
@@ -1168,7 +1224,20 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 114470283549730464}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_MethodName: Build
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 114139130852902010, guid: 615ce5ed7f0f8bc42a54617a3de6b39a,
+            type: 2}
+          m_ObjectArgumentAssemblyTypeName: Assets.Scripts.Gameplay.Buildings.Building,
+            Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &114954780452726142
