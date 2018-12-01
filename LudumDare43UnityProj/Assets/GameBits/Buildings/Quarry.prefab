@@ -1982,3 +1982,5 @@ MonoBehaviour:
     Wood: 0
     Stone: 0
     Food: 0
+  constructionHologram: {fileID: 114731838861414012, guid: db416914ca1882847ae3838d36cb8ea9,
+    type: 2}
