@@ -54,7 +54,6 @@ public class PopulateWorld : MonoBehaviour {
         int sandEdge = waterWidth + sandWidth;
         float volcanoEdgeMin = halfSize - maxHeight * 1.7f;
         float volcanoEdgeMax = halfSize + maxHeight * 1.7f;
-        Debug.Log(volcanoEdgeMin + ", " + volcanoEdgeMax);
         if (worldSize - z < waterWidth || worldSize - x < waterWidth || x < waterWidth || z < waterWidth)
         {
             tile = waterTile;
