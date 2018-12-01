@@ -5,10 +5,13 @@ using Assets.Scripts.Gameplay.World;
 
 public class PopulateWorld : MonoBehaviour {
     [SerializeField] private Tile waterTile, lavaTile, sandTile, dirtTile, grassTile;
-
-    [SerializeField] private int worldSize, halfSize;
+    [SerializeField] private int waterWidth, sandWidth;
+    [SerializeField] private int worldSize;
     [SerializeField] private int maxHeight;
+
     [SerializeField] private float volcanoFalloffChance;
+
+    private int halfSize;
 
     private static Tile[,] worldArray;
     private World world;
@@ -28,20 +31,7 @@ public class PopulateWorld : MonoBehaviour {
         {
             for (int z = 0; z < worldSize; z++)
             {
-                Tile thisTile;
-                if (worldSize - z < 5 || worldSize - x < 5 || x < 5 || z <5)
-                {
-                    thisTile = waterTile;
-                }
-                else if((worldSize - z < 10 && worldSize - z >= 5) || (worldSize - x < 10 && worldSize - x >= 5) || 
-                        (x < 10 && x >= 5) || (z < 10 && z >= 5))
-                {
-                    thisTile = sandTile;
-                }
-                else
-                {
-                    thisTile = grassTile;
-                }
+                Tile thisTile = SetTileType(x, z);
 
                 world[x, z] = thisTile;
 
@@ -58,6 +48,51 @@ public class PopulateWorld : MonoBehaviour {
     {
         public Tile tile;
         public float height;
+    }
+
+    private Tile SetTileType(int x, int z)
+    {
+        Tile tile;
+        int sandEdge = waterWidth + sandWidth;
+        if (worldSize - z < waterWidth || worldSize - x < waterWidth || x < waterWidth || z < waterWidth)
+        {
+            tile = waterTile;
+        }
+        else if ((worldSize - z < sandEdge && worldSize - z > waterWidth) || (worldSize - x < sandEdge && worldSize - x > waterWidth) ||
+                (x < sandEdge && x > waterWidth) || (z < sandEdge && z > waterWidth))
+        {
+            tile = sandTile;
+        }
+        else if (worldSize - z == waterWidth || worldSize - x == waterWidth || x == waterWidth || z == waterWidth)
+        {
+            int randomChance = Random.Range(1, 3);
+            if (randomChance == 2)
+            {
+                tile = sandTile;
+            }
+            else
+            {
+                tile = waterTile;
+            }
+        }
+        else if (worldSize - z == sandEdge || worldSize - x == sandEdge || x == sandEdge || z == sandEdge)
+        {
+            int randomChance = Random.Range(1, 3);
+            if (randomChance == 2)
+            {
+                tile = sandTile;
+            }
+            else
+            {
+                tile = grassTile;
+            }
+        }
+        else
+        {
+            tile = grassTile;
+        }
+
+        return tile;
     }
 
     private void SetVolcanoHeights()
