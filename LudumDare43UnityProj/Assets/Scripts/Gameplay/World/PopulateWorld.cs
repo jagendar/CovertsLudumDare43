@@ -95,7 +95,6 @@ public class PopulateWorld : MonoBehaviour {
         else if((x == volcanoEdgeMin && z >= volcanoEdgeMin && z <= volcanoEdgeMax) || (z == volcanoEdgeMin && x >= volcanoEdgeMin && x <= volcanoEdgeMax) ||
                 (x == volcanoEdgeMax && z >= volcanoEdgeMin && z <= volcanoEdgeMax) || (z == volcanoEdgeMax && x >= volcanoEdgeMin && x <= volcanoEdgeMax))
         {
-            Debug.Log("Hey");
             int randomChance = Random.Range(1, 3);
             if (randomChance == 2)
             {
