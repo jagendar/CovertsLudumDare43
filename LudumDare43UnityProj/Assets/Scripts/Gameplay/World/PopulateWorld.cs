@@ -121,7 +121,8 @@ public class PopulateWorld : MonoBehaviour {
         {
             t.tile.Height = t.height;
         }
-        if(t.tile.Height <= .4f)
+        t.tile.transform.localScale = new Vector3(t.tile.transform.localScale.x, t.height * 2, t.tile.transform.localScale.z);
+        if (t.tile.Height < 0.4)
         {
             return;//no more to do
         }

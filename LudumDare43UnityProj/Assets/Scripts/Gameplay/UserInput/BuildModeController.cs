@@ -47,20 +47,14 @@ namespace Assets.Scripts.Gameplay.UserInput
                 var tile = hitInfo.transform.parent.gameObject.GetComponent<Tile>();
                 Debug.Assert(tile != null, "Tile object's collider should be its immediate child");
 
-                //Debug.Log(tile.Position);
                 hologram.SetActive(true);
 
+                // TODO: Account for the pivot of the building... Right now this happens to work cause the it positions based on teh center
                 var holoPos = tile.transform.position;
-                //holoPos.x -= 0.5f;// + template.Pivot.x;
-                holoPos.y += 0;
-                //holoPos.z -= 0.5f;// + template.Pivot.y;
                 hologram.transform.position = holoPos;
-
-                Debug.Log(hologram.transform.position);
             }
             else
             {
-                Debug.Log("No hit");
                 hologram.SetActive(false);
             }
         }
