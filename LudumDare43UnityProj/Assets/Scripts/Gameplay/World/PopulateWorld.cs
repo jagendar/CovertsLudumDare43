@@ -89,7 +89,7 @@ public class PopulateWorld : MonoBehaviour {
         }
         else if ((x > volcanoEdgeMin && x < volcanoEdgeMax) && (z > volcanoEdgeMin && z < volcanoEdgeMax))
         {
-            int randomChance = Random.Range(1, 5);
+            int randomChance = Random.Range(1, 6);
             if (randomChance > 2)
             {
                 tile = dirtTile;
