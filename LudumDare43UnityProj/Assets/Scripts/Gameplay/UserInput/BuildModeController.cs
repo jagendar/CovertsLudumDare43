@@ -58,8 +58,7 @@ namespace Assets.Scripts.Gameplay.UserInput
 
             if (isValidPosition && Input.GetMouseButtonUp(0) && !ignoreClicks)
             {
-                var building = Instantiate(template, tile.transform.position, Quaternion.identity);
-                gameplayController.Buildings.Add(building);
+                gameplayController.World.CreateNewBuilding(template, tile.Position);
                 EndBuilding();
             }
 

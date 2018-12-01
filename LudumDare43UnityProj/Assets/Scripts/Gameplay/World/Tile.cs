@@ -12,7 +12,8 @@ namespace Assets.Scripts.Gameplay.World
 
         public bool IsBuildable
         {
-            get { return this.buildable; }
+            get { return buildable; }
+            set { buildable = value; }
         }
 
         public float Height
