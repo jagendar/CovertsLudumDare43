@@ -26,13 +26,18 @@ public class PopulateWorld : MonoBehaviour {
         {
             for (int z = 0; z < worldSize; z++)
             {
-                if (worldSize - z < 3 || worldSize - x < 3 || x < 3 || z < 3)
+                if (worldSize - z < 5 || worldSize - x < 5 || x < 5 || z <5)
+                {
+                    thisTile = waterTile;
+                }
+                else if((worldSize - z < 10 && worldSize - z >= 5) || (worldSize - x < 10 && worldSize - x >= 5) || 
+                        (x < 10 && x >= 5) || (z < 10 && z >= 5))
                 {
                     thisTile = sandTile;
                 }
                 else
                 {
-                    thisTile = dirtTile;
+                    thisTile = grassTile;
                 }
 
                 world[x, z] = thisTile;
@@ -60,7 +65,7 @@ public class PopulateWorld : MonoBehaviour {
         {
             for(int j = worldSize / 2 - volcanoLayer; j < worldSize / 2 + volcanoLayer; j++)
             {
-                worldArray[i, j].Height = height; //(int)Random.Range(height, height + 1);
+                worldArray[i, j].Height = height; 
             }
         }
     }
