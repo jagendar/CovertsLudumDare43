@@ -11,6 +11,8 @@ namespace Assets.Scripts.Gameplay.World
         [SerializeField]
         private int height;
 
+        public Vector2Int Position { get; set; }
+
         public bool IsBuildable
         {
             get { return this.buildable; }
