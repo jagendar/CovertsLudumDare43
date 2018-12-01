@@ -22,8 +22,13 @@ namespace Assets.Scripts.Gameplay.UserInput
         {
             if (Input.GetKeyUp(KeyCode.B))
             {
-                buildMode.StartBuilding(testBuilding);
+                Build(testBuilding);
             }
+        }
+
+        public void Build(Building building)
+        {
+            buildMode.StartBuilding(building);
         }
     }
 }

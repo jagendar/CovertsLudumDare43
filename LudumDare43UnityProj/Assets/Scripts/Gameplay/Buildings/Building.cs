@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Assets.Scripts.Gameplay.Buildings
 {
-    class Building : MonoBehaviour, IBuilding
+    public class Building : MonoBehaviour, IBuilding
     {
         [SerializeField]
         private Vector2Int size = new Vector2Int(3, 3);

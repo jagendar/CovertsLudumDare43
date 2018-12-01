@@ -2,7 +2,7 @@
 
 namespace Assets.Scripts.Gameplay.Buildings
 {
-    class Hologram : MonoBehaviour
+    public class Hologram : MonoBehaviour
     {
         [SerializeField] private Renderer[] renderers;
 
