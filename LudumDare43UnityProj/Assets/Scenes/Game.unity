@@ -244,11 +244,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   worldPopulator: {fileID: 716921526}
-  currentResources:
-    Wood: 0
-    Stone: 0
-    Food: 0
-    Population: 0
 --- !u!4 &638018102
 Transform:
   m_ObjectHideFlags: 0
