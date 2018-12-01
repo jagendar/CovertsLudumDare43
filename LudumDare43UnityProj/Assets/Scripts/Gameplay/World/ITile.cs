@@ -4,6 +4,6 @@
     {
         bool IsBuildable { get; }
 
-        int Height { get; }
+        float Height { get; }
     }
 }
