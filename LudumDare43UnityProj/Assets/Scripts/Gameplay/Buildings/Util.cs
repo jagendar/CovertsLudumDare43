@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Assets.Scripts.Gameplay.World;
 using UnityEngine;
@@ -34,7 +35,9 @@ namespace Assets.Scripts.Gameplay.Buildings
             // TODO: Maybe this should return a list of invalid squares?
             // TODO: Check z-indexes rather than just buildability
             var toCheck = PositionsToCheck(position, building);
-            return toCheck.All(pos => world[pos].IsBuildable);
+            var validHeight = world[position].Height;
+
+            return toCheck.All(pos => world[pos].IsBuildable && Math.Abs(world[pos].Height - validHeight) < float.Epsilon);
         }
     }
 }
