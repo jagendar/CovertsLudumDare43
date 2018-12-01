@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4420480698303226}
   - component: {fileID: 33137859696832694}
   - component: {fileID: 23109780401005710}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: CutStone (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 4924083360995926}
   - component: {fileID: 33849926726317610}
   - component: {fileID: 23619602785399694}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: CutStone (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55,7 +55,7 @@ GameObject:
   - component: {fileID: 4293552275482124}
   - component: {fileID: 33456984825703630}
   - component: {fileID: 23230448657076754}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: CutStone (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72,7 +72,7 @@ GameObject:
   - component: {fileID: 4275634572427672}
   - component: {fileID: 33081825928370352}
   - component: {fileID: 23397297311578574}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Building
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -87,7 +87,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4999395707511246}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: StoneStack (1)
   m_TagString: Untagged
   m_Icon: {fileID: 4422084297763085224, guid: 0000000000000000d000000000000000, type: 0}
@@ -104,7 +104,7 @@ GameObject:
   - component: {fileID: 4602061888724374}
   - component: {fileID: 33096193433695672}
   - component: {fileID: 23990986793101818}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: CutStone (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -121,7 +121,7 @@ GameObject:
   - component: {fileID: 4179035979412624}
   - component: {fileID: 33097766795822208}
   - component: {fileID: 23352073889437506}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: CutStone (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -138,7 +138,7 @@ GameObject:
   - component: {fileID: 4732858174200392}
   - component: {fileID: 33779054139731098}
   - component: {fileID: 23844808125712864}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: CutStone (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -155,7 +155,7 @@ GameObject:
   - component: {fileID: 4722806183883296}
   - component: {fileID: 33396626301597802}
   - component: {fileID: 23702440754701256}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: CutStone (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -172,7 +172,7 @@ GameObject:
   - component: {fileID: 4646491781797476}
   - component: {fileID: 33664439704433724}
   - component: {fileID: 23288952157504908}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: CutStone (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -189,7 +189,7 @@ GameObject:
   - component: {fileID: 4164797123555376}
   - component: {fileID: 33913596830588594}
   - component: {fileID: 23219353725220048}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: CutStone (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -206,7 +206,7 @@ GameObject:
   - component: {fileID: 4940999358109330}
   - component: {fileID: 33715586898950880}
   - component: {fileID: 23261629242399826}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: CutStone (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -223,7 +223,7 @@ GameObject:
   - component: {fileID: 4630861407177998}
   - component: {fileID: 33438703579850068}
   - component: {fileID: 23909767373705976}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: CutStone (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -240,7 +240,7 @@ GameObject:
   - component: {fileID: 4871804543240784}
   - component: {fileID: 33937447892906036}
   - component: {fileID: 23182169814359774}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: CutStone (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -257,7 +257,7 @@ GameObject:
   - component: {fileID: 4645972477729542}
   - component: {fileID: 33680954039098848}
   - component: {fileID: 23075438596047286}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: CutStone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -274,7 +274,7 @@ GameObject:
   - component: {fileID: 4400668040325028}
   - component: {fileID: 33831187374054320}
   - component: {fileID: 23778710213883800}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: CutStone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -289,7 +289,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4987614313309388}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: StoneStack (2)
   m_TagString: Untagged
   m_Icon: {fileID: 4422084297763085224, guid: 0000000000000000d000000000000000, type: 0}
@@ -306,7 +306,7 @@ GameObject:
   - component: {fileID: 4260590905949760}
   - component: {fileID: 33866990996847490}
   - component: {fileID: 23324595460642132}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: CutStone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -321,7 +321,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4256196121952678}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: StoneStack
   m_TagString: Untagged
   m_Icon: {fileID: 4422084297763085224, guid: 0000000000000000d000000000000000, type: 0}
@@ -338,7 +338,7 @@ GameObject:
   - component: {fileID: 4210579491022922}
   - component: {fileID: 33118625671928514}
   - component: {fileID: 23904857425647656}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: CutStone (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -354,7 +354,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4404819815265812}
   - component: {fileID: 114251887078148882}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Quarry
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -371,7 +371,7 @@ GameObject:
   - component: {fileID: 4828145327903944}
   - component: {fileID: 33817141606536044}
   - component: {fileID: 23008449516192342}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: CutStone (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -388,7 +388,7 @@ GameObject:
   - component: {fileID: 4483949748079196}
   - component: {fileID: 33163891073892790}
   - component: {fileID: 23251582920268088}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: CutStone (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -405,7 +405,7 @@ GameObject:
   - component: {fileID: 4613952417939228}
   - component: {fileID: 33133353641411032}
   - component: {fileID: 23314914461235482}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: CutStone (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -422,7 +422,7 @@ GameObject:
   - component: {fileID: 4485576723427746}
   - component: {fileID: 33034680296944832}
   - component: {fileID: 23488010631007594}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: CutStone (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -439,7 +439,7 @@ GameObject:
   - component: {fileID: 4025295010664228}
   - component: {fileID: 33969963540101782}
   - component: {fileID: 23358677288645648}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: CutStone (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -456,7 +456,7 @@ GameObject:
   - component: {fileID: 4379903074434730}
   - component: {fileID: 33332867265050346}
   - component: {fileID: 23381867364542852}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: CutStone (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -473,7 +473,7 @@ GameObject:
   - component: {fileID: 4807231015652686}
   - component: {fileID: 33686041088525332}
   - component: {fileID: 23424352741001950}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: CutStone (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -490,7 +490,7 @@ GameObject:
   - component: {fileID: 4527006101653506}
   - component: {fileID: 33490345625395582}
   - component: {fileID: 23941573872079830}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: CutStone (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

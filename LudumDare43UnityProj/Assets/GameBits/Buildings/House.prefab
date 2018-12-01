@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4137313094496090}
   - component: {fileID: 33179164391026190}
   - component: {fileID: 23033330624827888}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Chimney
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36,7 +36,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4088366661765952}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: House
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53,7 +53,7 @@ GameObject:
   - component: {fileID: 4787502492951996}
   - component: {fileID: 33722794741855448}
   - component: {fileID: 23125630205426904}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Lower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -70,7 +70,7 @@ GameObject:
   - component: {fileID: 4100742857675646}
   - component: {fileID: 198645649691063090}
   - component: {fileID: 199351566653212182}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}

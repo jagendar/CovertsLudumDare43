@@ -38,7 +38,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4698184611851738}
   - component: {fileID: 114234241247390188}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: LavaTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
