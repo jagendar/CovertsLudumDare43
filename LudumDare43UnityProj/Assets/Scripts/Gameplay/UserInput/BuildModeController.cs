@@ -43,39 +43,55 @@ namespace Assets.Scripts.Gameplay.UserInput
         {
             if (!IsBuilding) return;
 
-            if (Input.GetMouseButtonDown(1) || Input.GetKeyDown(KeyCode.Escape))
+            if (CheckShouldCancel())
             {
                 CancelBuilding();
                 return;
             }
 
-            RaycastHit hitInfo = new RaycastHit();
-            bool hit = Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hitInfo, float.MaxValue, layerMask);
+            Tile tile = GetTileUnderMouse();
+            bool isValidPosition = tile != null && Util.CanBuildAt(gameplayController.World, tile.Position, template);
 
-            Tile tile = null;
-            if (hit)
-            {
-                tile = hitInfo.transform.parent.gameObject.GetComponent<Tile>();
-                Debug.Assert(tile != null, "Tile object's collider should be its immediate child");
-            }
+            UpdateHologramState(tile, isValidPosition);
+        }
 
+        private bool CheckShouldCancel()
+        {
+            return Input.GetMouseButtonDown(1) || Input.GetKeyDown(KeyCode.Escape);
+        }
+
+        private void UpdateHologramState(Tile tile, bool isValidPosition)
+        {
             if (tile != null)
             {
                 hologram.Enabled = true;
 
-                // TODO: Account for the pivot of the building... Right now this happens to work cause the it positions based on teh center
                 var holoPos = tile.transform.position;
                 hologram.transform.position = holoPos;
 
-                // TODO: Should this be offset to the corner of the building?
-                // TODO: This doesn't check the proper tiles
-                hologram.IsValid = Util.CanBuildAt(gameplayController.World, tile.Position, template);
+                hologram.IsValid = isValidPosition;
             }
             else
             {
                 hologram.Enabled = false;
                 hologram.IsValid = false;
             }
+        }
+
+        private Tile GetTileUnderMouse()
+        {
+            RaycastHit hitInfo = new RaycastHit();
+            bool hit = Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hitInfo, float.MaxValue, layerMask);
+
+            if (hit)
+            {
+                var tile = hitInfo.transform.parent.gameObject.GetComponent<Tile>();
+                Debug.Assert(tile != null, "Tile object's collider should be its immediate child");
+
+                return tile;
+            }
+
+            return null;
         }
     }
 }

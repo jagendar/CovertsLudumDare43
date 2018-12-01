@@ -32,8 +32,6 @@ namespace Assets.Scripts.Gameplay.Buildings
         /// <returns>True if the position is a valid build location.</returns>
         public static bool CanBuildAt(IWorld world, Vector2Int position, Building building)
         {
-            // TODO: Maybe this should return a list of invalid squares?
-            // TODO: Check z-indexes rather than just buildability
             var toCheck = PositionsToCheck(position, building);
             var validHeight = world[position].Height;
 
