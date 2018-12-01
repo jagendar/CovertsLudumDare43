@@ -87,6 +87,10 @@ public class PopulateWorld : MonoBehaviour {
                 tile = grassTile;
             }
         }
+        else if ((x >= halfSize - maxHeight * 2 && x <= halfSize + maxHeight * 2) && (z >= halfSize - maxHeight * 2 && z <= halfSize + maxHeight * 2))
+        {
+            tile = dirtTile;
+        }
         else
         {
             tile = grassTile;
@@ -100,11 +104,11 @@ public class PopulateWorld : MonoBehaviour {
         HashSet<Tile> tilesQueuedForProcess = new HashSet<Tile>();
         Queue<TileToProcess> tilesToProcess = new Queue<TileToProcess>();
         Tile center = worldArray[halfSize, halfSize];
-        tilesToProcess.Enqueue(new TileToProcess { height = maxHeight, tile = center } );
+        tilesToProcess.Enqueue(new TileToProcess { height = maxHeight, tile = center });
         tilesQueuedForProcess.Add(center);
         System.Random rand = new System.Random();
 
-        while(tilesToProcess.Count > 0)
+        while (tilesToProcess.Count > 0)
         {
             ProcessVolcanoTile(tilesToProcess, tilesQueuedForProcess, rand);
         }
@@ -113,27 +117,34 @@ public class PopulateWorld : MonoBehaviour {
     private void ProcessVolcanoTile(Queue<TileToProcess> tilesToProcess, HashSet<Tile> previouslyQueuedTiles, System.Random rand)
     {
         TileToProcess t = tilesToProcess.Dequeue();
-        if(rand.NextDouble() < volcanoFalloffChance)
+        double randomChance = rand.NextDouble();
+        if (randomChance < volcanoFalloffChance)
         {
-            t.tile.Height = t.height - .5f;
+            t.tile.Height = t.height - 0.5f;
+        }
+        else if (randomChance > volcanoFalloffChance && randomChance < 0.9f)
+        {
+            t.tile.Height = t.height - 1f;
         }
         else
         {
             t.tile.Height = t.height;
         }
-        t.tile.transform.localScale = new Vector3(t.tile.transform.localScale.x, t.height * 2, t.tile.transform.localScale.z);
+        Transform child = t.tile.transform.GetChild(0);
+        child.localScale = new Vector3(child.localScale.x, t.height * 2, child.localScale.z);
+        //t.tile.transform.localScale = new Vector3(t.tile.transform.localScale.x, t.height * 2, t.tile.transform.localScale.z);
         if (t.tile.Height < 0.4)
         {
             return;//no more to do
         }
 
-        for(int i = Mathf.Max(0, t.tile.Position.x - 1); i < Mathf.Min(t.tile.Position.x + 2, worldSize); i++)
+        for (int i = Mathf.Max(0, t.tile.Position.x - 1); i < Mathf.Min(t.tile.Position.x + 2, worldSize); i++)
         {
             for (int j = Mathf.Max(0, t.tile.Position.y - 1); j < Mathf.Min(t.tile.Position.y + 2, worldSize); j++)
             {
-                if(!previouslyQueuedTiles.Contains(worldArray[i,j]))
+                if (!previouslyQueuedTiles.Contains(worldArray[i, j]))
                 {
-                    tilesToProcess.Enqueue(new TileToProcess { height = t.tile.Height, tile = worldArray[i,j] });
+                    tilesToProcess.Enqueue(new TileToProcess { height = t.tile.Height, tile = worldArray[i, j] });
                     previouslyQueuedTiles.Add(worldArray[i, j]);
                 }
             }
