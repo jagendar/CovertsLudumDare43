@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -188,8 +188,8 @@ MonoBehaviour:
   dirtTile: {fileID: 114014710011479578, guid: 9fc30d68aa9b4cd47bf7f6c9c7fb5b08, type: 2}
   grassTile: {fileID: 114827585679374906, guid: 1676e5f18a1618f47810adbbe5f9c4ca,
     type: 2}
-  waterWidth: 0
-  sandWidth: 0
+  waterWidth: 10
+  sandWidth: 5
   worldSize: 250
   maxHeight: 15
   volcanoFalloffChance: 0.75
@@ -311,7 +311,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 30
+  orthographic size: 10
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -367,13 +367,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 009e8fe04f12ad64d98d82de8a44d7dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  minCamera: {x: -150, y: 45, z: -150}
+  maxCamera: {x: 150, y: 45, z: 150}
+  panSpeed: 1
+  rotationTime: 0.1
+  zoomAmount: 5
+  zoomMin: 10
+  zoomMax: 35
   rotateLayer:
     serializedVersion: 2
     m_Bits: 2048
   controlledCam: {fileID: 840139155}
-  minCamera: {x: -150, y: 45, z: -150}
-  maxCamera: {x: 150, y: 45, z: 150}
-  rotationTime: 0.1
 --- !u!4 &883981654
 Transform:
   m_ObjectHideFlags: 0
