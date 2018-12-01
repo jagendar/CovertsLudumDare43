@@ -36,7 +36,7 @@ public class PopulateWorld : MonoBehaviour {
                 }
 
                 world[x, z] = thisTile;
-                worldArray[x,z] = Instantiate(world[x, z], new Vector3(x, thisTile.Height), Quaternion.identity, transform);
+                worldArray[x,z] = Instantiate(world[x, z], new Vector3(x, thisTile.Height, z), Quaternion.identity, transform);
             }
         }
 
