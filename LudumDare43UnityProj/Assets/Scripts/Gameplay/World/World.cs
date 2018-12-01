@@ -2,17 +2,17 @@
 {
     class World : IWorld
     {
-        public World(ITile[][] tiles)
+        public World(Tile[,] tiles)
         {
             this.tiles = tiles;
         }
 
-        private readonly ITile[][] tiles;
+        private readonly Tile[,] tiles;
 
-        public ITile this[int x, int z]
+        public Tile this[int x, int z]
         {
-            get { return tiles[x][z]; }
-            set { tiles[x][z] = value;  }
+            get { return tiles[x, z]; }
+            set { tiles[x, z] = value;  }
         }
     }
 }

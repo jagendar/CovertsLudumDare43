@@ -2,6 +2,6 @@
 {
     interface IWorld
     {
-        ITile this[int x, int z] { get; set; }
+        Tile this[int x, int z] { get; set; }
     }
 }
