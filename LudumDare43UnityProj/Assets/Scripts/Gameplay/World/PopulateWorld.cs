@@ -7,7 +7,8 @@ public class PopulateWorld : MonoBehaviour {
     [SerializeField] private Tile waterTile, lavaTile, sandTile, dirtTile, grassTile;
 
     [SerializeField] private int worldSize, halfSize;
-    [SerializeField] private int maxHeight; 
+    [SerializeField] private int maxHeight;
+    [SerializeField] private float volcanoFalloffChance;
 
     private static Tile[,] worldArray;
     private World world;
@@ -53,38 +54,51 @@ public class PopulateWorld : MonoBehaviour {
         SetVolcanoHeights();
     }
 
-    private void SetVolcanoHeights()
+    private class TileToProcess
     {
-        worldArray[halfSize, halfSize].Height = maxHeight;
-
-        SetNeighbors(halfSize, halfSize, maxHeight, 1);
+        public Tile tile;
+        public float height;
     }
 
-    private void SetNeighbors(int i, int j, float height, int layer)
+    private void SetVolcanoHeights()
     {
-        float newHeight;
-        int row_limit = worldArray.Length;
+        HashSet<Tile> tilesQueuedForProcess = new HashSet<Tile>();
+        Queue<TileToProcess> tilesToProcess = new Queue<TileToProcess>();
+        Tile center = worldArray[halfSize, halfSize];
+        tilesToProcess.Enqueue(new TileToProcess { height = maxHeight, tile = center } );
+        tilesQueuedForProcess.Add(center);
+        System.Random rand = new System.Random();
 
-        if (row_limit > 0)
+        while(tilesToProcess.Count > 0)
         {
-            int column_limit = worldArray.GetLength(0);
-            for (int x = Mathf.Max(0, i - layer); x <= Mathf.Min(i + layer, row_limit); x++)
+            ProcessVolcanoTile(tilesToProcess, tilesQueuedForProcess, rand);
+        }
+    }
+
+    private void ProcessVolcanoTile(Queue<TileToProcess> tilesToProcess, HashSet<Tile> previouslyQueuedTiles, System.Random rand)
+    {
+        TileToProcess t = tilesToProcess.Dequeue();
+        if(rand.NextDouble() < volcanoFalloffChance)
+        {
+            t.tile.Height = t.height - .5f;
+        }
+        else
+        {
+            t.tile.Height = t.height;
+        }
+        if(t.tile.Height == 0)
+        {
+            return;//no more to do
+        }
+
+        for(int i = Mathf.Max(0, t.tile.Position.x - 1); i < Mathf.Min(t.tile.Position.x + 2, worldSize); i++)
+        {
+            for (int j = Mathf.Max(0, t.tile.Position.y - 1); j < Mathf.Min(t.tile.Position.y + 2, worldSize); j++)
             {
-                for (int y = Mathf.Max(0, j - layer); y <= Mathf.Min(j + layer, column_limit); y++)
+                if(!previouslyQueuedTiles.Contains(worldArray[i,j]))
                 {
-                    if (x != i || y != j)
-                    {
-                        int rand = Random.Range(1, 3);
-                        if (rand == 2)
-                        {
-                            newHeight = height - 0.5f;
-                        }
-                        else
-                        {
-                            newHeight = height;
-                        }
-                        worldArray[x, y].Height = newHeight;
-                    }
+                    tilesToProcess.Enqueue(new TileToProcess { height = t.tile.Height, tile = worldArray[i,j] });
+                    previouslyQueuedTiles.Add(worldArray[i, j]);
                 }
             }
         }

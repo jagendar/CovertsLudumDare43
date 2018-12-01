@@ -189,7 +189,9 @@ MonoBehaviour:
   grassTile: {fileID: 114827585679374906, guid: 1676e5f18a1618f47810adbbe5f9c4ca,
     type: 2}
   worldSize: 250
-  maxHeight: 20
+  halfSize: 0
+  maxHeight: 15
+  volcanoFalloffChance: 0.8
 --- !u!4 &716921527
 Transform:
   m_ObjectHideFlags: 0
