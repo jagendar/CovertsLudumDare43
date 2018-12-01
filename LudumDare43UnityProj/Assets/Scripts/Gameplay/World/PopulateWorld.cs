@@ -35,9 +35,8 @@ public class PopulateWorld : MonoBehaviour {
                     thisTile = dirtTile;
                 }
 
-                thisTile.transform.position = new Vector3(x, thisTile.Height, z);
                 world[x, z] = thisTile;
-                worldArray[x,z] = Instantiate(world[x, z], transform, true);
+                worldArray[x,z] = Instantiate(world[x, z], new Vector3(x, thisTile.Height, z), Quaternion.identity, transform);
             }
         }
 
@@ -46,22 +45,22 @@ public class PopulateWorld : MonoBehaviour {
 
     private void SetVolcanoHeights()
     {
-        int heightSub = maxHeight;
+        float heightSub = maxHeight;
         for(int i = maxHeight; i >= 0; i-=2)
         {
             SetHeights(i, maxHeight - heightSub);
             SetHeights(i - 1, maxHeight - heightSub);
-            heightSub--;
+            heightSub-= 0.5f;
         }
     }
 
-    private void SetHeights(int volcanoLayer, int height)
+    private void SetHeights(int volcanoLayer, float height)
     {
         for (int i = worldSize / 2 - volcanoLayer; i < worldSize / 2 + volcanoLayer; i++)
         {
             for(int j = worldSize / 2 - volcanoLayer; j < worldSize / 2 + volcanoLayer; j++)
             {
-                worldArray[i, j].Height = height;
+                worldArray[i, j].Height = height; //(int)Random.Range(height, height + 1);
             }
         }
     }
