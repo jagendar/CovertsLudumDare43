@@ -11,6 +11,7 @@ namespace Assets.Scripts.Gameplay.UserInput
         [SerializeField] private LayerMask layerMask;
         [SerializeField] private GameplayController gameplayController = null;
 
+        private bool ignoreClicks;
         private Hologram hologram;
 
         public bool IsBuilding { get; private set; }
@@ -19,16 +20,17 @@ namespace Assets.Scripts.Gameplay.UserInput
         {
             if (IsBuilding)
             {
-                CancelBuilding();
+                EndBuilding();
             }
 
+            ignoreClicks = true;
             IsBuilding = true;
             template = buildingTemplate;
 
             hologram = Instantiate(template.ConstructionHologram);
         }
 
-        public void CancelBuilding()
+        public void EndBuilding()
         {
             IsBuilding = false;
             template = null;
@@ -45,7 +47,7 @@ namespace Assets.Scripts.Gameplay.UserInput
 
             if (CheckShouldCancel())
             {
-                CancelBuilding();
+                EndBuilding();
                 return;
             }
 
@@ -53,6 +55,15 @@ namespace Assets.Scripts.Gameplay.UserInput
             bool isValidPosition = tile != null && Util.CanBuildAt(gameplayController.World, tile.Position, template);
 
             UpdateHologramState(tile, isValidPosition);
+
+            if (isValidPosition && Input.GetMouseButtonUp(0) && !ignoreClicks)
+            {
+                var building = Instantiate(template, tile.transform.position, Quaternion.identity);
+                gameplayController.Buildings.Add(building);
+                EndBuilding();
+            }
+
+            ignoreClicks = false;
         }
 
         private bool CheckShouldCancel()
