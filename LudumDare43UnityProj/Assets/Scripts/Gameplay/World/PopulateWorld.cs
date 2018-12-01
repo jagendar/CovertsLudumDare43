@@ -13,15 +13,13 @@ public class PopulateWorld : MonoBehaviour {
 
     private int halfSize;
 
-    public static Tile[,] worldArray;
-    private World world;
-
     private GameObject[,] tiles;
+
+    public World World { get; private set; }
 
     private void Awake()
     {
-        worldArray = new Tile[worldSize, worldSize];
-        world = new World(worldArray);
+        World = new World(worldSize, worldSize);
     }
 
     void Start () {
@@ -33,11 +31,11 @@ public class PopulateWorld : MonoBehaviour {
             {
                 Tile thisTile = SetTileType(x, z);
 
-                world[x, z] = thisTile;
+                World[x, z] = thisTile;
 
-                Tile tile = Instantiate(world[x, z], new Vector3(x - halfSize, thisTile.Height, z - halfSize), Quaternion.identity, transform);
+                Tile tile = Instantiate(World[x, z], new Vector3(x - halfSize, thisTile.Height, z - halfSize), Quaternion.identity, transform);
                 tile.Position = new Vector2Int(x, z);
-                worldArray[x, z] = tile;
+                World[x, z] = tile;
             }
         }
 
@@ -103,7 +101,7 @@ public class PopulateWorld : MonoBehaviour {
     {
         HashSet<Tile> tilesQueuedForProcess = new HashSet<Tile>();
         Queue<TileToProcess> tilesToProcess = new Queue<TileToProcess>();
-        Tile center = worldArray[halfSize, halfSize];
+        Tile center = World[halfSize, halfSize];
         tilesToProcess.Enqueue(new TileToProcess { height = maxHeight, tile = center });
         tilesQueuedForProcess.Add(center);
         System.Random rand = new System.Random();
@@ -142,10 +140,10 @@ public class PopulateWorld : MonoBehaviour {
         {
             for (int j = Mathf.Max(0, t.tile.Position.y - 1); j < Mathf.Min(t.tile.Position.y + 2, worldSize); j++)
             {
-                if (!previouslyQueuedTiles.Contains(worldArray[i, j]))
+                if (!previouslyQueuedTiles.Contains(World[i, j]))
                 {
-                    tilesToProcess.Enqueue(new TileToProcess { height = t.tile.Height, tile = worldArray[i, j] });
-                    previouslyQueuedTiles.Add(worldArray[i, j]);
+                    tilesToProcess.Enqueue(new TileToProcess { height = t.tile.Height, tile = World[i, j] });
+                    previouslyQueuedTiles.Add(World[i, j]);
                 }
             }
         }

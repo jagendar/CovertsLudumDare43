@@ -2,11 +2,11 @@
 
 namespace Assets.Scripts.Gameplay.World
 {
-    class World : IWorld
+    public class World : IWorld
     {
-        public World(Tile[,] tiles)
+        public World(int width, int height)
         {
-            this.tiles = tiles;
+            this.tiles = new Tile[width, height];
         }
 
         private readonly Tile[,] tiles;
