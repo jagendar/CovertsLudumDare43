@@ -13,7 +13,7 @@ namespace Assets.Scripts.Gameplay.UserInput
         [SerializeField] Vector3 maxCamera;
 
         [SerializeField] float rotationTime;
-
+        
         private bool rotating;
         
         private void Update()
