@@ -6,6 +6,9 @@ namespace Assets.Scripts.Gameplay.UserInput
 {
     public class CameraControl : MonoBehaviour
     {
+        [SerializeField] Vector3 minCamera;
+        [SerializeField] Vector3 maxCamera;
+        
         private void Update()
         {
             Vector3 localMovement = new Vector2();
@@ -26,7 +29,7 @@ namespace Assets.Scripts.Gameplay.UserInput
                 localMovement.x += 1;
             }
             Vector3 worldMovement = transform.TransformDirection(localMovement);
-            transform.position += worldMovement;
+            transform.position = MathfExtensions.Clamp(worldMovement + transform.position, minCamera, maxCamera);
         }
     }
 }
