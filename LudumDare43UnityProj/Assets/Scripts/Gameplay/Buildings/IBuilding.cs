@@ -5,7 +5,9 @@ namespace Assets.Scripts.Gameplay.Buildings
 {
     interface IBuilding
     {
-        Vector2 Size { get; }
+        Vector2Int Size { get; }
+
+        Vector2Int Pivot { get; }
         
         ResourceCost Cost { get; }
     }

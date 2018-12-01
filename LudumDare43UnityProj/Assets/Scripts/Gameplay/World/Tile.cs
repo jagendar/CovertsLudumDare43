@@ -2,7 +2,7 @@
 
 namespace Assets.Scripts.Gameplay.World
 {
-    public class Tile : MonoBehaviour, ITile
+    public class Tile : MonoBehaviour
     {
 
         [SerializeField]
