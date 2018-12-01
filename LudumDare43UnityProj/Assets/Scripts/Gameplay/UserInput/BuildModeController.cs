@@ -7,8 +7,6 @@ namespace Assets.Scripts.Gameplay.UserInput
 {
     class BuildModeController : MonoBehaviour
     {
-        private bool isBuilding;
-
         private Building template;
 
         [SerializeField] private LayerMask layerMask;
@@ -16,9 +14,16 @@ namespace Assets.Scripts.Gameplay.UserInput
 
         private Hologram hologram;
 
+        public bool IsBuilding { get; private set; }
+
         public void StartBuilding(Building buildingTemplate)
         {
-            isBuilding = true;
+            if (IsBuilding)
+            {
+                CancelBuilding();
+            }
+
+            IsBuilding = true;
             template = buildingTemplate;
 
             hologram = Instantiate(template.ConstructionHologram);
@@ -26,7 +31,7 @@ namespace Assets.Scripts.Gameplay.UserInput
 
         public void CancelBuilding()
         {
-            isBuilding = false;
+            IsBuilding = false;
             template = null;
             if (hologram != null)
             {
@@ -37,7 +42,13 @@ namespace Assets.Scripts.Gameplay.UserInput
 
         public void Update()
         {
-            if (!isBuilding) return;
+            if (!IsBuilding) return;
+
+            if (Input.GetMouseButtonDown(1) || Input.GetKeyDown(KeyCode.Escape))
+            {
+                CancelBuilding();
+                return;
+            }
 
             RaycastHit hitInfo = new RaycastHit();
             bool hit = Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hitInfo, float.MaxValue, layerMask);
