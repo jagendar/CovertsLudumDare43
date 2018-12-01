@@ -37,7 +37,7 @@ public class PopulateWorld : MonoBehaviour {
 
                 thisTile.transform.position = new Vector3(x, thisTile.Height, z);
                 world[x, z] = thisTile;
-                worldArray[x,z] = Instantiate(world[x, z]);
+                worldArray[x,z] = Instantiate(world[x, z], transform, true);
             }
         }
 
