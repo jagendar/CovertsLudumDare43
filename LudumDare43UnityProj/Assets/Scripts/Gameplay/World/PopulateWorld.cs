@@ -46,7 +46,7 @@ public class PopulateWorld : MonoBehaviour {
     private void SetVolcanoHeights()
     {
         float heightSub = maxHeight;
-        for(int i = maxHeight; i >= 0; i-=1)
+        for(int i = maxHeight; i >= 0; i-=2)
         {
             SetHeights(i, maxHeight - heightSub);
             SetHeights(i - 1, maxHeight - heightSub);
