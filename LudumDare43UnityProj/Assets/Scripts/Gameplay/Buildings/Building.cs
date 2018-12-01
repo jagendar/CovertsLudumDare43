@@ -14,6 +14,9 @@ namespace Assets.Scripts.Gameplay.Buildings
         [SerializeField]
         private ResourceCost cost = new ResourceCost(wood: 0, stone: 0, food: 0);
 
+        [SerializeField]
+        private GameObject constructionHologram = null;
+
         public ResourceCost Cost
         {
             get { return cost; }
@@ -27,6 +30,11 @@ namespace Assets.Scripts.Gameplay.Buildings
         public Vector2Int Pivot 
         {
             get { return pivot; }
+        }
+
+        public GameObject ConstructionHologram
+        {
+            get { return constructionHologram; }
         }
     }
 }
