@@ -7,14 +7,25 @@ namespace Assets.Scripts.Gameplay.UserInput
 {
     public class CameraControl : MonoBehaviour
     {
-        [SerializeField] LayerMask rotateLayer;
-        [SerializeField] Camera controlledCam;
+        [Header("Pan")]
         [SerializeField] Vector3 minCamera;
         [SerializeField] Vector3 maxCamera;
+        [SerializeField] float panSpeed = 1;
 
+        [Header("Rotation")]
         [SerializeField] float rotationTime;
-        
+
+        [Header("Zoom")]
+        [SerializeField] float zoomAmount;
+        [SerializeField] float zoomMin;
+        [SerializeField] float zoomMax;
+
+        [Header("Object References")]
+        [SerializeField] LayerMask rotateLayer;
+        [SerializeField] Camera controlledCam;
+
         private bool rotating;
+        private float currentZoom;
         
         private void Update()
         {
@@ -23,19 +34,19 @@ namespace Assets.Scripts.Gameplay.UserInput
             Vector3 localMovement = new Vector2();
             if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
             {
-                localMovement.z += 1;
+                localMovement.z += panSpeed;
             }
             if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
             {
-                localMovement.z -= 1;
+                localMovement.z -= panSpeed;
             }
             if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
             {
-                localMovement.x -= 1;
+                localMovement.x -= panSpeed;
             }
             if(Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
             {
-                localMovement.x += 1;
+                localMovement.x += panSpeed;
             }
             Vector3 worldMovement = transform.TransformDirection(localMovement);
             transform.position = MathfExtensions.Clamp(worldMovement + transform.position, minCamera, maxCamera);
@@ -47,6 +58,16 @@ namespace Assets.Scripts.Gameplay.UserInput
             if(Input.GetKeyDown(KeyCode.E))
             {
                 Rotate(90);
+            }
+
+            if(Input.mouseScrollDelta.y > 0 || Input.GetKeyDown(KeyCode.R) || Input.GetKeyDown(KeyCode.Plus) || Input.GetKeyDown(KeyCode.KeypadPlus))
+            {
+                Zoom(-zoomAmount);
+            }
+
+            if (Input.mouseScrollDelta.y < 0 || Input.GetKeyDown(KeyCode.F) || Input.GetKeyDown(KeyCode.Minus) || Input.GetKeyDown(KeyCode.KeypadMinus))
+            {
+                Zoom(zoomAmount);
             }
         }
 
@@ -79,6 +100,11 @@ namespace Assets.Scripts.Gameplay.UserInput
         {
             transform.position = Vector3.Lerp(pos1, pos2, percentage);
             transform.rotation = Quaternion.Slerp(rot1, rot2, percentage);
+        }
+
+        private void Zoom(float amount)
+        {
+            controlledCam.orthographicSize = Mathf.Clamp(controlledCam.orthographicSize + amount, zoomMin, zoomMax);
         }
     }
 }
