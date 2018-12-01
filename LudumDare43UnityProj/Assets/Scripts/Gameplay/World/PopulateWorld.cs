@@ -13,7 +13,7 @@ public class PopulateWorld : MonoBehaviour {
 
     private int halfSize;
 
-    private static Tile[,] worldArray;
+    public static Tile[,] worldArray;
     private World world;
 
     private GameObject[,] tiles;
