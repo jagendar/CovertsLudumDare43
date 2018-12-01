@@ -8,7 +8,8 @@ namespace Assets.Scripts.Gameplay
 
         public World.World World { get; private set; }
 
-        public Resources.ResourceCollection currentResources;
+        public Resources.ResourceCollection currentResources { get; set; }
+        public int maxPopulation { get; set; }
 
         public void Start()
         {
