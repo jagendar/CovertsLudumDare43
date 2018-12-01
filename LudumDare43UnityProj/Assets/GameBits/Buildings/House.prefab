@@ -38,6 +38,7 @@ GameObject:
   - component: {fileID: 4088366661765952}
   - component: {fileID: 114139130852902010}
   - component: {fileID: 65773233718020040}
+  - component: {fileID: 114107337280380368}
   m_Layer: 10
   m_Name: House
   m_TagString: Untagged
@@ -229,7 +230,19 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 3, y: 1, z: 3}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 0.5, z: 0}
+--- !u!114 &114107337280380368
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1445935052580056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bdd27968e810fa4f8ac6bfd53d4c76e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  populationSupply: 1
 --- !u!114 &114139130852902010
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -242,11 +255,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   size: {x: 3, y: 3}
-  pivot: {x: 2, y: 2}
   cost:
     Wood: 0
     Stone: 0
     Food: 0
+    Population: 0
   constructionHologram: {fileID: 114334123816857164, guid: 9534d25ac6e5c2949a5fc26683ca428b,
     type: 2}
 --- !u!198 &198645649691063090
