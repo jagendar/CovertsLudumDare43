@@ -247,7 +247,7 @@ MonoBehaviour:
     Wood: 0
     Stone: 0
     Food: 0
-  constructionHologram: {fileID: 114731838861414012, guid: db416914ca1882847ae3838d36cb8ea9,
+  constructionHologram: {fileID: 114334123816857164, guid: 9534d25ac6e5c2949a5fc26683ca428b,
     type: 2}
 --- !u!198 &198645649691063090
 ParticleSystem:

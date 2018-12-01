@@ -236,10 +236,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4642639923172438}
-  - component: {fileID: 114584067128922742}
-  - component: {fileID: 65422296117451130}
+  - component: {fileID: 114599283499788126}
   m_Layer: 10
-  m_Name: Lumbermill
+  m_Name: LumbermillHolo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -902,19 +901,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1541815616269712}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &65422296117451130
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1981016478811352}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 3, y: 1, z: 3}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114584067128922742
+--- !u!114 &114599283499788126
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -922,14 +909,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 1981016478811352}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60692e4e4d53cd74fa276309e6f208d9, type: 3}
+  m_Script: {fileID: 11500000, guid: 463c83f18be7eb34bb54488ca6f75f60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  size: {x: 3, y: 3}
-  pivot: {x: 2, y: 2}
-  cost:
-    Wood: 0
-    Stone: 0
-    Food: 0
-  constructionHologram: {fileID: 114599283499788126, guid: 47138273cce62b842b32a1fbadd68679,
-    type: 2}
+  renderers:
+  - {fileID: 23158182361734796}
+  - {fileID: 23090684624501528}
+  - {fileID: 23323484033497960}
+  - {fileID: 23455371782865000}
+  - {fileID: 23917894827190666}
+  - {fileID: 23259639012442458}
+  - {fileID: 23438410692503046}
+  - {fileID: 23867145203122606}
+  - {fileID: 23900891696522830}
+  - {fileID: 23383564744720358}
+  - {fileID: 23047334516645960}
+  validMaterial: {fileID: 2100000, guid: dea573712493cad40b6938affae47b73, type: 2}
+  invalidMaterial: {fileID: 2100000, guid: 0ebf3feb40fe4954684f5c934149f926, type: 2}
