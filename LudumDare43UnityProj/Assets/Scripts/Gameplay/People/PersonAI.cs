@@ -167,6 +167,11 @@ namespace Assets.Scripts.Gameplay.People
             const float translationTime = .5f;
             for (float t = 0; t < translationTime; t += Time.deltaTime)
             {
+                if (currentTarget.IsSacrificable && t > .5 * translationTime)
+                {
+                    Destroy(gameObject); //poor bastard walked into lava
+                    yield break;
+                }
                 SlideLerp(currentTile, currentTarget, t / translationTime);
                 yield return null;
             }
