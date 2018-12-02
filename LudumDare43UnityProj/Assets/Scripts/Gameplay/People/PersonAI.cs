@@ -62,6 +62,8 @@ namespace Assets.Scripts.Gameplay.People
             {
                 workTarget.WorkerFreed(this);
             }
+            StopAllCoroutines();
+            ReachedDestination = false;
             colorer.SetJobColor(Job.Idle);
             workTarget = null;
         }
