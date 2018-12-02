@@ -9,8 +9,8 @@ namespace Assets.Scripts.Gameplay.Buildings
     public class Farm : IWorkableTarget
     {
         [SerializeField] private int foodPerWork = 7;
-
-
+        [SerializeField] private Animation animPlayer;
+        
         public override Job job
         {
             get
@@ -19,9 +19,22 @@ namespace Assets.Scripts.Gameplay.Buildings
             }
         }
 
+        public override void WorkerAssigned()
+        {
+            base.WorkerAssigned();
+            animPlayer.Play();
+        }
+
+        public override void WorkerFreed()
+        {
+            base.WorkerFreed();
+            animPlayer.Stop();
+        }
+
         public override void DoWork(PersonAI aI)
         {
             GameplayController.instance.CurrentResources.Food += foodPerWork;
         }
+
     }
 }

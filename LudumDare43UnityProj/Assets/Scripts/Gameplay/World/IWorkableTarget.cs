@@ -19,12 +19,12 @@ namespace Assets.Scripts.Gameplay.World
             }
         }
 
-        public void WorkerAssigned()
+        public virtual void WorkerAssigned()
         {
             currentWorkers++;
         }
 
-        public void WorkerFreed()
+        public virtual void WorkerFreed()
         {
             currentWorkers--;
         }
