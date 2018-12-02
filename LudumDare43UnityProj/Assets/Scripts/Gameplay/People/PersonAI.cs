@@ -54,7 +54,7 @@ namespace Assets.Scripts.Gameplay.People
         {
             if(workTarget != null)
             {
-                workTarget.WorkerFreed();
+                workTarget.WorkerFreed(this);
             }
             colorer.SetJobColor(Job.Idle);
             workTarget = null;
@@ -67,7 +67,7 @@ namespace Assets.Scripts.Gameplay.People
             if(target != null && target.RoomForWorker)
             {
                 workTarget = target;
-                workTarget.WorkerAssigned();
+                workTarget.WorkerAssigned(this);
                 colorer.SetJobColor(workTarget.job);
             }
         }

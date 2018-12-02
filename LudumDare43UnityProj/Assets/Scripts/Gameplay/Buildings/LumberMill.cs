@@ -13,6 +13,7 @@ namespace Assets.Scripts.Gameplay.Buildings
         [SerializeField] private int checkTreeRadius;
 
         private List<CollectableResource> treesNearby;
+        private CollectableResource nearestTree;
 
         private void Start()
         {
@@ -26,21 +27,20 @@ namespace Assets.Scripts.Gameplay.Buildings
             }
         }
 
-        public override void WorkerAssigned()
+        public override void WorkerAssigned(PersonAI aI)
         {
-            base.WorkerAssigned();
-            CollectableResource nearestTree = GetShortestDistance(this.transform.position, treesNearby);
+            base.WorkerAssigned(aI);
+            nearestTree = GetShortestDistance(this.transform.position, treesNearby);
+            //aI.MoveToPosition(nearestTree.placedTile);
         }
 
-        public override void WorkerFreed()
+        public override void WorkerFreed(PersonAI aI)
         {
-            base.WorkerFreed();
+            base.WorkerFreed(aI);
         }
 
         public override void DoWork(PersonAI aI)
         {
-            //aI.MoveToPosition(nearestTree.placedTile);
-            
             GameplayController.instance.CurrentResources.Wood += woodPerWork;
         }
 
