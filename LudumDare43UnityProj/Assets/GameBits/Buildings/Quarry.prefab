@@ -1978,7 +1978,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: {x: 3, y: 3}
   cost:
-    Wood: 100
+    Wood: 200
     Stone: 0
     Food: 0
     Population: 0

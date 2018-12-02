@@ -13,9 +13,23 @@ namespace Assets.Scripts.Gameplay.People
 
         public Tile currentTile { get; private set; }
 
+        private WorkableTarget workTarget;
         private List<Tile> path;
 
         private void Awake()
+        {
+            UpdateCurrentTile();
+
+            GameplayController.instance.CurrentResources.Population += 1;
+            StartCoroutine(DoWork());
+        }
+
+        private void Start()
+        {
+            colorer.SetJobColor(Job.Idle);
+        }
+
+        private void UpdateCurrentTile()
         {
             RaycastHit hitInfo = new RaycastHit();
             bool hit = Physics.Raycast(transform.position, Vector3.down, out hitInfo, float.MaxValue, tileLayermask);
@@ -25,6 +39,36 @@ namespace Assets.Scripts.Gameplay.People
                 var tile = hitInfo.transform.parent.gameObject.GetComponent<Tile>();
                 Debug.Assert(tile != null, "Tile object's collider should be its immediate child");
                 currentTile = tile;
+            }
+        }
+
+        private void OnDestroy()
+        {
+            if (GameplayController.instance != null)
+            {
+                GameplayController.instance.CurrentResources.Population -= 1;
+            }
+        }
+
+        internal void Grabbed()
+        {
+            if(workTarget != null)
+            {
+                workTarget.WorkerFreed(this);
+            }
+            colorer.SetJobColor(Job.Idle);
+            workTarget = null;
+        }
+        
+        internal void DroppedOn(GameObject underCursor)
+        {
+            UpdateCurrentTile();
+            WorkableTarget target = underCursor.GetComponent<WorkableTarget>();
+            if(target != null && target.RoomForWorker)
+            {
+                workTarget = target;
+                workTarget.WorkerAssigned(this);
+                colorer.SetJobColor(workTarget.job);
             }
         }
 #if CLICK_DEBUG_MOVEMENT
@@ -83,6 +127,18 @@ namespace Assets.Scripts.Gameplay.People
         private void SlideLerp(Tile currentTile, Tile currentTarget, float v)
         {
             transform.position = Vector3.Lerp(currentTile.transform.position, currentTarget.transform.position, v);
+        }
+
+        private IEnumerator DoWork()
+        {
+            while (true)
+            {
+                if(workTarget != null)
+                {
+                    workTarget.DoWork(this);
+                }
+                yield return new WaitForSeconds(1f);
+            }
         }
     }
 }

@@ -30,9 +30,18 @@ namespace Assets.Scripts.Gameplay.Buildings
         /// <param name="position">The position build at (will be adjusted by the buildings pivot).</param>
         /// <param name="building">The building to be built.</param>
         /// <returns>True if the position is a valid build location.</returns>
-        public static bool CanBuildAt(IWorld world, Vector2Int position, Building building)
+        public static bool CanBuildAt(World.World world, Vector2Int position, Building building)
         {
             var toCheck = PositionsUnderBuilding(position, building);
+
+            foreach(var val in toCheck)
+            {
+                if(val.x < 0 || val.y < 0 || val.x > world.Width || val.y > world.Height)
+                {
+                    return false;
+                }
+            }
+
             var validHeight = world[position].Height;
 
             return toCheck.All(pos => world[pos].IsBuildable && Math.Abs(world[pos].Height - validHeight) < float.Epsilon);

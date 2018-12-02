@@ -1,13 +1,18 @@
 ﻿using System.Collections.Generic;
 using Assets.Scripts.Gameplay.Buildings;
+using Assets.Scripts.Gameplay.Resources;
 using UnityEngine;
 
 namespace Assets.Scripts.Gameplay.World
 {
-    public class World : IWorld
+    public class World
     {
         private readonly Tile[,] tiles;
         private readonly List<Building> buildings;
+        private GameplayController gameplayController = GameplayController.instance;
+
+        public int Width { get { return tiles.GetLength(0); } }
+        public int Height { get { return tiles.GetLength(1); } }
 
         public World(int width, int height)
         {
@@ -42,6 +47,8 @@ namespace Assets.Scripts.Gameplay.World
                 var tile = this[tilePosition];
                 tile.IsBuildable = false;
             }
+
+            gameplayController.CurrentResources -= building.Cost;
 
             buildings.Add(buildingInstance);
             return buildingInstance;
