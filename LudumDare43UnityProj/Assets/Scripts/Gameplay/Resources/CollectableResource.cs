@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.Gameplay.World;
+using Assets.Scripts.Gameplay.People;
 using UnityEngine;
 
 namespace Assets.Scripts.Gameplay.Resources
@@ -10,6 +11,7 @@ namespace Assets.Scripts.Gameplay.Resources
         [SerializeField] private ResourceType resourceType;
 
         public Animation Anim;
+        public PersonAI Worker;
         private void Awake()
         {
             Anim = GetComponent<Animation>();
