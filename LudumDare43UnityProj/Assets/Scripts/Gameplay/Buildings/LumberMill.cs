@@ -52,7 +52,9 @@ namespace Assets.Scripts.Gameplay.Buildings
                 treesNearby = CheckNearbyTrees(this.transform.position, checkTreeRadius);
                 if(treesNearby.Count == 0)
                 {
+                    this.maxWorkers = 0;
                     aI.Grabbed();
+                    return;
                 }
                 nearestTree = GetShortestDistance(this.transform.position, treesNearby);
                 nearestTile = CheckNearbyTiles(nearestTree.placedTile);
@@ -83,7 +85,6 @@ namespace Assets.Scripts.Gameplay.Buildings
                 }
                 i++;
             }
-            Debug.Log("TREES: " + trees.Count);
             return trees;
         }
         
