@@ -26,9 +26,9 @@ public class PersonDrag : MonoBehaviour {
 
         if (Physics.Raycast(ray, out hit, 99999, ~LayerMask.NameToLayer("Tiles")))
         {
-            int hitX = Mathf.RoundToInt(hit.point.x);
-            int hitZ = Mathf.RoundToInt(hit.point.z);
-            int hitY = Mathf.RoundToInt(hit.point.y);
+            int hitX = hit.point.x;
+            int hitZ = hit.point.z;
+            int hitY = hit.point.y;
 
 
             Vector3 hitPos = new Vector3(hitX, hitY, hitZ) + hit.normal * 5;
@@ -40,19 +40,6 @@ public class PersonDrag : MonoBehaviour {
             }
 
             this.transform.position = hitPos;
-            //if (ghostTrap != null)
-            //{
-            //    ghostTrap.transform.position = hitPos;
-            //    ghostTrap.transform.rotation = hitRot;
-            //}
-
-            //if (clicked && CheckNearby(hit.point, widthBetweenTraps, heightBetweenTraps) && trap != null)
-            //{
-            //    Instantiate(trap, hitPos, hitRot);
-            //    trap = null;
-            //    Cursor.visible = true;
-            //    DestroyGhost();
-            //}
         }
         else
             Cursor.visible = true;
@@ -61,7 +48,6 @@ public class PersonDrag : MonoBehaviour {
 
     private void OnMouseDown()
     {
-        Debug.Log("aljfk");
         dragging = true;    
     }
 
