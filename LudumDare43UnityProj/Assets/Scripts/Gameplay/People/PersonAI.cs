@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Assets.Scripts.Gameplay.UserInput;
 using UnityEngine;
 using Assets.Scripts.Gameplay.World;
 
@@ -34,13 +35,15 @@ namespace Assets.Scripts.Gameplay.People
 
         private void UpdateCurrentTile()
         {
-            RaycastHit hitInfo = new RaycastHit();
-            bool hit = Physics.Raycast(transform.position, Vector3.down, out hitInfo, float.MaxValue, tileLayermask);
+            RaycastHit hitInfo;
+
+            // Note: We add an upward vector to the transform position to ensure that they start of the ray is above the tile
+            bool hit = Physics.Raycast(transform.position + Vector3.up, Vector3.down, out hitInfo, float.MaxValue, tileLayermask);
 
             if (hit)
             {
-                var tile = hitInfo.transform.parent.gameObject.GetComponent<Tile>();
-                Debug.Assert(tile != null, "Tile object's collider should be its immediate child");
+                var tile = hitInfo.transform.gameObject.GetComponent<Tile>();
+               Debug.Assert(tile != null, "The collider object should also have a tile component");
                 currentTile = tile;
             }
         }
@@ -68,6 +71,8 @@ namespace Assets.Scripts.Gameplay.People
             ReachedDestination = false;
             colorer.SetJobColor(Job.Idle);
             workTarget = null;
+
+            transform.localScale = new Vector3(2, 2, 2);
         }
 
         private void StopMoving()
@@ -78,10 +83,20 @@ namespace Assets.Scripts.Gameplay.People
             }
         }
 
-        internal void DroppedOn(GameObject underCursor)
+        internal void DroppedOn(ObjectsUnderCursor underCursor)
         {
+            if (underCursor.Tile != null)
+            {
+                transform.position = underCursor.Tile.transform.position;
+            }
+            transform.localScale = new Vector3(1, 1, 1);
+
             UpdateCurrentTile();
-            WorkableTarget target = underCursor.GetComponent<WorkableTarget>();
+
+            WorkableTarget target = underCursor.Building == null
+                ? null
+                : underCursor.Building.GetComponent<WorkableTarget>();
+
             if(target != null && target.RoomForWorker)
             {
                 workTarget = target;
@@ -120,7 +135,9 @@ namespace Assets.Scripts.Gameplay.People
 
         private IEnumerator MoveToPositionCoroutine(Tile target)
         {
-            List<Tile> path = VolcanoAStar.GetPath(currentTile.Position, target.Position, GameplayController.instance.World);
+            var currentTileP = currentTile.Position;
+            var targetP = target.Position;
+            List<Tile> path = VolcanoAStar.GetPath(currentTileP, targetP, GameplayController.instance.World);
             if(path == null || path.Count == 0)
             {
                 yield break;
