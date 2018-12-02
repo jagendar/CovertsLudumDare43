@@ -472,7 +472,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '-Click a building then click in the world to place it.
+  m_Text: '-Click a building then click in the world to place it. Try starting with
+    one of each!
 
     -Click and drag a person to a farm, quarry, or lumber mill to assign them to work
     there.
@@ -481,7 +482,7 @@ MonoBehaviour:
     to gather.
 
     -Watch the anger bar at the top; if it grows too high, it''s time to drag someone
-    to the volcano and drop them in!'
+    to the volcano and drop them in! Someone will replace them... eventually.'
 --- !u!222 &1558298427
 CanvasRenderer:
   m_ObjectHideFlags: 0
