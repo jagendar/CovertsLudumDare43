@@ -45,18 +45,16 @@ public class PersonDrag : MonoBehaviour {
 
     private void OnMouseDown()
     {
-        if (dragging)
+        dragging = true;
+    }
+
+    private void OnMouseUp()
+    {
+        if (UnderCursor.name == "Dirt" || UnderCursor.name == "Lava")
         {
-            if(UnderCursor.name == "Dirt" || UnderCursor.name == "Lava")
-            {
-                Destroy(this.gameObject);
-            }
-            dragging = false;
+            Destroy(this.gameObject);
         }
-        else
-        {
-            dragging = true;
-        }
+        dragging = false;
     }
 
 }
