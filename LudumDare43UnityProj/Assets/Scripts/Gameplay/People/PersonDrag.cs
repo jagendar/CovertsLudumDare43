@@ -26,9 +26,9 @@ public class PersonDrag : MonoBehaviour {
 
         if (Physics.Raycast(ray, out hit, 99999, ~LayerMask.NameToLayer("Tiles")))
         {
-            int hitX = hit.point.x;
-            int hitZ = hit.point.z;
-            int hitY = hit.point.y;
+            float hitX = hit.point.x;
+            float hitZ = hit.point.z;
+            float hitY = hit.point.y;
 
 
             Vector3 hitPos = new Vector3(hitX, hitY, hitZ) + hit.normal * 5;
