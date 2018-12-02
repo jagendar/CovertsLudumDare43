@@ -42,6 +42,7 @@ namespace Assets.Scripts.Gameplay.UserInput
 
         public void PlugVolcano()
         {
+            GameplayController.instance.CurrentResources.Stone -= 1000;
             Debug.Log("Duuude, youuuuu winnnnnnnn!");
         }
     }
