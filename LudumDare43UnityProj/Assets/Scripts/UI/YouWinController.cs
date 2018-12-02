@@ -10,9 +10,10 @@ namespace Assets.Scripts.UI
 
         public void Update()
         {
+            var count = GameplayController.instance.PlugCount;
             mainText.text =
-                string.Format("Congratulations on plugging the volcano {0} times. Would you like to continue playing?",
-                    GameplayController.instance.PlugCount);
+                string.Format("Congratulations on plugging the volcano {0} time{1}. Would you like to continue playing?",
+                    count, count > 1 ? "s" : "");
         }
 
         public void Show()
