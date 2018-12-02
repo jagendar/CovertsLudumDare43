@@ -7,7 +7,7 @@ namespace Assets.Scripts.Gameplay.World
     public class Volcano : MonoBehaviour {
         [SerializeField] private LavaShot eruptingLavaPrefab;
         [SerializeField] private float initialTimeBetweenEruptions = 10;
-        [SerializeField] private float eruptionSpeedAccelerationPercentage = .1f;
+        [SerializeField] private float eruptionSpeedAccelerationPercentage = .9f;
 
         private World world;
         private float timeBetweenEruptions;
@@ -35,7 +35,7 @@ namespace Assets.Scripts.Gameplay.World
                 LavaShot shot = Instantiate(eruptingLavaPrefab, transform.position, transform.rotation);
                 shot.Initialize(GetTargetTile());
                 yield return new WaitForSeconds(timeBetweenEruptions);
-                timeBetweenEruptions -= eruptionSpeedAccelerationPercentage;
+                timeBetweenEruptions *= eruptionSpeedAccelerationPercentage;
             }
         }
 

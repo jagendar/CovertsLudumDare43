@@ -194,7 +194,6 @@ MonoBehaviour:
   confirmYesButton: {fileID: 1048282148}
   confirmNoButton: {fileID: 505415004}
   destroyButton: {fileID: 1148324552}
-  controller: {fileID: 0}
   offset: {x: 0, y: 0}
 --- !u!1 &168840064
 GameObject:
@@ -604,7 +603,7 @@ MonoBehaviour:
   eruptingLavaPrefab: {fileID: 114421705227922700, guid: 746db44427febe947a5a6548f05d4ca1,
     type: 2}
   initialTimeBetweenEruptions: 10
-  eruptionSpeedAcceleration: 1
+  eruptionSpeedAccelerationPercentage: 0.95
 --- !u!1001 &1646777680
 Prefab:
   m_ObjectHideFlags: 0
@@ -921,6 +920,36 @@ Prefab:
         type: 2}
       propertyPath: m_AnchoredPosition.y
       value: -200
+      objectReference: {fileID: 0}
+    - target: {fileID: 224732306194335590, guid: 8f058111e40319a47bfabad66508a30e,
+        type: 2}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224732306194335590, guid: 8f058111e40319a47bfabad66508a30e,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224732306194335590, guid: 8f058111e40319a47bfabad66508a30e,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224040914498692868, guid: 8f058111e40319a47bfabad66508a30e,
+        type: 2}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224040914498692868, guid: 8f058111e40319a47bfabad66508a30e,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224040914498692868, guid: 8f058111e40319a47bfabad66508a30e,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8f058111e40319a47bfabad66508a30e, type: 2}

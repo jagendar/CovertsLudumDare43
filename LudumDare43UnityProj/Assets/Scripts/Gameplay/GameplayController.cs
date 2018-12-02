@@ -37,7 +37,7 @@ namespace Assets.Scripts.Gameplay
         public void Start()
         {
             World = worldPopulator.World;
-           // volcano.BYFIREBEPURGED(World);
+            volcano.BYFIREBEPURGED(World);
         }
     }
 }
