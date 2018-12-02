@@ -3,6 +3,7 @@ using System.Collections;
 using UnityEngine;
 
 public class Housing : MonoBehaviour {
+    private static int instantSpawns = 2;
 
     [SerializeField] public GameObject personPrefab;
     [SerializeField] int populationSupply;
@@ -26,17 +27,20 @@ public class Housing : MonoBehaviour {
         }
     }
 
+    
+
     private IEnumerator SpawnPeople()
     {
         while(true)
         {
-            if (Random.value < spawnChancePerSecond)
+            if (Random.value < spawnChancePerSecond || instantSpawns > 0)
             {
                 for (int i = 0; i < people.Length; ++i)
                 {
                     if (people[i] == null)
                     {
                         people[i] = Instantiate(personPrefab, spawnSpot.position, spawnSpot.rotation);
+                        instantSpawns--;
                         break;
                     }
                 }
