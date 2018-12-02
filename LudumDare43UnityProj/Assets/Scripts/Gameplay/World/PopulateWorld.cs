@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Assets.Scripts.Gameplay.World;
+using Assets.Scripts.Gameplay.Resources;
 
 public class PopulateWorld : MonoBehaviour {
     [SerializeField] private Tile waterTile;
@@ -9,6 +10,9 @@ public class PopulateWorld : MonoBehaviour {
     [SerializeField] private Tile sandTile;
     [SerializeField] private Tile dirtTile;
     [SerializeField] private Tile grassTile;
+
+    [SerializeField] private CollectableResource rockPrefab;
+    [SerializeField] private CollectableResource treePrefab;
 
     [SerializeField] private int waterWidth;
     [SerializeField] private int sandWidth;
@@ -42,6 +46,40 @@ public class PopulateWorld : MonoBehaviour {
         }
 
         SetVolcanoHeights();
+        ScatterObject(rockPrefab, .1f);
+        ScatterObject(treePrefab, .2f);
+    }
+
+    private void ScatterObject(CollectableResource prefab, float percent)
+    {
+        float seed = Random.Range(0f, 10000f);
+        for(int i = 0; i < worldSize; ++i)
+        {
+            for(int j = 0; j < worldSize; ++j)
+            {
+                if (!World[i, j].IsBuildable)
+                {
+                    continue;
+                }
+                if (World[i,j].Height > 1.2f) //only allow stuff a little up the mountain
+                {
+                    continue;
+                }
+                float noise = Mathf.PerlinNoise(i/3f + seed, j/3f + seed);
+
+                if (noise < percent)
+                {
+                    PlaceObject(prefab, i, j);
+                }
+            }
+        }
+    }
+
+    private void PlaceObject(CollectableResource prefab, int i, int j)
+    {
+        float height = World[i, j].Height;
+        CollectableResource resource = Instantiate(prefab, new Vector3(i - halfSize, height, j - halfSize), Quaternion.identity);
+        resource.Initialize(World[i, j]);
     }
 
     private class TileToProcess
@@ -129,18 +167,17 @@ public class PopulateWorld : MonoBehaviour {
         Tile center = World[halfSize, halfSize];
         tilesToProcess.Enqueue(new TileToProcess { height = maxHeight, tile = center });
         tilesQueuedForProcess.Add(center);
-        System.Random rand = new System.Random();
 
         while (tilesToProcess.Count > 0)
         {
-            ProcessVolcanoTile(tilesToProcess, tilesQueuedForProcess, rand);
+            ProcessVolcanoTile(tilesToProcess, tilesQueuedForProcess);
         }
     }
 
-    private void ProcessVolcanoTile(Queue<TileToProcess> tilesToProcess, HashSet<Tile> previouslyQueuedTiles, System.Random rand)
+    private void ProcessVolcanoTile(Queue<TileToProcess> tilesToProcess, HashSet<Tile> previouslyQueuedTiles)
     {
         TileToProcess t = tilesToProcess.Dequeue();
-        double randomChance = rand.NextDouble();
+        double randomChance = Random.value;
         if (randomChance < volcanoFalloffChance)
         {
             t.tile.Height = t.height - 0.5f;

@@ -10,10 +10,12 @@ namespace Assets.Scripts.Gameplay.World
 
         public Vector2Int Position { get; set; }
 
+        private bool temporaryBuildability = true;
+
         public bool IsBuildable
         {
-            get { return buildable; }
-            set { buildable = value; }
+            get { return buildable && temporaryBuildability; }
+            set { temporaryBuildability = value; }
         }
 
         public float Height

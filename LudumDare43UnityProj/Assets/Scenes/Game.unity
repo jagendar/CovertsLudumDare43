@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -348,6 +348,10 @@ MonoBehaviour:
   dirtTile: {fileID: 114014710011479578, guid: 9fc30d68aa9b4cd47bf7f6c9c7fb5b08, type: 2}
   grassTile: {fileID: 114827585679374906, guid: 1676e5f18a1618f47810adbbe5f9c4ca,
     type: 2}
+  rockPrefab: {fileID: 114944272613212068, guid: 564d1adcbdd2f4e47ba076c7162cf3d3,
+    type: 2}
+  treePrefab: {fileID: 114207819447877262, guid: 791fae02f41418840a4461c9e269fc48,
+    type: 2}
   waterWidth: 10
   sandWidth: 5
   worldSize: 100
@@ -610,6 +614,41 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 811972086}
+    - target: {fileID: 114783630426636592, guid: 8f058111e40319a47bfabad66508a30e,
+        type: 2}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114783630426636592, guid: 8f058111e40319a47bfabad66508a30e,
+        type: 2}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114783630426636592, guid: 8f058111e40319a47bfabad66508a30e,
+        type: 2}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114860824707465420, guid: 8f058111e40319a47bfabad66508a30e,
+        type: 2}
+      propertyPath: m_Interactable
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114096669902027994, guid: 8f058111e40319a47bfabad66508a30e,
+        type: 2}
+      propertyPath: m_Interactable
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114085478868638490, guid: 8f058111e40319a47bfabad66508a30e,
+        type: 2}
+      propertyPath: m_Interactable
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114823641565657236, guid: 8f058111e40319a47bfabad66508a30e,
+        type: 2}
+      propertyPath: m_Interactable
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8f058111e40319a47bfabad66508a30e, type: 2}
   m_IsPrefabAsset: 0

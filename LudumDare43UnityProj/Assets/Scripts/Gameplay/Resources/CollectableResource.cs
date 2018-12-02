@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Assets.Scripts.Gameplay.World;
+using UnityEngine;
 
 namespace Assets.Scripts.Gameplay.Resources
 {
@@ -13,6 +14,10 @@ namespace Assets.Scripts.Gameplay.Resources
         /// </summary>
         [SerializeField] private bool selfDestroying = true;
 
+        [SerializeField] private bool blocksBuilding = true;
+
+        private Tile placedTile;
+
         public uint Amount
         {
             get { return amount; }
@@ -22,6 +27,10 @@ namespace Assets.Scripts.Gameplay.Resources
                 if (amount == 0 && selfDestroying)
                 {
                     Destroy(gameObject);
+                    if(blocksBuilding)
+                    {
+                        placedTile.IsBuildable = true;
+                    }
                 }
             }
         }
@@ -30,6 +39,16 @@ namespace Assets.Scripts.Gameplay.Resources
         {
             get { return resourceType; }
             set { resourceType = value; }
+        }
+
+
+        public void Initialize(Tile myTile)
+        {
+            placedTile = myTile;
+            if (blocksBuilding)
+            {
+                placedTile.IsBuildable = false;
+            }
         }
     }
 }
