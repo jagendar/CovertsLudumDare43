@@ -38,6 +38,7 @@ namespace Assets.Scripts.Gameplay.Buildings
         public override void WorkerAssigned(PersonAI aI)
         {
             base.WorkerAssigned(aI);
+            treesNearby = CheckNearbyTrees(this.transform.position, checkTreeRadius);
             nearestTree = GetShortestDistance(this.transform.position, treesNearby);
             nearestTile = CheckNearbyTiles(nearestTree.placedTile);
             aI.MoveToPosition(nearestTile);
@@ -66,6 +67,7 @@ namespace Assets.Scripts.Gameplay.Buildings
             }
             if (aI.ReachedDestination)
             {
+                //nearestTree.Worker = aI;
                 GameplayController.instance.CurrentResources.Wood += woodPerWork;
                 if (nearestTree.Anim != null)
                 {
@@ -83,8 +85,9 @@ namespace Assets.Scripts.Gameplay.Buildings
             int i = 0;
             while (i < hitColliders.Length)
             {
-                if (hitColliders[i].tag == "Tree")
+                if (hitColliders[i].tag == "Tree" /*&& hitColliders[i].gameObject.GetComponent<CollectableResource>().Worker == null*/)
                 {
+                    Debug.Log("Add tree");
                     trees.Add(hitColliders[i].gameObject.GetComponent<CollectableResource>());
                 }
                 i++;
