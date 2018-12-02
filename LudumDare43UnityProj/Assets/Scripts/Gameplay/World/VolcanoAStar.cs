@@ -118,7 +118,7 @@ namespace Assets.Scripts.Gameplay.World
         static IEnumerable<Location> GetWalkableAdjacentSquares(int x, int y, World map)
         {
             float tileHeight = map[x, y].Height;
-            const float maxDeltaHeight = .5f;
+            const float maxDeltaHeight = .6f;
             var proposedLocations = new List<Location>()
                     {
                         new Location { X = x, Y = y - 1 },
