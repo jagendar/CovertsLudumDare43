@@ -46,6 +46,18 @@ namespace Assets.Scripts.Gameplay.Buildings
 
         public override void DoWork(PersonAI aI)
         {
+            if(nearestTree == null)
+            {
+                aI.ReachedDestination = false;
+                treesNearby = CheckNearbyTrees(this.transform.position, checkTreeRadius);
+                if(treesNearby.Count == 0)
+                {
+                    aI.Grabbed();
+                }
+                nearestTree = GetShortestDistance(this.transform.position, treesNearby);
+                nearestTile = CheckNearbyTiles(nearestTree.placedTile);
+                aI.MoveToPosition(nearestTile);
+            }
             if(aI.ReachedDestination)
             {
                 GameplayController.instance.CurrentResources.Wood += woodPerWork;
@@ -53,16 +65,7 @@ namespace Assets.Scripts.Gameplay.Buildings
                 {
                     nearestTree.Anim.Play();
                 }
-                nearestTree.Amount-= (uint)woodPerWork;
-                Debug.Log(nearestTree.Amount);
-                if(nearestTree.Amount < 7)
-                {
-                    Destroy(nearestTree.gameObject);
-                    treesNearby = CheckNearbyTrees(this.transform.position, checkTreeRadius);
-                    aI.Grabbed();
-                    aI.DroppedOn(this.gameObject);
-                    
-                }
+                nearestTree.Amount-= woodPerWork;
             }
         }
 

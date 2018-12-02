@@ -5,7 +5,7 @@ namespace Assets.Scripts.Gameplay.Resources
 {
     public class CollectableResource : MonoBehaviour
     {
-        [SerializeField] private uint amount;
+        [SerializeField] private int amount;
 
         [SerializeField] private ResourceType resourceType;
 
@@ -24,7 +24,7 @@ namespace Assets.Scripts.Gameplay.Resources
 
         public Tile placedTile;
 
-        public uint Amount
+        public int Amount
         {
             get { return amount; }
             set
