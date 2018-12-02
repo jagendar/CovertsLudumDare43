@@ -1021,3 +1021,4 @@ MonoBehaviour:
   maxWorkers: 2
   woodPerWork: 7
   checkTreeRadius: 5
+  treeTag: Tree
