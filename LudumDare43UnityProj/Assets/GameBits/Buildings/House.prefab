@@ -449,8 +449,8 @@ MonoBehaviour:
   size: {x: 3, y: 3}
   cost:
     Wood: 0
-    Stone: 50
-    Food: 0
+    Stone: 0
+    Food: 200
     Population: 0
   constructionHologram: {fileID: 114334123816857164, guid: 9534d25ac6e5c2949a5fc26683ca428b,
     type: 2}

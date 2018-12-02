@@ -248,9 +248,9 @@ MonoBehaviour:
   worldPopulator: {fileID: 716921526}
   volcano: {fileID: 1609464066}
   CurrentResources:
-    Wood: 600
-    Stone: 150
-    Food: 20
+    Wood: 500
+    Stone: 250
+    Food: 400
     Population: 0
 --- !u!4 &638018102
 Transform:
