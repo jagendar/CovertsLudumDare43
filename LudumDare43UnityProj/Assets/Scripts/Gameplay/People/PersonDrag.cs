@@ -3,11 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PersonDrag : MonoBehaviour {
-    [SerializeField] private Camera cam;
+ 
+    private Camera cam;
     private bool dragging;
+    private bool overVolcano;
 
 	void Start ()
     {
+        cam = Camera.main;
+        overVolcano = false;
         dragging = false;	
 	}
 
@@ -31,24 +35,23 @@ public class PersonDrag : MonoBehaviour {
             float hitY = hit.point.y;
 
 
-            Vector3 hitPos = new Vector3(hitX, hitY, hitZ) + hit.normal * 5;
-            Quaternion hitRot = Quaternion.identity;
-
-            if (hit.normal.x == -1 || hit.normal.x == 1)
-            {
-                hitRot = Quaternion.Euler(0, 90, 0);
-            }
+            Vector3 hitPos = new Vector3(hitX, hitY, hitZ);
 
             this.transform.position = hitPos;
         }
-        else
-            Cursor.visible = true;
     }
 
 
     private void OnMouseDown()
     {
-        dragging = true;    
+        if (dragging)
+        {
+            dragging = false;
+        }
+        else
+        {
+            dragging = true;
+        }
     }
 
 }

@@ -5,6 +5,7 @@ using Assets.Scripts.Gameplay.World;
 using Assets.Scripts.Gameplay.Resources;
 
 public class PopulateWorld : MonoBehaviour {
+    public Camera Cam;
     [SerializeField] private Tile waterTile;
     [SerializeField] private Tile lavaTile;
     [SerializeField] private Tile sandTile;

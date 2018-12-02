@@ -311,6 +311,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 20523952419929254, guid: 2e326846ee7432644a69c882e74ce872,
+        type: 2}
+      propertyPath: m_AllowMSAA
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2e326846ee7432644a69c882e74ce872, type: 2}
   m_IsPrefabAsset: 0
@@ -341,6 +346,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d221ac2512db2144199266c760ca6bbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Cam: {fileID: 1496548439}
   waterTile: {fileID: 114899084972334302, guid: 28c7798615e2d7c4c80f2a69eeb60b1c,
     type: 2}
   lavaTile: {fileID: 114234241247390188, guid: fd66d409349985d439cd4cced4104d54, type: 2}
@@ -493,6 +499,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!20 &1496548439 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 20523952419929254, guid: 2e326846ee7432644a69c882e74ce872,
+    type: 2}
+  m_PrefabInternal: {fileID: 646439433}
 --- !u!1001 &1646777680
 Prefab:
   m_ObjectHideFlags: 0
