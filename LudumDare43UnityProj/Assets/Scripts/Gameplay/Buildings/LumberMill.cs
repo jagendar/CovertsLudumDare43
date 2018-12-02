@@ -53,7 +53,7 @@ namespace Assets.Scripts.Gameplay.Buildings
                 if(treesNearby.Count == 0)
                 {
                     this.maxWorkers = 0;
-                    aI.Grabbed();
+                    aI.Idle();
                     return;
                 }
                 nearestTree = GetShortestDistance(this.transform.position, treesNearby);

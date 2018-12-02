@@ -35,7 +35,6 @@ namespace Assets.Scripts.Gameplay.Buildings
         public override void WorkerAssigned(PersonAI aI)
         {
             base.WorkerAssigned(aI);
-            Debug.Log("LSKD:JF");
             nearestStone = GetShortestDistance(this.transform.position, stoneNearby);
             nearestTile = CheckNearbyTiles(nearestStone.placedTile);
             aI.MoveToPosition(nearestTile);
@@ -55,7 +54,7 @@ namespace Assets.Scripts.Gameplay.Buildings
                 if (stoneNearby.Count == 0)
                 {
                     this.maxWorkers = 0;
-                    aI.Grabbed();
+                    aI.Idle();
                     return;
                 }
                 nearestStone = GetShortestDistance(this.transform.position, stoneNearby);
