@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.Gameplay;
+using Assets.Scripts.Gameplay.World;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -43,20 +44,23 @@ namespace Assets.Scripts.UI.Buildings
 
         public void OnDestroy()
         {
-            Debug.Log("OnDestroy");
             needsConfirmation = true;
         }
 
         public void OnConfirmNo()
         {
-            Debug.Log("OnConfirmNo");
             needsConfirmation = false;
         }
 
         public void OnConfirmYes()
         {
-            Debug.Log("OnConfirmYes");
             needsConfirmation = false;
+
+            var building = controller.SelectedBuilding;
+            if (building == null) return;
+
+            Tile tile = controller.World[building.Position];
+            controller.World.DestroyBuildingsOnTile(tile);
         }
     }
 }
