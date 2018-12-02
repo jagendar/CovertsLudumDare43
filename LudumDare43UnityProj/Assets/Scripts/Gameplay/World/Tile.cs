@@ -62,6 +62,7 @@ namespace Assets.Scripts.Gameplay.World
             {
                 renderer.material = lavaMaterial;
             }
+            sacrifiable = true;
         }
     }
 }

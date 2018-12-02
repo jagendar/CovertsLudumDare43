@@ -39,7 +39,7 @@ namespace Assets.Scripts.Gameplay.UserInput
             if (Input.GetMouseButtonUp(0))
             {
                 var under = controller.UnderCursor;
-                GameplayController.instance.VolcanoController.ResetSpeed();
+
                 dragTarget.DroppedOn(controller.UnderCursor);
 
                 IsDragging = false;

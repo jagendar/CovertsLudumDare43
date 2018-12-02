@@ -39,12 +39,17 @@ namespace Assets.Scripts.Gameplay.World
             StartCoroutine(DIEINSECT());
         }
 
+        internal void TOOSOONEXECUTUS(Tile tile)
+        {
+            LavaShot shot = Instantiate(eruptingLavaPrefab, transform.position, transform.rotation);
+            shot.Initialize(tile);
+        }
+
         IEnumerator DIEINSECT()
         {
             while (true)
             {
-                LavaShot shot = Instantiate(eruptingLavaPrefab, transform.position, transform.rotation);
-                shot.Initialize(GetTargetTile());
+                TOOSOONEXECUTUS(GetTargetTile());
                 yield return new WaitForSeconds(timeBetweenEruptions);
                 timeBetweenEruptions *= eruptionSpeedAccelerationPercentage;
             }

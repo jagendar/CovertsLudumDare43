@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Assets.Scripts.Gameplay.Buildings;
+using Assets.Scripts.Gameplay.UserInput;
 using Assets.Scripts.Gameplay.World;
 using UnityEngine;
 
@@ -9,6 +10,7 @@ namespace Assets.Scripts.Gameplay
     {
         public static GameplayController instance { get; private set; }
 
+        [SerializeField] private PlayerController playerController = null;
         [SerializeField] private PopulateWorld worldPopulator = null;
         [SerializeField] private Volcano volcano;
 
@@ -20,6 +22,7 @@ namespace Assets.Scripts.Gameplay
 
         public int maxPopulation { get; set; }
         public Volcano VolcanoController { get { return volcano; } }
+        public PlayerController PlayerController {  get { return playerController; } }
 
         private void Awake()
         {

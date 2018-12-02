@@ -22,6 +22,11 @@ namespace Assets.Scripts.Gameplay.UserInput
                     Population = gameplayController.CurrentResources.Population
                 };
             }
+
+            if (Input.GetMouseButtonDown(0) && Input.GetKey(KeyCode.LeftAlt) && gameplayController.PlayerController.UnderCursor.Tile != null)
+            {
+                gameplayController.VolcanoController.TOOSOONEXECUTUS(gameplayController.PlayerController.UnderCursor.Tile);
+            }
         }
     }
 }
