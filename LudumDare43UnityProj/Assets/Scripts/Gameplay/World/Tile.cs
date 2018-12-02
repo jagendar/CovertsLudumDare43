@@ -24,6 +24,9 @@ namespace Assets.Scripts.Gameplay.World
         [SerializeField]
         private bool sacrifiable = false;
 
+        [SerializeField]
+        private bool deadly;
+
         public bool IsBuildable
         {
             get { return buildable && temporaryBuildability; }
@@ -45,6 +48,11 @@ namespace Assets.Scripts.Gameplay.World
         public bool IsSacrificable
         {
             get { return sacrifiable;  }
+        }
+
+        public bool IsDeadly
+        {
+            get { return deadly; }
         }
 
         internal void BecomeLava()
