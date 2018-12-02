@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -223,11 +223,6 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 114107266169012100, guid: 8f058111e40319a47bfabad66508a30e,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 224563450550058492, guid: 8f058111e40319a47bfabad66508a30e,
         type: 2}
       propertyPath: m_LocalPosition.x
@@ -416,90 +411,6 @@ Prefab:
     - target: {fileID: 224040914498692868, guid: 8f058111e40319a47bfabad66508a30e,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224690519984396592, guid: 8f058111e40319a47bfabad66508a30e,
-        type: 2}
-      propertyPath: m_AnchorMin.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 224690519984396592, guid: 8f058111e40319a47bfabad66508a30e,
-        type: 2}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 224690519984396592, guid: 8f058111e40319a47bfabad66508a30e,
-        type: 2}
-      propertyPath: m_AnchoredPosition.x
-      value: 80
-      objectReference: {fileID: 0}
-    - target: {fileID: 224690519984396592, guid: 8f058111e40319a47bfabad66508a30e,
-        type: 2}
-      propertyPath: m_AnchoredPosition.y
-      value: -15
-      objectReference: {fileID: 0}
-    - target: {fileID: 224323874030495254, guid: 8f058111e40319a47bfabad66508a30e,
-        type: 2}
-      propertyPath: m_AnchorMin.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 224323874030495254, guid: 8f058111e40319a47bfabad66508a30e,
-        type: 2}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 224323874030495254, guid: 8f058111e40319a47bfabad66508a30e,
-        type: 2}
-      propertyPath: m_AnchoredPosition.x
-      value: 248
-      objectReference: {fileID: 0}
-    - target: {fileID: 224323874030495254, guid: 8f058111e40319a47bfabad66508a30e,
-        type: 2}
-      propertyPath: m_AnchoredPosition.y
-      value: -15
-      objectReference: {fileID: 0}
-    - target: {fileID: 224878972435905484, guid: 8f058111e40319a47bfabad66508a30e,
-        type: 2}
-      propertyPath: m_SizeDelta.x
-      value: 328
-      objectReference: {fileID: 0}
-    - target: {fileID: 224878972435905484, guid: 8f058111e40319a47bfabad66508a30e,
-        type: 2}
-      propertyPath: m_SizeDelta.y
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 114096669902027994, guid: 8f058111e40319a47bfabad66508a30e,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: PlugVolcano
-      objectReference: {fileID: 0}
-    - target: {fileID: 114107266169012100, guid: 8f058111e40319a47bfabad66508a30e,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114107266169012100, guid: 8f058111e40319a47bfabad66508a30e,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114107266169012100, guid: 8f058111e40319a47bfabad66508a30e,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 476012652}
-    - target: {fileID: 114107266169012100, guid: 8f058111e40319a47bfabad66508a30e,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OnContinuePlayingClicked
-      objectReference: {fileID: 0}
-    - target: {fileID: 114107266169012100, guid: 8f058111e40319a47bfabad66508a30e,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 1272538734075078, guid: 8f058111e40319a47bfabad66508a30e, type: 2}
-      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
