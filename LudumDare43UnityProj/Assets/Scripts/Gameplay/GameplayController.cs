@@ -10,6 +10,8 @@ namespace Assets.Scripts.Gameplay
 
         [SerializeField] private PopulateWorld worldPopulator = null;
 
+        public Building SelectedBuilding { get; set; }
+
         public World.World World { get; private set; }
 
         public Resources.ResourceCollection CurrentResources { get; set; }
