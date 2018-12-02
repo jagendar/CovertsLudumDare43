@@ -20,7 +20,7 @@ namespace Assets.Scripts.Gameplay.World
             buildings = new List<Building>();
         }
 
-        private IEnumerable<Building> Buildings
+        public IEnumerable<Building> Buildings
         {
             get { return buildings; }
         }

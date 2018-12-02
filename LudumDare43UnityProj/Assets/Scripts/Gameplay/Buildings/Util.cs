@@ -46,5 +46,10 @@ namespace Assets.Scripts.Gameplay.Buildings
 
             return toCheck.All(pos => world[pos].IsBuildable && Math.Abs(world[pos].Height - validHeight) < float.Epsilon);
         }
+
+        internal static IEnumerable<Vector2Int> PositionsUnderBuilding(Building building)
+        {
+            return PositionsUnderBuilding(new Vector2Int(Mathf.RoundToInt(building.transform.position.x), Mathf.RoundToInt(building.transform.position.y)), building);
+        }
     }
 }
