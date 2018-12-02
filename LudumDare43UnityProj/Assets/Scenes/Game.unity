@@ -336,7 +336,7 @@ MonoBehaviour:
     type: 2}
   waterWidth: 10
   sandWidth: 5
-  worldSize: 250
+  worldSize: 100
   maxHeight: 10
   volcanoFalloffChance: 0.5
 --- !u!4 &716921527
