@@ -38,8 +38,6 @@ namespace Assets.Scripts.Gameplay.UserInput
 
             if (Input.GetMouseButtonUp(0))
             {
-                var under = controller.UnderCursor;
-
                 dragTarget.DroppedOn(controller.UnderCursor);
 
                 IsDragging = false;
