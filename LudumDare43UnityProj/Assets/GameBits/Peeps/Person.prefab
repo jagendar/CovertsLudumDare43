@@ -56,6 +56,7 @@ GameObject:
   - component: {fileID: 114913217010996044}
   - component: {fileID: 114839715580621996}
   - component: {fileID: 136598155416630214}
+  - component: {fileID: 111067072370785100}
   m_Layer: 12
   m_Name: Person
   m_TagString: Untagged
@@ -103,7 +104,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4533330007690814}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -2.6311111}
 --- !u!23 &23275581187635448
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -188,6 +189,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1403018600027864}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!111 &111067072370785100
+Animation:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1980080160653430}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: c767322f77e9bdb4d980a69f94a58974, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: c767322f77e9bdb4d980a69f94a58974, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!114 &114839715580621996
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -203,6 +219,9 @@ MonoBehaviour:
   tileLayermask:
     serializedVersion: 2
     m_Bits: 512
+  wiggleAnim: {fileID: 111067072370785100}
+  ReachedDestination: 0
+  workTarget: {fileID: 0}
 --- !u!114 &114913217010996044
 MonoBehaviour:
   m_ObjectHideFlags: 1

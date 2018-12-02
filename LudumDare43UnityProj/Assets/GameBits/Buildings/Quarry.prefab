@@ -2072,3 +2072,4 @@ MonoBehaviour:
   maxWorkers: 1
   stonePerWork: 7
   checkStoneRadius: 5
+  stoneTag: Rock
