@@ -14,6 +14,8 @@ namespace Assets.Scripts.Gameplay.UserInput
         private bool ignoreClicks;
         private Hologram hologram;
 
+        private bool isShiftBuilding;
+
         public bool IsBuilding { get; private set; }
 
         public void StartBuilding(Building buildingTemplate)
@@ -33,6 +35,7 @@ namespace Assets.Scripts.Gameplay.UserInput
         public void EndBuilding()
         {
             IsBuilding = false;
+            isShiftBuilding = false;
             template = null;
             if (hologram != null)
             {
@@ -60,7 +63,11 @@ namespace Assets.Scripts.Gameplay.UserInput
             {
                 gameplayController.World.CreateNewBuilding(template, tile.Position);
 
-                if (!Input.GetKey(KeyCode.LeftShift))
+                if (Input.GetKey(KeyCode.LeftShift))
+                {
+                    isShiftBuilding = true;
+                }
+                else
                 {
                     EndBuilding();
                 }
@@ -71,7 +78,12 @@ namespace Assets.Scripts.Gameplay.UserInput
 
         private bool CheckShouldCancel()
         {
-            return Input.GetMouseButtonDown(1) || Input.GetKeyDown(KeyCode.Escape);
+            if (Input.GetMouseButtonDown(1) || Input.GetKeyDown(KeyCode.Escape))
+            {
+                return true;
+            }
+
+            return isShiftBuilding && !Input.GetKey(KeyCode.LeftShift);
         }
 
         private void UpdateHologramState(Tile tile, bool isValidPosition)
