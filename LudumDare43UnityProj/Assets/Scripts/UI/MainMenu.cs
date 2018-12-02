@@ -15,5 +15,13 @@ public class MainMenu : MonoBehaviour {
         SceneManager.LoadScene("Game");
     }
     
+    public void OnClickInstructions()
+    {
 
+    }
+
+    public void OnClickCredits()
+    {
+
+    }
 }
