@@ -59,6 +59,10 @@ namespace Assets.Scripts.Gameplay.People
                 GameplayController.instance.CurrentResources.Population -= 1;
                 GameplayController.instance.World.RemovePerson(this);
             }
+            if(workTarget != null)
+            {
+                workTarget.WorkerFreed(this);
+            }
         }
 
         public void Grabbed()
