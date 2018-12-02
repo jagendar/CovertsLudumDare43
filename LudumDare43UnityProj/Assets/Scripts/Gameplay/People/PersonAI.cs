@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Assets.Scripts.Gameplay.Buildings;
 using Assets.Scripts.Gameplay.UserInput;
 using UnityEngine;
 using Assets.Scripts.Gameplay.World;
@@ -95,37 +96,53 @@ namespace Assets.Scripts.Gameplay.People
         internal void DroppedOn(ObjectsUnderCursor underCursor)
         {
             RunWiggle(false);
-            Tile tile = underCursor.Tile;
-            if (tile != null)
-            {
-                if (tile.IsSacrificable)
-                {
-                    GameplayController.instance.VolcanoController.ResetSpeed();
-                }
-
-                if (tile.IsSacrificable || tile.IsDeadly)
-                {
-                    Destroy(gameObject);
-                    return;
-                }
-
-                transform.position = underCursor.Tile.transform.position;
-            }
-
             transform.localScale = new Vector3(1, 1, 1);
 
-            UpdateCurrentTile();
-
-            WorkableTarget target = underCursor.Building == null
-                ? null
-                : underCursor.Building.GetComponent<WorkableTarget>();
-
-            if(target != null && target.RoomForWorker)
+            if (underCursor.Building != null)
             {
-                workTarget = target;
-                workTarget.WorkerAssigned(this);
-                colorer.SetJobColor(workTarget.job);
+                DroppedOnBuilding(underCursor.Building);
             }
+            else
+            {
+                DroppedOnTile(underCursor.Tile);
+            }
+        }
+
+        internal void DroppedOnBuilding(Building building)
+        {
+            // TODO: Set location
+            var housing = building.GetComponent<Housing>();
+            transform.position = housing != null ? housing.SpawnSpot.position : building.transform.position;
+
+            WorkableTarget target = building.GetComponent<WorkableTarget>();
+            if (target == null || !target.RoomForWorker) return;
+
+            workTarget = target;
+            workTarget.WorkerAssigned(this);
+            colorer.SetJobColor(workTarget.job);
+        }
+
+        internal void DroppedOnTile(Tile tile)
+        {
+            if (tile == null)
+            {
+                Destroy(gameObject);
+                return;
+            }
+
+            if (tile.IsSacrificable)
+            {
+                GameplayController.instance.VolcanoController.ResetSpeed();
+            }
+
+            if (tile.IsSacrificable || tile.IsDeadly)
+            {
+                Destroy(gameObject);
+                return;
+            }
+
+            transform.position = tile.transform.position;
+            UpdateCurrentTile();
         }
 #if CLICK_DEBUG_MOVEMENT
         public void Update()
