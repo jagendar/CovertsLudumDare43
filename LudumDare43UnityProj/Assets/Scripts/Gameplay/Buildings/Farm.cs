@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Assets.Scripts.Gameplay.Buildings
 {
-    public class Farm : IWorkableTarget
+    public class Farm : WorkableTarget
     {
         [SerializeField] private int foodPerWork = 7;
         [SerializeField] private Animation animPlayer;

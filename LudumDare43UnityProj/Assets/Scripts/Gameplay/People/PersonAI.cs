@@ -13,7 +13,7 @@ namespace Assets.Scripts.Gameplay.People
 
         public Tile currentTile { get; private set; }
 
-        private IWorkableTarget workTarget;
+        private WorkableTarget workTarget;
         private List<Tile> path;
 
         private void Awake()
@@ -63,7 +63,7 @@ namespace Assets.Scripts.Gameplay.People
         internal void DroppedOn(GameObject underCursor)
         {
             UpdateCurrentTile();
-            IWorkableTarget target = underCursor.GetComponent<IWorkableTarget>() as IWorkableTarget;
+            WorkableTarget target = underCursor.GetComponent<WorkableTarget>();
             if(target != null && target.RoomForWorker)
             {
                 workTarget = target;
