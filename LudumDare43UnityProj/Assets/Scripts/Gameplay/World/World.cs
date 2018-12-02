@@ -9,7 +9,6 @@ namespace Assets.Scripts.Gameplay.World
     {
         private readonly Tile[,] tiles;
         private readonly List<Building> buildings;
-        private GameplayController gameplayController = GameplayController.instance;
 
         public int Width { get { return tiles.GetLength(0); } }
         public int Height { get { return tiles.GetLength(1); } }
@@ -48,7 +47,7 @@ namespace Assets.Scripts.Gameplay.World
                 tile.IsBuildable = false;
             }
 
-            gameplayController.CurrentResources -= building.Cost;
+            GameplayController.instance.CurrentResources -= building.Cost;
 
             buildings.Add(buildingInstance);
             return buildingInstance;

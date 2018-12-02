@@ -63,7 +63,7 @@ namespace Assets.Scripts.Gameplay.Buildings
             }
             if (aI.ReachedDestination)
             {
-                GameplayController.instance.CurrentResources.Wood += stonePerWork;
+                GameplayController.instance.CurrentResources.Stone += stonePerWork;
                 if (nearestStone.Anim != null)
                 {
                     nearestStone.Anim.Play();
