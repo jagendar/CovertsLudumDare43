@@ -24,6 +24,11 @@ namespace Assets.Scripts.Gameplay.People
             StartCoroutine(DoWork());
         }
 
+        private void Start()
+        {
+            colorer.SetJobColor(Job.Idle);
+        }
+
         private void UpdateCurrentTile()
         {
             RaycastHit hitInfo = new RaycastHit();
@@ -51,6 +56,7 @@ namespace Assets.Scripts.Gameplay.People
             {
                 workTarget.WorkerFreed();
             }
+            colorer.SetJobColor(Job.Idle);
             workTarget = null;
         }
         
@@ -62,6 +68,7 @@ namespace Assets.Scripts.Gameplay.People
             {
                 workTarget = target;
                 workTarget.WorkerAssigned();
+                colorer.SetJobColor(workTarget.job);
             }
         }
 #if CLICK_DEBUG_MOVEMENT
