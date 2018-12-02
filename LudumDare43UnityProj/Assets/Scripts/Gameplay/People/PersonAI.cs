@@ -17,6 +17,8 @@ namespace Assets.Scripts.Gameplay.People
         public WorkableTarget workTarget;
         private List<Tile> path;
 
+        private IEnumerator moveCoroutine;
+
         private void Awake()
         {
             UpdateCurrentTile();
@@ -62,12 +64,20 @@ namespace Assets.Scripts.Gameplay.People
             {
                 workTarget.WorkerFreed(this);
             }
-            StopAllCoroutines();
+            StopMoving();
             ReachedDestination = false;
             colorer.SetJobColor(Job.Idle);
             workTarget = null;
         }
-        
+
+        private void StopMoving()
+        {
+            if(moveCoroutine != null)
+            {
+                StopCoroutine(moveCoroutine);
+            }
+        }
+
         internal void DroppedOn(GameObject underCursor)
         {
             UpdateCurrentTile();
@@ -100,7 +110,12 @@ namespace Assets.Scripts.Gameplay.People
 
         public void MoveToPosition(Tile target)
         {
-            StartCoroutine(MoveToPositionCoroutine(target));
+            if(moveCoroutine != null)
+            {
+                StopCoroutine(moveCoroutine);
+            }
+            moveCoroutine = MoveToPositionCoroutine(target);
+            StartCoroutine(moveCoroutine);
         }
 
         private IEnumerator MoveToPositionCoroutine(Tile target)
@@ -120,6 +135,7 @@ namespace Assets.Scripts.Gameplay.People
             }
 
             ReachedDestination = true;
+            moveCoroutine = null;
         }
 
         private IEnumerator MoveToTile(Tile currentTarget)
