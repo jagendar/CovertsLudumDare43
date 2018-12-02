@@ -12,6 +12,7 @@ namespace Assets.Scripts.Gameplay.Buildings
         [SerializeField] private int woodPerWork;
         [SerializeField] private int checkTreeRadius;
         [SerializeField] private string treeTag;
+        [SerializeField] Transform spawnSpot;
 
         private List<CollectableResource> treesNearby;
         private CollectableResource nearestTree;
@@ -40,6 +41,7 @@ namespace Assets.Scripts.Gameplay.Buildings
         public override void WorkerAssigned(PersonAI aI)
         {
             base.WorkerAssigned(aI);
+            aI.transform.position = spawnSpot.position;
             treesNearby = CheckNearbyResources(this.transform.position, checkTreeRadius, treeTag);
             if(treesNearby.Count == 0)
             {
@@ -55,6 +57,7 @@ namespace Assets.Scripts.Gameplay.Buildings
 
         public override void WorkerFreed(PersonAI aI)
         {
+            nearestTree.Worker = null;
             base.WorkerFreed(aI);
         }
 

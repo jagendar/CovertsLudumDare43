@@ -12,6 +12,7 @@ namespace Assets.Scripts.Gameplay.Buildings
         [SerializeField] private int stonePerWork;
         [SerializeField] private int checkStoneRadius;
         [SerializeField] private string stoneTag;
+        [SerializeField] Transform spawnSpot;
 
         private List<CollectableResource> stoneNearby;
         private CollectableResource nearestStone;
@@ -40,6 +41,7 @@ namespace Assets.Scripts.Gameplay.Buildings
         public override void WorkerAssigned(PersonAI aI)
         {
             base.WorkerAssigned(aI);
+            aI.transform.position = spawnSpot.position;
             stoneNearby = CheckNearbyResources(this.transform.position, checkStoneRadius, stoneTag);
             if(stoneNearby.Count == 0)
             {
@@ -55,7 +57,8 @@ namespace Assets.Scripts.Gameplay.Buildings
 
         public override void WorkerFreed(PersonAI aI)
         {
-            base.WorkerFreed(aI);
+            nearestStone.Worker = null;
+            base.WorkerFreed(aI);  
         }
 
         public override void DoWork(PersonAI aI)

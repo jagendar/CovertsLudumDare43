@@ -77,6 +77,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1433672936303056
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4312871019602810}
+  m_Layer: 10
+  m_Name: PersonSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1541815616269712
 GameObject:
   m_ObjectHideFlags: 1
@@ -338,6 +353,19 @@ Transform:
   m_Father: {fileID: 4642639923172438}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4312871019602810
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1433672936303056}
+  m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
+  m_LocalPosition: {x: -1, y: 0, z: -1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4642639923172438}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
 --- !u!4 &4509783117503616
 Transform:
   m_ObjectHideFlags: 1
@@ -378,6 +406,7 @@ Transform:
   - {fileID: 4032254456920690}
   - {fileID: 4231329722362034}
   - {fileID: 4991376098060214}
+  - {fileID: 4312871019602810}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -999,12 +1028,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60692e4e4d53cd74fa276309e6f208d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  size: {x: 3, y: 3}
   cost:
     Wood: 100
     Stone: 25
     Food: 0
     Population: 0
+  size: {x: 3, y: 3}
   constructionHologram: {fileID: 114599283499788126, guid: 47138273cce62b842b32a1fbadd68679,
     type: 2}
 --- !u!114 &114613099863668022
