@@ -69,6 +69,7 @@ GameObject:
   m_Component:
   - component: {fileID: 224044101876899548}
   - component: {fileID: 114860824707465420}
+  - component: {fileID: 114319880375487006}
   m_Layer: 5
   m_Name: House
   m_TagString: Untagged
@@ -120,6 +121,7 @@ GameObject:
   m_Component:
   - component: {fileID: 224359175087424434}
   - component: {fileID: 114823641565657236}
+  - component: {fileID: 114198319764951406}
   m_Layer: 5
   m_Name: Woodcutter
   m_TagString: Untagged
@@ -386,6 +388,7 @@ GameObject:
   m_Component:
   - component: {fileID: 224419421952734354}
   - component: {fileID: 114085478868638490}
+  - component: {fileID: 114908529876336204}
   m_Layer: 5
   m_Name: Farm
   m_TagString: Untagged
@@ -402,6 +405,7 @@ GameObject:
   m_Component:
   - component: {fileID: 224169745901797774}
   - component: {fileID: 114096669902027994}
+  - component: {fileID: 114349394033264438}
   m_Layer: 5
   m_Name: Stonecutter
   m_TagString: Untagged
@@ -735,6 +739,20 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114198319764951406
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1249684162777832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac7ac5dab8e4a3e48ade37c9de974851, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameplayController: {fileID: 0}
+  building: {fileID: 114584067128922742, guid: 48edbd22a30179044aa727b751348c42, type: 2}
+  image: {fileID: 114163766290721052}
 --- !u!114 &114209672506316588
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -859,6 +877,20 @@ MonoBehaviour:
   m_Text: 'Farm
 
 '
+--- !u!114 &114319880375487006
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1131960164565782}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac7ac5dab8e4a3e48ade37c9de974851, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameplayController: {fileID: 0}
+  building: {fileID: 114139130852902010, guid: 615ce5ed7f0f8bc42a54617a3de6b39a, type: 2}
+  image: {fileID: 114470283549730464}
 --- !u!114 &114326430398518586
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -892,6 +924,20 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Woodcutter
+--- !u!114 &114349394033264438
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1886792545758514}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac7ac5dab8e4a3e48ade37c9de974851, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameplayController: {fileID: 0}
+  building: {fileID: 114251887078148882, guid: be4115518eac56047995afe8df18a506, type: 2}
+  image: {fileID: 114209672506316588}
 --- !u!114 &114470283549730464
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1240,6 +1286,20 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &114908529876336204
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1759447708677890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac7ac5dab8e4a3e48ade37c9de974851, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameplayController: {fileID: 0}
+  building: {fileID: 114776534239860490, guid: 6b402dd95cfa2124ca620fd0dc3c3c1f, type: 2}
+  image: {fileID: 114783630426636592}
 --- !u!114 &114954780452726142
 MonoBehaviour:
   m_ObjectHideFlags: 1

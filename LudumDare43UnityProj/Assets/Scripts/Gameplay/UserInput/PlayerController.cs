@@ -6,6 +6,9 @@ namespace Assets.Scripts.Gameplay.UserInput
     [RequireComponent(typeof(BuildModeController))]
     public class PlayerController : MonoBehaviour
     {
+        [SerializeField]
+        private GameplayController gameplayController;
+
         private BuildModeController buildMode;
 
         public void Start()

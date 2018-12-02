@@ -27,10 +27,10 @@ namespace Assets.Scripts.Gameplay.Resources
 
         void UpdateDisplay()
         {
-            foodText.text = controller.currentResources.Food.ToString();
-            populationText.text = controller.currentResources.Population.ToString() + " / " + controller.maxPopulation.ToString();
-            woodText.text = controller.currentResources.Wood.ToString();
-            stoneText.text = controller.currentResources.Stone.ToString();
+            foodText.text = controller.CurrentResources.Food.ToString();
+            populationText.text = controller.CurrentResources.Population.ToString() + " / " + controller.maxPopulation.ToString();
+            woodText.text = controller.CurrentResources.Wood.ToString();
+            stoneText.text = controller.CurrentResources.Stone.ToString();
         }
     }
 }
