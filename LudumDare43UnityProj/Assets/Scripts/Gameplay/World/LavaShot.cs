@@ -40,11 +40,11 @@ namespace Assets.Scripts.Gameplay.World
                 tilesToDestroy.Add(world[target.Position.x, target.Position.y - 1]);
             }
 
-            if (target.Position.x < world.Width)
+            if (target.Position.x < world.Width - 1)
             {
                 tilesToDestroy.Add(world[target.Position.x + 1, target.Position.y]);
             }
-            if (target.Position.y < world.Height)
+            if (target.Position.y < world.Height - 1)
             {
                 tilesToDestroy.Add(world[target.Position.x, target.Position.y + 1]);
             }
@@ -59,13 +59,11 @@ namespace Assets.Scripts.Gameplay.World
                 Tile t = world[tilesToDestroy[i].Position];
                 t.BecomeLava();
 
-                ////TODO: destroy buildings
-                //Debug.LogError("not destroying buildings");
-                ////TODO: destroy tree
-                //Debug.LogError("not destroying trees");
-                ////TODO: destroy peeps
-                //Debug.LogError("not destroying peeps");
+                world.DestroyBuildingsOnTile(tilesToDestroy[i]);
+                world.DestroyResourcesOnTile(tilesToDestroy[i]);
+                world.DestroyPeopleOnTile(tilesToDestroy[i]);
             }
+
             Destroy(gameObject);
         }
 

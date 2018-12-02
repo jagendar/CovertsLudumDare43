@@ -19,7 +19,7 @@ namespace Assets.Scripts.Gameplay.World
             buildings = new List<Building>();
         }
 
-        private IEnumerable<Building> Buildings
+        public IEnumerable<Building> Buildings
         {
             get { return buildings; }
         }
@@ -39,7 +39,7 @@ namespace Assets.Scripts.Gameplay.World
         public Building CreateNewBuilding(Building building, Vector2Int position)
         {
             var buildingInstance = Object.Instantiate(building, this[position].transform.position, Quaternion.identity);
-
+            buildingInstance.Position = position;
             var tilesUnder = Util.PositionsUnderBuilding(position, buildingInstance);
             foreach (var tilePosition in tilesUnder)
             {
@@ -51,6 +51,39 @@ namespace Assets.Scripts.Gameplay.World
 
             buildings.Add(buildingInstance);
             return buildingInstance;
+        }
+
+        internal void DestroyBuildingsOnTile(Tile tileToDestroy)
+        {
+            foreach (var building in Buildings)
+            {
+                var positions = Util.PositionsUnderBuilding(building.Position, building);
+                foreach (var tile in positions)
+                {
+                    if (tileToDestroy.Position == tile)
+                    {
+                        Object.Destroy(building.gameObject);
+                        buildings.Remove(building);
+
+                        foreach(var nowBuildableTile in positions)
+                        {
+                            this[nowBuildableTile].IsBuildable = true;
+                        }
+
+                        return; //only one building on a tile
+                    }
+                }
+            }
+        }
+
+        internal void DestroyPeopleOnTile(Tile tile)
+        {
+            //Debug.LogError("People destroy NYI");
+        }
+
+        internal void DestroyResourcesOnTile(Tile tile)
+        {
+            //Debug.LogError("Resource destroy NYI");
         }
     }
 }

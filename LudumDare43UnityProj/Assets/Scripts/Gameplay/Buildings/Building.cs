@@ -28,5 +28,7 @@ namespace Assets.Scripts.Gameplay.Buildings
         {
             get { return constructionHologram; }
         }
+
+        public Vector2Int Position { get; internal set; }
     }
 }
