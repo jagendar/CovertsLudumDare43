@@ -5,6 +5,7 @@ using UnityEngine;
 public class PersonDrag : MonoBehaviour {
  
     private Camera cam;
+    public GameObject UnderCursor;
     private bool dragging;
     private bool overVolcano;
 
@@ -34,6 +35,7 @@ public class PersonDrag : MonoBehaviour {
             float hitZ = hit.point.z;
             float hitY = hit.point.y;
 
+            UnderCursor = hit.transform.gameObject;
 
             Vector3 hitPos = new Vector3(hitX, hitY, hitZ);
 
@@ -41,11 +43,14 @@ public class PersonDrag : MonoBehaviour {
         }
     }
 
-
     private void OnMouseDown()
     {
         if (dragging)
         {
+            if(UnderCursor.name == "Dirt" || UnderCursor.name == "Lava")
+            {
+                Destroy(this.gameObject);
+            }
             dragging = false;
         }
         else
