@@ -41,6 +41,7 @@ namespace Assets.Scripts.Gameplay.Buildings
             base.WorkerAssigned(aI);
             nearestStone = GetShortestDistance(this.transform.position, stoneNearby);
             nearestTile = CheckNearbyTiles(nearestStone.placedTile);
+            nearestStone.Worker = aI;
             aI.MoveToPosition(nearestTile);
         }
 
@@ -84,7 +85,7 @@ namespace Assets.Scripts.Gameplay.Buildings
             int i = 0;
             while (i < hitColliders.Length)
             {
-                if (hitColliders[i].tag == "Rock")
+                if (hitColliders[i].tag == "Rock" && hitColliders[i].gameObject.GetComponent<CollectableResource>().Worker == null)
                 {
                     trees.Add(hitColliders[i].gameObject.GetComponent<CollectableResource>());
                 }
