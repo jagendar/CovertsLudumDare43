@@ -11,7 +11,7 @@ namespace Assets.Scripts.Gameplay.People
     {
         [SerializeField] PersonColorer colorer;
         [SerializeField] LayerMask tileLayermask;
-
+        
         public bool ReachedDestination = false;
         public Tile currentTile { get; private set; }
 
