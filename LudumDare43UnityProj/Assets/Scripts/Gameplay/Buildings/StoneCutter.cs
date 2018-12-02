@@ -42,6 +42,7 @@ namespace Assets.Scripts.Gameplay.Buildings
         {
             base.WorkerAssigned(aI);
             aI.transform.position = spawnSpot.position;
+            aI.UpdateCurrentTile();
             stoneNearby = CheckNearbyResources(this.transform.position, checkStoneRadius, stoneTag);
             if(stoneNearby.Count == 0)
             {

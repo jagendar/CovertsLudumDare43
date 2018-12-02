@@ -37,7 +37,7 @@ namespace Assets.Scripts.Gameplay.People
             RunWiggle(false);
         }
 
-        private void UpdateCurrentTile()
+        public void UpdateCurrentTile()
         {
             RaycastHit hitInfo;
 

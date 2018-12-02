@@ -2102,4 +2102,4 @@ MonoBehaviour:
   stonePerWork: 7
   checkStoneRadius: 5
   stoneTag: Rock
-  spawnSpot: {fileID: 4317732857372542, guid: 615ce5ed7f0f8bc42a54617a3de6b39a, type: 2}
+  spawnSpot: {fileID: 4598257292546006}

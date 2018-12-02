@@ -1051,3 +1051,4 @@ MonoBehaviour:
   woodPerWork: 7
   checkTreeRadius: 5
   treeTag: Tree
+  spawnSpot: {fileID: 4312871019602810}
