@@ -42,6 +42,7 @@ namespace Assets.Scripts.Gameplay.Buildings
         {
             base.WorkerAssigned(aI);
             aI.transform.position = spawnSpot.position;
+            aI.UpdateCurrentTile();
             treesNearby = CheckNearbyResources(this.transform.position, checkTreeRadius, treeTag);
             if(treesNearby.Count == 0)
             {

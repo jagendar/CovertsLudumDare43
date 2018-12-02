@@ -37,7 +37,7 @@ namespace Assets.Scripts.Gameplay.People
             RunWiggle(false);
         }
 
-        private void UpdateCurrentTile()
+        public void UpdateCurrentTile()
         {
             RaycastHit hitInfo;
 
@@ -58,6 +58,10 @@ namespace Assets.Scripts.Gameplay.People
             {
                 GameplayController.instance.CurrentResources.Population -= 1;
                 GameplayController.instance.World.RemovePerson(this);
+            }
+            if(workTarget != null)
+            {
+                workTarget.WorkerFreed(this);
             }
         }
 
@@ -203,6 +207,10 @@ namespace Assets.Scripts.Gameplay.People
                 if(workTarget != null)
                 {
                     workTarget.DoWork(this);
+                }
+                else
+                {
+                    colorer.SetJobColor(Job.Idle);
                 }
                 yield return new WaitForSeconds(1f);
             }
