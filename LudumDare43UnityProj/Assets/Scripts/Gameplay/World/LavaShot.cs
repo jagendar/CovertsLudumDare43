@@ -7,8 +7,6 @@ namespace Assets.Scripts.Gameplay.World
 {
     public class LavaShot : MonoBehaviour
     {
-        [SerializeField] Material lavaMat;
-
         internal void Initialize(Tile tile)
         {
             StartCoroutine(MoveToTile(tile));
@@ -24,6 +22,51 @@ namespace Assets.Scripts.Gameplay.World
                 yield return null;
             }
             SlideLerp(pos, currentTarget.transform.position, 1);
+
+            CauseDestruction(currentTarget);
+        }
+
+        private void CauseDestruction(Tile target)
+        {
+            World world = GameplayController.instance.World;
+            List<Tile> tilesToDestroy = new List<Tile>(5);
+            tilesToDestroy.Add(target);
+            if(target.Position.x > 0)
+            {
+                tilesToDestroy.Add(world[target.Position.x - 1, target.Position.y]);
+            }
+            if (target.Position.y > 0)
+            {
+                tilesToDestroy.Add(world[target.Position.x, target.Position.y - 1]);
+            }
+
+            if (target.Position.x < world.Width)
+            {
+                tilesToDestroy.Add(world[target.Position.x + 1, target.Position.y]);
+            }
+            if (target.Position.y < world.Height)
+            {
+                tilesToDestroy.Add(world[target.Position.x, target.Position.y + 1]);
+            }
+
+            LavaDestruction(tilesToDestroy, world);
+        }
+
+        private void LavaDestruction(List<Tile> tilesToDestroy, World world)
+        {
+            for(int i = 0; i < tilesToDestroy.Count; ++i)
+            {
+                Tile t = world[tilesToDestroy[i].Position];
+                t.BecomeLava();
+
+                ////TODO: destroy buildings
+                //Debug.LogError("not destroying buildings");
+                ////TODO: destroy tree
+                //Debug.LogError("not destroying trees");
+                ////TODO: destroy peeps
+                //Debug.LogError("not destroying peeps");
+            }
+            Destroy(gameObject);
         }
 
         private void SlideLerp(Vector3 startPosition, Vector3 targetPosition, float v)
