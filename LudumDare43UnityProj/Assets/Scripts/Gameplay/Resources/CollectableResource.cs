@@ -24,7 +24,7 @@ namespace Assets.Scripts.Gameplay.Resources
             set
             {
                 amount = value;
-                if (amount == 0 && selfDestroying)
+                if (amount <= 0 && selfDestroying)
                 {
                     Destroy(gameObject);
                     if(blocksBuilding)
