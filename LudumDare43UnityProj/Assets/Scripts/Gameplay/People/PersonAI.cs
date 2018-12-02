@@ -59,6 +59,7 @@ namespace Assets.Scripts.Gameplay.People
 
         public void Grabbed()
         {
+            transform.localScale = new Vector3(2, 2, 2);
             Idle();
         }
 
@@ -72,8 +73,6 @@ namespace Assets.Scripts.Gameplay.People
             ReachedDestination = false;
             colorer.SetJobColor(Job.Idle);
             workTarget = null;
-
-            transform.localScale = new Vector3(2, 2, 2);
         }
 
         private void StopMoving()

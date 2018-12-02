@@ -22,6 +22,10 @@ namespace Assets.Scripts.Gameplay.Buildings
         {
             world = GameplayController.instance.World;
             treesNearby = CheckNearbyTrees(this.transform.position, checkTreeRadius);
+            if (treesNearby.Count == 0)
+            {
+                this.maxWorkers = 0;
+            }
         }
         public override Job job
         {
@@ -60,7 +64,7 @@ namespace Assets.Scripts.Gameplay.Buildings
                 nearestTile = CheckNearbyTiles(nearestTree.placedTile);
                 aI.MoveToPosition(nearestTile);
             }
-            if(aI.ReachedDestination)
+            if (aI.ReachedDestination)
             {
                 GameplayController.instance.CurrentResources.Wood += woodPerWork;
                 if (nearestTree.Anim != null)

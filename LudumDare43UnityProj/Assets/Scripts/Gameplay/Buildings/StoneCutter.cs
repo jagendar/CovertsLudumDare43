@@ -22,6 +22,10 @@ namespace Assets.Scripts.Gameplay.Buildings
         {
             world = GameplayController.instance.World;
             stoneNearby = CheckNearbyStone(this.transform.position, checkStoneRadius);
+            if (stoneNearby.Count == 0)
+            {
+                this.maxWorkers = 0;
+            }
         }
 
         public override Job job
