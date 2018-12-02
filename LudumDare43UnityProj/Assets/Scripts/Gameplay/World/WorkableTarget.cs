@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Assets.Scripts.Gameplay.World
 {
-    public abstract class IWorkableTarget : MonoBehaviour
+    public abstract class WorkableTarget : MonoBehaviour
     {
         [SerializeField] private int maxWorkers = 1;
 
