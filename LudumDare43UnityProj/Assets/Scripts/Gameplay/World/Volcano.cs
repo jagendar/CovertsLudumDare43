@@ -1,16 +1,27 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Assets.Scripts.Gameplay.World
 {
     public class Volcano : MonoBehaviour {
+        [SerializeField] private Image angryBar;
         [SerializeField] private LavaShot eruptingLavaPrefab;
         [SerializeField] private float initialTimeBetweenEruptions = 10;
         [SerializeField] private float eruptionSpeedAccelerationPercentage = .9f;
 
         private World world;
         private float timeBetweenEruptions;
+        public float Anger
+        {
+            get { return 1 - (timeBetweenEruptions / initialTimeBetweenEruptions); }
+        }
+
+        private void Update()
+        {
+            angryBar.fillAmount = Anger;
+        }
 
         public void ResetSpeed()
         {
