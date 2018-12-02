@@ -26,6 +26,13 @@ namespace Assets.Scripts.Gameplay.People
                 Debug.Assert(tile != null, "Tile object's collider should be its immediate child");
                 currentTile = tile;
             }
+
+            GameplayController.instance.CurrentResources.Population += 1;
+        }
+
+        private void OnDestroy()
+        {
+            GameplayController.instance.CurrentResources.Population -= 1;
         }
 #if CLICK_DEBUG_MOVEMENT
         public void Update()

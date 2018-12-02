@@ -3,7 +3,7 @@
 namespace Assets.Scripts.Gameplay.Resources
 {
     [Serializable]
-    public struct ResourceCollection
+    public class ResourceCollection
     {
         public int Wood;
         public int Stone;

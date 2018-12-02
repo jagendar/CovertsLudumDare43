@@ -12,7 +12,7 @@ namespace Assets.Scripts.Gameplay
 
         public World.World World { get; private set; }
 
-        public Resources.ResourceCollection CurrentResources { get; set; }
+        public Resources.ResourceCollection CurrentResources;
 
         public int maxPopulation { get; set; }
         private void Awake()
