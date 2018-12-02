@@ -27,13 +27,24 @@ namespace Assets.Scripts.Gameplay.People
                 currentTile = tile;
             }
         }
-
-        [SerializeField] Tile testTile;
-        [ContextMenu("Move Test")]
-        private void MoveTest()
+#if CLICK_DEBUG_MOVEMENT
+        public void Update()
         {
-            MoveToPosition(testTile);
+            if(Input.GetMouseButtonDown(0))
+            {
+                RaycastHit hitInfo = new RaycastHit();
+                bool hit = Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hitInfo, float.MaxValue, tileLayermask);
+                
+                if (hit)
+                {
+                    var tile = hitInfo.transform.parent.gameObject.GetComponent<Tile>();
+                    Debug.Assert(tile != null, "Tile object's collider should be its immediate child");
+
+                    MoveToPosition(tile);
+                }
+            }
         }
+#endif
 
         public void MoveToPosition(Tile target)
         {
@@ -43,10 +54,11 @@ namespace Assets.Scripts.Gameplay.People
         private IEnumerator MoveToPositionCoroutine(Tile target)
         {
             List<Tile> path = VolcanoAStar.GetPath(currentTile.Position, target.Position, GameplayController.instance.World);
-            if(path == null)
+            if(path == null || path.Count == 0)
             {
                 yield break;
             }
+            path.RemoveAt(0); //skip current tile
 
             while(path.Count > 0)
             {

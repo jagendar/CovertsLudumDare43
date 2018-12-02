@@ -134,8 +134,8 @@ MonoBehaviour:
   panSpeed: 3
   rotationTime: 0.1
   zoomAmount: 5
-  zoomMin: 10
-  zoomMax: 35
+  zoomMin: 5
+  zoomMax: 20
   rotateLayer:
     serializedVersion: 2
     m_Bits: 2048
