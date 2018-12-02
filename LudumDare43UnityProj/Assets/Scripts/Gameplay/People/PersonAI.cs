@@ -12,12 +12,13 @@ namespace Assets.Scripts.Gameplay.People
         [SerializeField] PersonColorer colorer;
         [SerializeField] LayerMask tileLayermask;
         [SerializeField] Animation wiggleAnim;
+        [SerializeField] ParticleSystem napParticle;
 
 
         public bool ReachedDestination = false;
         public Tile currentTile { get; private set; }
 
-        public WorkableTarget workTarget;
+        public WorkableTarget workTarget { get; private set; }
         private List<Tile> path;
 
         private IEnumerator moveCoroutine;
@@ -35,6 +36,7 @@ namespace Assets.Scripts.Gameplay.People
             colorer.SetJobColor(Job.Idle);
             wiggleAnim.Play();
             RunWiggle(false);
+            napParticle.Play();
         }
 
         public void UpdateCurrentTile()
@@ -69,11 +71,13 @@ namespace Assets.Scripts.Gameplay.People
         {
             transform.localScale = new Vector3(2, 2, 2);
             Idle();
+            napParticle.Stop();
             RunWiggle(true);
         }
 
         internal void Idle()
         {
+            napParticle.Play();
             if (workTarget != null)
             {
                 workTarget.WorkerFreed(this);
@@ -125,6 +129,11 @@ namespace Assets.Scripts.Gameplay.People
                 workTarget = target;
                 workTarget.WorkerAssigned(this);
                 colorer.SetJobColor(workTarget.job);
+                napParticle.Stop();
+            }
+            else
+            {
+                napParticle.Play();
             }
         }
 #if CLICK_DEBUG_MOVEMENT
