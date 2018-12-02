@@ -13,9 +13,18 @@ namespace Assets.Scripts.Gameplay.People
 
         public Tile currentTile { get; private set; }
 
+        private IWorkableTarget workTarget;
         private List<Tile> path;
 
         private void Awake()
+        {
+            UpdateCurrentTile();
+
+            GameplayController.instance.CurrentResources.Population += 1;
+            StartCoroutine(DoWork());
+        }
+
+        private void UpdateCurrentTile()
         {
             RaycastHit hitInfo = new RaycastHit();
             bool hit = Physics.Raycast(transform.position, Vector3.down, out hitInfo, float.MaxValue, tileLayermask);
@@ -26,8 +35,6 @@ namespace Assets.Scripts.Gameplay.People
                 Debug.Assert(tile != null, "Tile object's collider should be its immediate child");
                 currentTile = tile;
             }
-
-            GameplayController.instance.CurrentResources.Population += 1;
         }
 
         private void OnDestroy()
@@ -35,6 +42,26 @@ namespace Assets.Scripts.Gameplay.People
             if (GameplayController.instance != null)
             {
                 GameplayController.instance.CurrentResources.Population -= 1;
+            }
+        }
+
+        internal void Grabbed()
+        {
+            if(workTarget != null)
+            {
+                workTarget.WorkerFreed();
+            }
+            workTarget = null;
+        }
+        
+        internal void DroppedOn(GameObject underCursor)
+        {
+            UpdateCurrentTile();
+            IWorkableTarget target = underCursor.GetComponent<IWorkableTarget>() as IWorkableTarget;
+            if(target != null && target.RoomForWorker)
+            {
+                workTarget = target;
+                workTarget.WorkerAssigned();
             }
         }
 #if CLICK_DEBUG_MOVEMENT
@@ -93,6 +120,18 @@ namespace Assets.Scripts.Gameplay.People
         private void SlideLerp(Tile currentTile, Tile currentTarget, float v)
         {
             transform.position = Vector3.Lerp(currentTile.transform.position, currentTarget.transform.position, v);
+        }
+
+        private IEnumerator DoWork()
+        {
+            while (true)
+            {
+                if(workTarget != null)
+                {
+                    workTarget.DoWork(this);
+                }
+                yield return new WaitForSeconds(1f);
+            }
         }
     }
 }

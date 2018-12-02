@@ -72,6 +72,7 @@ GameObject:
   - component: {fileID: 4335243563865404}
   - component: {fileID: 114776534239860490}
   - component: {fileID: 65999285329968696}
+  - component: {fileID: 114773815867031004}
   m_Layer: 10
   m_Name: Farm
   m_TagString: Untagged
@@ -1367,6 +1368,17 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3, y: 1, z: 3}
   m_Center: {x: 0, y: 0.5, z: 0}
+--- !u!114 &114773815867031004
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1141515691389028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72a5df5a06220b040a93fb0ab281eb08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114776534239860490
 MonoBehaviour:
   m_ObjectHideFlags: 1

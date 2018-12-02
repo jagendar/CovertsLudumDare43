@@ -1,18 +1,19 @@
-﻿using System.Collections;
+﻿using Assets.Scripts.Gameplay.People;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PersonDrag : MonoBehaviour {
  
     private Camera cam;
-    public GameObject UnderCursor;
+    private GameObject UnderCursor;
     private bool dragging;
-    private bool overVolcano;
+
+    [SerializeField] private LayerMask droppableLayers;
 
 	void Start ()
     {
         cam = Camera.main;
-        overVolcano = false;
         dragging = false;	
 	}
 
@@ -29,7 +30,7 @@ public class PersonDrag : MonoBehaviour {
         RaycastHit hit;
         Ray ray = cam.ScreenPointToRay(Input.mousePosition);
 
-        if (Physics.Raycast(ray, out hit, 99999, ~LayerMask.NameToLayer("Tiles")))
+        if (Physics.Raycast(ray, out hit, 99999, droppableLayers))
         {
             float hitX = hit.point.x;
             float hitZ = hit.point.z;
@@ -46,6 +47,7 @@ public class PersonDrag : MonoBehaviour {
     private void OnMouseDown()
     {
         dragging = true;
+        GetComponent<PersonAI>().Grabbed();
     }
 
     private void OnMouseUp()
@@ -53,6 +55,10 @@ public class PersonDrag : MonoBehaviour {
         if (UnderCursor.name == "Dirt" || UnderCursor.name == "Lava")
         {
             Destroy(this.gameObject);
+        }
+        else
+        {
+            GetComponent<PersonAI>().DroppedOn(UnderCursor);
         }
         dragging = false;
     }
