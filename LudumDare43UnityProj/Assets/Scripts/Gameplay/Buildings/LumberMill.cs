@@ -14,10 +14,14 @@ namespace Assets.Scripts.Gameplay.Buildings
 
         private List<CollectableResource> treesNearby;
         private CollectableResource nearestTree;
+        private Tile nearestTile;
+        private World.World world;
 
+        
         private void Start()
         {
-            treesNearby = CheckNearby(this.transform.position, checkTreeRadius);
+            world = GameplayController.instance.World;
+            treesNearby = CheckNearbyTrees(this.transform.position, checkTreeRadius);
         }
         public override Job job
         {
@@ -31,7 +35,8 @@ namespace Assets.Scripts.Gameplay.Buildings
         {
             base.WorkerAssigned(aI);
             nearestTree = GetShortestDistance(this.transform.position, treesNearby);
-            //aI.MoveToPosition(nearestTree.placedTile);
+            nearestTile = CheckNearbyTiles(nearestTree.placedTile);
+            aI.MoveToPosition(nearestTile);
         }
 
         public override void WorkerFreed(PersonAI aI)
@@ -41,10 +46,27 @@ namespace Assets.Scripts.Gameplay.Buildings
 
         public override void DoWork(PersonAI aI)
         {
-            GameplayController.instance.CurrentResources.Wood += woodPerWork;
+            if(aI.ReachedDestination)
+            {
+                GameplayController.instance.CurrentResources.Wood += woodPerWork;
+                if (nearestTree.Anim != null)
+                {
+                    nearestTree.Anim.Play();
+                }
+                nearestTree.Amount-= (uint)woodPerWork;
+                Debug.Log(nearestTree.Amount);
+                if(nearestTree.Amount < 7)
+                {
+                    Destroy(nearestTree.gameObject);
+                    treesNearby = CheckNearbyTrees(this.transform.position, checkTreeRadius);
+                    aI.Grabbed();
+                    aI.DroppedOn(this.gameObject);
+                    
+                }
+            }
         }
 
-        private List<CollectableResource> CheckNearby(Vector3 center, float radius)
+        private List<CollectableResource> CheckNearbyTrees(Vector3 center, float radius)
         {
             Collider[] hitColliders = Physics.OverlapSphere(center, radius);
             List<CollectableResource> trees = new List<CollectableResource>();
@@ -58,8 +80,24 @@ namespace Assets.Scripts.Gameplay.Buildings
                 }
                 i++;
             }
-           
+            Debug.Log("TREES: " + trees.Count);
             return trees;
+        }
+        
+        private Tile CheckNearbyTiles(Tile tile)
+        {
+            Vector2Int pos = tile.Position;
+            for(int i = pos.x - 1; i <= pos.x + 1; i++)
+            {
+                for(int j = pos.y - 1; j <= pos.y + 1; j++)
+                {
+                    if (world[i, j].IsBuildable)
+                    {
+                        return world[i, j];
+                    }
+                }
+            }
+            return null;
         }
 
         private CollectableResource GetShortestDistance(Vector3 position, List<CollectableResource> objects)

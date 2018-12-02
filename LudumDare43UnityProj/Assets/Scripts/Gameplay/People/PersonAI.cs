@@ -11,9 +11,10 @@ namespace Assets.Scripts.Gameplay.People
         [SerializeField] PersonColorer colorer;
         [SerializeField] LayerMask tileLayermask;
 
+        public bool ReachedDestination = false;
         public Tile currentTile { get; private set; }
 
-        private WorkableTarget workTarget;
+        public WorkableTarget workTarget;
         private List<Tile> path;
 
         private void Awake()
@@ -50,9 +51,14 @@ namespace Assets.Scripts.Gameplay.People
             }
         }
 
-        internal void Grabbed()
+        public void Grabbed()
         {
-            if(workTarget != null)
+            Idle();
+        }
+
+        internal void Idle()
+        {
+            if (workTarget != null)
             {
                 workTarget.WorkerFreed(this);
             }
@@ -110,6 +116,8 @@ namespace Assets.Scripts.Gameplay.People
                 path.RemoveAt(0);
                 yield return StartCoroutine(MoveToTile(currentTarget));
             }
+
+            ReachedDestination = true;
         }
 
         private IEnumerator MoveToTile(Tile currentTarget)

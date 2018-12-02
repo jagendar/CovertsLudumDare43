@@ -22,6 +22,7 @@ namespace Assets.Scripts.Gameplay.Buildings
         public override void WorkerAssigned(PersonAI aI)
         {
             base.WorkerAssigned(aI);
+            aI.ReachedDestination = true;
             animPlayer.Play();
         }
 
