@@ -2,6 +2,7 @@
 using Assets.Scripts.Gameplay.Buildings;
 using Assets.Scripts.Gameplay.UserInput;
 using Assets.Scripts.Gameplay.World;
+using Assets.Scripts.UI;
 using UnityEngine;
 
 namespace Assets.Scripts.Gameplay
@@ -14,6 +15,9 @@ namespace Assets.Scripts.Gameplay
         [SerializeField] private PopulateWorld worldPopulator = null;
         [SerializeField] private Volcano volcano;
 
+        [SerializeField]
+        private YouWinController plugDialog;
+
         public Building SelectedBuilding { get; set; }
 
         public World.World World { get; private set; }
@@ -23,6 +27,8 @@ namespace Assets.Scripts.Gameplay
         public int maxPopulation { get; set; }
         public Volcano VolcanoController { get { return volcano; } }
         public PlayerController PlayerController {  get { return playerController; } }
+
+        public int PlugCount { get; set; }
 
         private void Awake()
         {
@@ -41,6 +47,14 @@ namespace Assets.Scripts.Gameplay
         {
             World = worldPopulator.World;
             volcano.BYFIREBEPURGED(World);
+        }
+
+        public void PlugVolcano()
+        {
+            CurrentResources.Stone -= 1000;
+            PlugCount++;
+
+            plugDialog.Show();
         }
     }
 }

@@ -39,11 +39,5 @@ namespace Assets.Scripts.Gameplay.UserInput
         {
             buildModeController.StartBuilding(building);
         }
-
-        public void PlugVolcano()
-        {
-            GameplayController.instance.CurrentResources.Stone -= 1000;
-            Debug.Log("Duuude, youuuuu winnnnnnnn!");
-        }
     }
 }
