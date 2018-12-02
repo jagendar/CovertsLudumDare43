@@ -13,7 +13,7 @@ Prefab:
   m_IsPrefabAsset: 1
 --- !u!1 &1292497740613440
 GameObject:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 6
@@ -54,6 +54,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4747810462417416}
   - component: {fileID: 114207819447877262}
+  - component: {fileID: 111737352645138150}
   m_Layer: 0
   m_Name: Tree
   m_TagString: Untagged
@@ -70,7 +71,8 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0.3, z: 0}
   m_LocalScale: {x: 0.3, y: 0.6, z: 0.3}
-  m_Children: []
+  m_Children:
+  - {fileID: 4482518002819236}
   m_Father: {fileID: 4747810462417416}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -81,11 +83,11 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1292497740613440}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.2, z: 0}
-  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
+  m_LocalPosition: {x: 0, y: 1.4999999, z: 0}
+  m_LocalScale: {x: 2.333333, y: 1.1666665, z: 2.333333}
   m_Children: []
-  m_Father: {fileID: 4747810462417416}
-  m_RootOrder: 1
+  m_Father: {fileID: 4107827013851576}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4747810462417416
 Transform:
@@ -98,7 +100,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4107827013851576}
-  - {fileID: 4482518002819236}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -186,6 +187,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1292497740613440}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!111 &111737352645138150
+Animation:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1705722311099604}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 8a03b23168ee6784eb3c6de08a6283f1, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 8a03b23168ee6784eb3c6de08a6283f1, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!114 &114207819447877262
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -199,3 +215,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   amount: 60
   resourceType: 0
+  selfDestroying: 1
+  blocksBuilding: 1
