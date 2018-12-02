@@ -5,11 +5,14 @@ using UnityEngine;
 
 namespace Assets.Scripts.Gameplay.World
 {
-    public class World : IWorld
+    public class World
     {
         private readonly Tile[,] tiles;
         private readonly List<Building> buildings;
         private GameplayController gameplayController = GameplayController.instance;
+
+        public int Width { get { return tiles.GetLength(0); } }
+        public int Height { get { return tiles.GetLength(1); } }
 
         public World(int width, int height)
         {
