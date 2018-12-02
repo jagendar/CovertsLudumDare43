@@ -19,15 +19,15 @@ namespace Assets.Scripts.Gameplay.Buildings
             }
         }
 
-        public override void WorkerAssigned()
+        public override void WorkerAssigned(PersonAI aI)
         {
-            base.WorkerAssigned();
+            base.WorkerAssigned(aI);
             animPlayer.Play();
         }
 
-        public override void WorkerFreed()
+        public override void WorkerFreed(PersonAI aI)
         {
-            base.WorkerFreed();
+            base.WorkerFreed(aI);
             animPlayer.Stop();
         }
 

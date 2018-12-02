@@ -12,6 +12,8 @@ namespace Assets.Scripts.Gameplay
         [SerializeField] private PopulateWorld worldPopulator = null;
         [SerializeField] private Volcano volcano;
 
+        public Building SelectedBuilding { get; set; }
+
         public World.World World { get; private set; }
 
         public Resources.ResourceCollection CurrentResources;

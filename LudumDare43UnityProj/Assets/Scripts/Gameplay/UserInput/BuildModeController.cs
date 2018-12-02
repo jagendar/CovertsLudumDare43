@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Gameplay.Buildings;
+﻿using System;
+using Assets.Scripts.Gameplay.Buildings;
 using Assets.Scripts.Gameplay.World;
 using UnityEngine;
 
@@ -44,7 +45,7 @@ namespace Assets.Scripts.Gameplay.UserInput
             }
         }
 
-        public void Update()
+        public void SubControllerUpdate(PlayerController playerController)
         {
             if (!IsBuilding) return;
 
@@ -54,7 +55,7 @@ namespace Assets.Scripts.Gameplay.UserInput
                 return;
             }
 
-            Tile tile = GetTileUnderMouse();
+            Tile tile = playerController.UnderCursor.Tile;
             bool isValidPosition = tile != null && Util.CanBuildAt(gameplayController.World, tile.Position, template);
 
             UpdateHologramState(tile, isValidPosition);
@@ -63,7 +64,7 @@ namespace Assets.Scripts.Gameplay.UserInput
             {
                 gameplayController.World.CreateNewBuilding(template, tile.Position);
 
-                if (Input.GetKey(KeyCode.LeftShift))
+                if (Input.GetKey(KeyCode.LeftShift) && GameplayController.instance.CurrentResources >= template.Cost)
                 {
                     isShiftBuilding = true;
                 }
@@ -102,22 +103,6 @@ namespace Assets.Scripts.Gameplay.UserInput
                 hologram.Enabled = false;
                 hologram.IsValid = false;
             }
-        }
-
-        private Tile GetTileUnderMouse()
-        {
-            RaycastHit hitInfo = new RaycastHit();
-            bool hit = Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hitInfo, float.MaxValue, layerMask);
-
-            if (hit)
-            {
-                var tile = hitInfo.transform.parent.gameObject.GetComponent<Tile>();
-                Debug.Assert(tile != null, "Tile object's collider should be its immediate child");
-
-                return tile;
-            }
-
-            return null;
         }
     }
 }

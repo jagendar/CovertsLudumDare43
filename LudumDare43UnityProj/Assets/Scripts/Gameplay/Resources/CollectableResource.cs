@@ -16,7 +16,7 @@ namespace Assets.Scripts.Gameplay.Resources
 
         [SerializeField] private bool blocksBuilding = true;
 
-        private Tile placedTile;
+        public Tile placedTile;
 
         public uint Amount
         {
