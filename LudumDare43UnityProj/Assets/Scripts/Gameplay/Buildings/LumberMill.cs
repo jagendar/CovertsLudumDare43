@@ -39,8 +39,15 @@ namespace Assets.Scripts.Gameplay.Buildings
         {
             base.WorkerAssigned(aI);
             treesNearby = CheckNearbyTrees(this.transform.position, checkTreeRadius);
+            if(treesNearby.Count == 0)
+            {
+                this.maxWorkers = 0;
+                aI.Idle();
+                return;
+            }
             nearestTree = GetShortestDistance(this.transform.position, treesNearby);
             nearestTile = CheckNearbyTiles(nearestTree.placedTile);
+            nearestTree.Worker = aI;
             aI.MoveToPosition(nearestTile);
         }
 
@@ -67,7 +74,6 @@ namespace Assets.Scripts.Gameplay.Buildings
             }
             if (aI.ReachedDestination)
             {
-                //nearestTree.Worker = aI;
                 GameplayController.instance.CurrentResources.Wood += woodPerWork;
                 if (nearestTree.Anim != null)
                 {
@@ -85,13 +91,14 @@ namespace Assets.Scripts.Gameplay.Buildings
             int i = 0;
             while (i < hitColliders.Length)
             {
-                if (hitColliders[i].tag == "Tree" /*&& hitColliders[i].gameObject.GetComponent<CollectableResource>().Worker == null*/)
+                if (hitColliders[i].tag == "Tree" && hitColliders[i].gameObject.GetComponent<CollectableResource>().Worker == null)
                 {
-                    Debug.Log("Add tree");
                     trees.Add(hitColliders[i].gameObject.GetComponent<CollectableResource>());
                 }
                 i++;
             }
+
+            //Debug.Log(trees.Count);
             return trees;
         }
         
