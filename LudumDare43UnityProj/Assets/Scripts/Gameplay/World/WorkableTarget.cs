@@ -7,7 +7,7 @@ namespace Assets.Scripts.Gameplay.World
 {
     public abstract class WorkableTarget : MonoBehaviour
     {
-        [SerializeField] private int maxWorkers = 1;
+        [SerializeField] protected int maxWorkers = 1;
 
         private int currentWorkers = 0;
 

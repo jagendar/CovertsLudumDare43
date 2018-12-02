@@ -12,10 +12,13 @@ namespace Assets.Scripts.Gameplay.People
         [SerializeField] PersonColorer colorer;
         [SerializeField] LayerMask tileLayermask;
 
+        public bool ReachedDestination = false;
         public Tile currentTile { get; private set; }
 
-        private WorkableTarget workTarget;
+        public WorkableTarget workTarget;
         private List<Tile> path;
+
+        private IEnumerator moveCoroutine;
 
         private void Awake()
         {
@@ -51,18 +54,33 @@ namespace Assets.Scripts.Gameplay.People
             }
         }
 
-        internal void Grabbed()
+        public void Grabbed()
         {
-            if(workTarget != null)
+            Idle();
+        }
+
+        internal void Idle()
+        {
+            if (workTarget != null)
             {
                 workTarget.WorkerFreed(this);
             }
+            StopMoving();
+            ReachedDestination = false;
             colorer.SetJobColor(Job.Idle);
             workTarget = null;
 
             transform.localScale = new Vector3(2, 2, 2);
         }
-        
+
+        private void StopMoving()
+        {
+            if(moveCoroutine != null)
+            {
+                StopCoroutine(moveCoroutine);
+            }
+        }
+
         internal void DroppedOn(ObjectsUnderCursor underCursor)
         {
             UpdateCurrentTile();
@@ -70,7 +88,6 @@ namespace Assets.Scripts.Gameplay.People
             WorkableTarget target = underCursor.Building == null
                 ? null
                 : underCursor.Building.GetComponent<WorkableTarget>();
-            Debug.Log(string.Format("Target: {0}", target == null ? "Null" : target.name));
 
             if(target != null && target.RoomForWorker)
             {
@@ -107,7 +124,12 @@ namespace Assets.Scripts.Gameplay.People
 
         public void MoveToPosition(Tile target)
         {
-            StartCoroutine(MoveToPositionCoroutine(target));
+            if(moveCoroutine != null)
+            {
+                StopCoroutine(moveCoroutine);
+            }
+            moveCoroutine = MoveToPositionCoroutine(target);
+            StartCoroutine(moveCoroutine);
         }
 
         private IEnumerator MoveToPositionCoroutine(Tile target)
@@ -125,6 +147,9 @@ namespace Assets.Scripts.Gameplay.People
                 path.RemoveAt(0);
                 yield return StartCoroutine(MoveToTile(currentTarget));
             }
+
+            ReachedDestination = true;
+            moveCoroutine = null;
         }
 
         private IEnumerator MoveToTile(Tile currentTarget)

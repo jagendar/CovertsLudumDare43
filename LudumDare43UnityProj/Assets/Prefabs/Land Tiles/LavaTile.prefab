@@ -137,5 +137,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21fbe445d64b15e4b9081b565a235948, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  renderers:
+  - {fileID: 23879350973263456}
+  lavaMaterial: {fileID: 2100000, guid: 3d0c996da90ab4e4f86c5440e4f0f2e0, type: 2}
   buildable: 0
   sacrifiable: 1

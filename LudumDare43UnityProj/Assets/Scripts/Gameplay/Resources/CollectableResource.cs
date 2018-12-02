@@ -5,9 +5,15 @@ namespace Assets.Scripts.Gameplay.Resources
 {
     public class CollectableResource : MonoBehaviour
     {
-        [SerializeField] private uint amount;
+        [SerializeField] private int amount;
 
         [SerializeField] private ResourceType resourceType;
+
+        public Animation Anim;
+        private void Awake()
+        {
+            Anim = GetComponent<Animation>();
+        }
 
         /// <summary>
         /// If true, destroys its game object when amount reaches 0.
@@ -18,7 +24,7 @@ namespace Assets.Scripts.Gameplay.Resources
 
         public Tile placedTile;
 
-        public uint Amount
+        public int Amount
         {
             get { return amount; }
             set

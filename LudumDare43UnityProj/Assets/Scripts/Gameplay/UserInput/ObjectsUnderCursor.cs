@@ -17,7 +17,6 @@ namespace Assets.Scripts.Gameplay.UserInput
         public ObjectsUnderCursor()
         {
             var objects = GetObjectsUnderCursor();
-            Debug.Log(string.Join(", ", objects.Select(obj => obj.name).ToArray()));
 
             Building = objects.Select(o => o.GetComponent<Building>()).FirstOrDefault(c => c != null);
             Tile = objects.Select(o => o.GetComponent<Tile>()).FirstOrDefault(c => c != null);

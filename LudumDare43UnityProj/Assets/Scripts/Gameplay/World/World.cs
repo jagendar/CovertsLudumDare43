@@ -24,7 +24,7 @@ namespace Assets.Scripts.Gameplay.World
         {
             get { return buildings; }
         }
-
+        
         public Tile this[int x, int z]
         {
             get { return tiles[x, z]; }

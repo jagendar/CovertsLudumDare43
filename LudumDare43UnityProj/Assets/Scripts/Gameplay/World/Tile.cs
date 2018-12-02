@@ -1,9 +1,15 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Assets.Scripts.Gameplay.World
 {
     public class Tile : MonoBehaviour
     {
+        [SerializeField]
+        private Renderer[] renderers;
+
+        [SerializeField]
+        private Material lavaMaterial;
 
         [SerializeField]
         private bool buildable;
@@ -39,6 +45,15 @@ namespace Assets.Scripts.Gameplay.World
         public bool IsSacrificable
         {
             get { return sacrifiable;  }
+        }
+
+        internal void BecomeLava()
+        {
+            buildable = false; //it's lava now ya shits
+            foreach(var renderer in renderers)
+            {
+                renderer.material = lavaMaterial;
+            }
         }
     }
 }
