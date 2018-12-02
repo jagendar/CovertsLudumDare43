@@ -55,7 +55,7 @@ namespace Assets.Scripts.Gameplay.Buildings
                 if (stoneNearby.Count == 0)
                 {
                     this.maxWorkers = 0;
-                    aI.Grabbed();
+                    aI.Idle();
                     return;
                 }
                 nearestStone = GetShortestDistance(this.transform.position, stoneNearby);
