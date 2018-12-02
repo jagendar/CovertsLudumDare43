@@ -32,7 +32,10 @@ namespace Assets.Scripts.Gameplay.People
 
         private void OnDestroy()
         {
-            GameplayController.instance.CurrentResources.Population -= 1;
+            if (GameplayController.instance != null)
+            {
+                GameplayController.instance.CurrentResources.Population -= 1;
+            }
         }
 #if CLICK_DEBUG_MOVEMENT
         public void Update()
