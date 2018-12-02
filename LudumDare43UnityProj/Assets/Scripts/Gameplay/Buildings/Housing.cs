@@ -12,6 +12,12 @@ public class Housing : MonoBehaviour {
 
     private GameObject[] people;
 
+    public Transform SpawnSpot
+    {
+        get { return spawnSpot; }
+        set { spawnSpot = value; }
+    }
+
     private void Start()
     {
         people = new GameObject[populationSupply];
@@ -39,7 +45,7 @@ public class Housing : MonoBehaviour {
                 {
                     if (people[i] == null)
                     {
-                        people[i] = Instantiate(personPrefab, spawnSpot.position, spawnSpot.rotation);
+                        people[i] = Instantiate(personPrefab, SpawnSpot.position, SpawnSpot.rotation);
                         instantSpawns--;
                         break;
                     }
