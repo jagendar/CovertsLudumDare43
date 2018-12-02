@@ -85,14 +85,20 @@ namespace Assets.Scripts.Gameplay.People
 
         internal void DroppedOn(ObjectsUnderCursor underCursor)
         {
-            if (underCursor.Tile != null)
+            Tile tile = underCursor.Tile;
+            if (tile != null)
             {
-                if (underCursor.Tile.IsSacrificable)
+                if (tile.IsSacrificable)
                 {
                     GameplayController.instance.VolcanoController.ResetSpeed();
+                }
+
+                if (tile.IsSacrificable || tile.IsDeadly)
+                {
                     Destroy(gameObject);
                     return;
                 }
+
                 transform.position = underCursor.Tile.transform.position;
             }
 
@@ -167,6 +173,11 @@ namespace Assets.Scripts.Gameplay.People
             const float translationTime = .5f;
             for (float t = 0; t < translationTime; t += Time.deltaTime)
             {
+                if (currentTarget.IsSacrificable && t > .5 * translationTime)
+                {
+                    Destroy(gameObject); //poor bastard walked into lava
+                    yield break;
+                }
                 SlideLerp(currentTile, currentTarget, t / translationTime);
                 yield return null;
             }
