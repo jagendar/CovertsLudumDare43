@@ -8,8 +8,6 @@ namespace Assets.Scripts.Gameplay.UserInput
     {
         private BuildModeController buildMode;
 
-        public World.World World { get; set; }
-
         public void Start()
         {
             buildMode = GetComponent<BuildModeController>();
