@@ -25,6 +25,11 @@ namespace Assets.Scripts.Gameplay.UserInput
 
             buildModeController.SubControllerUpdate(this);
             buildingSelectionController.SubControllerUpdate(this);
+
+            if(Input.GetMouseButtonDown(0) && Input.GetKey(KeyCode.LeftAlt) && UnderCursor.Tile != null)
+            {
+                GameplayController.instance.World.DestroyBuildingsOnTile(UnderCursor.Tile);
+            }
         }
 
         public void Build(Building building)

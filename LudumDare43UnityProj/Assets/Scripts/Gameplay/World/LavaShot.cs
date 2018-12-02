@@ -58,23 +58,10 @@ namespace Assets.Scripts.Gameplay.World
             {
                 Tile t = world[tilesToDestroy[i].Position];
                 t.BecomeLava();
-                
-                foreach (var building in world.Buildings)
-                {
-                    foreach(var tile in Buildings.Util.PositionsUnderBuilding(building))
-                    {
-                        if(tilesToDestroy[i].Position == tile)
-                        {
-                            Destroy(building);
-                            break;
-                        }
-                    }
-                }
 
-                ////TODO: destroy tree
-                //Debug.LogError("not destroying trees");
-                ////TODO: destroy peeps
-                //Debug.LogError("not destroying peeps");
+                world.DestroyBuildingsOnTile(tilesToDestroy[i]);
+                world.DestroyResourcesOnTile(tilesToDestroy[i]);
+                world.DestroyPeopleOnTile(tilesToDestroy[i]);
             }
 
             Destroy(gameObject);

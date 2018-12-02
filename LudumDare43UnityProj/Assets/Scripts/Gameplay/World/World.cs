@@ -52,5 +52,30 @@ namespace Assets.Scripts.Gameplay.World
             buildings.Add(buildingInstance);
             return buildingInstance;
         }
+
+        internal void DestroyBuildingsOnTile(Tile tileToDestroy)
+        {
+            foreach (var building in Buildings)
+            {
+                foreach (var tile in Util.PositionsUnderBuilding(building))
+                {
+                    if (tileToDestroy.Position == tile)
+                    {
+                        Object.Destroy(building.gameObject);
+                        break;
+                    }
+                }
+            }
+        }
+
+        internal void DestroyPeopleOnTile(Tile tile)
+        {
+            Debug.LogError("People destroy NYI");
+        }
+
+        internal void DestroyResourcesOnTile(Tile tile)
+        {
+            Debug.LogError("Resource destroy NYI");
+        }
     }
 }
