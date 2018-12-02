@@ -17,5 +17,32 @@ namespace Assets.Scripts.Gameplay.Resources
             Food = food;
             Population = population;
         }
+
+        public static bool operator >=(ResourceCollection a, ResourceCollection b)
+        {
+            return a.Wood >= b.Wood &&
+                   a.Stone >= b.Stone &&
+                   a.Food >= b.Food &&
+                   a.Population >= b.Population;
+        }
+
+        public static bool operator <=(ResourceCollection a, ResourceCollection b)
+        {
+            return a.Wood <= b.Wood &&
+                   a.Stone <= b.Stone &&
+                   a.Food <= b.Food &&
+                   a.Population <= b.Population;
+        }
+
+        public static ResourceCollection operator -(ResourceCollection a, ResourceCollection b)
+        {
+            return new ResourceCollection
+            {
+                Wood = a.Wood - b.Wood,
+                Stone = a.Stone - b.Stone,
+                Food = a.Food - b.Food,
+                Population = a.Population - b.Population,
+            };
+        }
     }
 }

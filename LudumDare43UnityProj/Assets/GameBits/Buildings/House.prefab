@@ -435,7 +435,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   size: {x: 3, y: 3}
   cost:
-    Wood: 0
+    Wood: 100
     Stone: 0
     Food: 0
     Population: 0
