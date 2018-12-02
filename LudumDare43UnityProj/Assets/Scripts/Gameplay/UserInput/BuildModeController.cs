@@ -64,7 +64,7 @@ namespace Assets.Scripts.Gameplay.UserInput
             {
                 gameplayController.World.CreateNewBuilding(template, tile.Position);
 
-                if (Input.GetKey(KeyCode.LeftShift))
+                if (Input.GetKey(KeyCode.LeftShift) && GameplayController.instance.CurrentResources >= template.Cost)
                 {
                     isShiftBuilding = true;
                 }
