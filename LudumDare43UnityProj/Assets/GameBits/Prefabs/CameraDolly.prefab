@@ -129,8 +129,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 009e8fe04f12ad64d98d82de8a44d7dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minCamera: {x: -175, y: 45, z: -175}
-  maxCamera: {x: 175, y: 45, z: 175}
+  minCamera: {x: -100, y: 45, z: -100}
+  maxCamera: {x: 100, y: 45, z: 100}
   panSpeed: 3
   rotationTime: 0.1
   zoomAmount: 5

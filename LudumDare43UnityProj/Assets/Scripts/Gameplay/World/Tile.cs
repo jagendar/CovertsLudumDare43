@@ -21,5 +21,11 @@ namespace Assets.Scripts.Gameplay.World
             get { return this.transform.position.y; }
             set { this.transform.position = new Vector3(this.transform.position.x, value, this.transform.position.z); }
         }
+
+        public bool IsWalkable
+        {
+            //TODO: maybe this should be separate... but for now, just piggybacking w/ a separate property for ease of later refactoring
+            get { return IsBuildable; }
+        }
     }
 }
