@@ -80,7 +80,7 @@ public class PopulateWorld : MonoBehaviour {
     {
         float height = World[i, j].Height;
         CollectableResource resource = Instantiate(prefab, new Vector3(i - halfSize, height, j - halfSize), Quaternion.identity);
-        resource.Initialize(World[i, j]);
+        resource.Initialize(World[i, j], World);
     }
 
     private class TileToProcess

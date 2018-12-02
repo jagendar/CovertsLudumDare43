@@ -11,6 +11,7 @@ namespace Assets.Scripts.Gameplay.World
         private readonly Tile[,] tiles;
         private readonly List<Building> buildings;
         private readonly List<PersonAI> people;
+        private readonly List<CollectableResource> collectableResources;
 
         public int Width { get { return tiles.GetLength(0); } }
         public int Height { get { return tiles.GetLength(1); } }
@@ -20,6 +21,7 @@ namespace Assets.Scripts.Gameplay.World
             tiles = new Tile[width, height];
             buildings = new List<Building>();
             people = new List<PersonAI>();
+            collectableResources = new List<CollectableResource>();
         }
 
         public IEnumerable<Building> Buildings
@@ -101,9 +103,26 @@ namespace Assets.Scripts.Gameplay.World
             }
         }
 
-        internal void DestroyResourcesOnTile(Tile tile)
+        public void AddResource(CollectableResource resource)
         {
-            //Debug.LogError("Resource destroy NYI");
+            collectableResources.Add(resource);
+        }
+
+        public void RemoveResource(CollectableResource resource)
+        {
+            collectableResources.Remove(resource);
+        }
+
+        internal void DestroyResourcesOnTile(Tile tile)
+        {            
+            //note: people remove themselves from my list on destruction; I don't need to do it myself
+            for (int i = 0; i < collectableResources.Count; ++i)
+            {
+                if (collectableResources[i].placedTile == tile)
+                {
+                    Object.Destroy(collectableResources[i].gameObject);
+                }
+            }
         }
     }
 }

@@ -21,7 +21,7 @@ namespace Assets.Scripts.Gameplay.Resources
         [SerializeField] private bool selfDestroying = true;
 
         [SerializeField] private bool blocksBuilding = true;
-
+        private World.World theWorld;
         public Tile placedTile;
 
         public int Amount
@@ -48,13 +48,20 @@ namespace Assets.Scripts.Gameplay.Resources
         }
 
 
-        public void Initialize(Tile myTile)
+        public void Initialize(Tile myTile, World.World world)
         {
+            theWorld = world;
+            world.AddResource(this);
             placedTile = myTile;
             if (blocksBuilding)
             {
                 placedTile.IsBuildable = false;
             }
+        }
+
+        private void OnDestroy()
+        {
+            theWorld.RemoveResource(this);
         }
     }
 }
