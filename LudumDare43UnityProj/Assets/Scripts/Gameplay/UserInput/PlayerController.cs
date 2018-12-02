@@ -6,10 +6,12 @@ namespace Assets.Scripts.Gameplay.UserInput
 {
     [RequireComponent(typeof(BuildModeController))]
     [RequireComponent(typeof(BuildingSelectionController))]
+    [RequireComponent(typeof(PersonDragController))]
     public class PlayerController : MonoBehaviour
     {
         private BuildModeController buildModeController;
         private BuildingSelectionController buildingSelectionController;
+        private PersonDragController personDragController;
 
         public ObjectsUnderCursor UnderCursor { get; private set; }
 
@@ -17,6 +19,7 @@ namespace Assets.Scripts.Gameplay.UserInput
         {
             buildModeController = GetComponent<BuildModeController>();
             buildingSelectionController = GetComponent<BuildingSelectionController>();
+            personDragController = GetComponent<PersonDragController>();
         }
 
         public void Update()
@@ -25,6 +28,7 @@ namespace Assets.Scripts.Gameplay.UserInput
 
             buildModeController.SubControllerUpdate(this);
             buildingSelectionController.SubControllerUpdate(this);
+            personDragController.SubComponentUpdate(this);
         }
 
         public void Build(Building building)

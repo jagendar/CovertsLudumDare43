@@ -12,6 +12,12 @@ namespace Assets.Scripts.Gameplay.World
 
         private bool temporaryBuildability = true;
 
+        /// <summary>
+        /// If true, dropping a person on this tile will sacrifice him/her.
+        /// </summary>
+        [SerializeField]
+        private bool sacrifiable = false;
+
         public bool IsBuildable
         {
             get { return buildable && temporaryBuildability; }
@@ -28,6 +34,11 @@ namespace Assets.Scripts.Gameplay.World
         {
             //TODO: maybe this should be separate... but for now, just piggybacking w/ a separate property for ease of later refactoring
             get { return IsBuildable; }
+        }
+
+        public bool IsSacrificable
+        {
+            get { return sacrifiable;  }
         }
     }
 }

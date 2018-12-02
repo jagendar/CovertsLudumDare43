@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -194,7 +194,6 @@ MonoBehaviour:
   confirmYesButton: {fileID: 1048282148}
   confirmNoButton: {fileID: 505415004}
   destroyButton: {fileID: 1148324552}
-  controller: {fileID: 0}
   offset: {x: 0, y: 0}
 --- !u!1 &168840064
 GameObject:
@@ -419,6 +418,7 @@ GameObject:
   - component: {fileID: 811972087}
   - component: {fileID: 811972086}
   - component: {fileID: 811972089}
+  - component: {fileID: 811972090}
   m_Layer: 0
   m_Name: PlayerController
   m_TagString: Untagged
@@ -476,6 +476,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da4cf1f99f9203b4ea5c0ac50bfadbb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &811972090
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 811972085}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da1ba0458ff17354eb7ea908413c45dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  droppableLayers:
+    serializedVersion: 2
+    m_Bits: 1536
 --- !u!114 &1048282148 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 114431171836896268, guid: 8f058111e40319a47bfabad66508a30e,
@@ -875,6 +889,36 @@ Prefab:
         type: 2}
       propertyPath: m_AnchoredPosition.y
       value: -200
+      objectReference: {fileID: 0}
+    - target: {fileID: 224732306194335590, guid: 8f058111e40319a47bfabad66508a30e,
+        type: 2}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224732306194335590, guid: 8f058111e40319a47bfabad66508a30e,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224732306194335590, guid: 8f058111e40319a47bfabad66508a30e,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224040914498692868, guid: 8f058111e40319a47bfabad66508a30e,
+        type: 2}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224040914498692868, guid: 8f058111e40319a47bfabad66508a30e,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224040914498692868, guid: 8f058111e40319a47bfabad66508a30e,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8f058111e40319a47bfabad66508a30e, type: 2}

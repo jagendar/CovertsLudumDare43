@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4123926701333846}
   - component: {fileID: 114286203394195338}
+  - component: {fileID: 65012791456361070}
   m_Layer: 9
   m_Name: SandTile
   m_TagString: Untagged
@@ -37,7 +38,6 @@ GameObject:
   - component: {fileID: 4773927307299350}
   - component: {fileID: 33067714672102492}
   - component: {fileID: 23047576095562574}
-  - component: {fileID: 65286361574515630}
   m_Layer: 9
   m_Name: Sand
   m_TagString: Untagged
@@ -114,18 +114,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1966144634271642}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &65286361574515630
+--- !u!65 &65012791456361070
 BoxCollider:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1966144634271642}
+  m_GameObject: {fileID: 1837214068802342}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 0.5, z: 1}
+  m_Center: {x: 0, y: -0.25, z: 0}
 --- !u!114 &114286203394195338
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Assets.Scripts.Gameplay.UserInput;
 using UnityEngine;
 using Assets.Scripts.Gameplay.World;
 
@@ -36,8 +37,8 @@ namespace Assets.Scripts.Gameplay.People
 
             if (hit)
             {
-                var tile = hitInfo.transform.parent.gameObject.GetComponent<Tile>();
-                Debug.Assert(tile != null, "Tile object's collider should be its immediate child");
+                var tile = hitInfo.transform.gameObject.GetComponent<Tile>();
+                Debug.Assert(tile != null, "The collider object should also have a tile component");
                 currentTile = tile;
             }
         }
@@ -58,18 +59,32 @@ namespace Assets.Scripts.Gameplay.People
             }
             colorer.SetJobColor(Job.Idle);
             workTarget = null;
+
+            transform.localScale = new Vector3(2, 2, 2);
         }
         
-        internal void DroppedOn(GameObject underCursor)
+        internal void DroppedOn(ObjectsUnderCursor underCursor)
         {
             UpdateCurrentTile();
-            WorkableTarget target = underCursor.GetComponent<WorkableTarget>();
+
+            WorkableTarget target = underCursor.Building == null
+                ? null
+                : underCursor.Building.GetComponent<WorkableTarget>();
+            Debug.Log(string.Format("Target: {0}", target == null ? "Null" : target.name));
+
             if(target != null && target.RoomForWorker)
             {
                 workTarget = target;
                 workTarget.WorkerAssigned(this);
                 colorer.SetJobColor(workTarget.job);
             }
+
+            if (underCursor.Tile != null)
+            {
+                transform.position = underCursor.Tile.transform.position;
+            }
+
+            transform.localScale = new Vector3(1, 1, 1);
         }
 #if CLICK_DEBUG_MOVEMENT
         public void Update()
