@@ -208,6 +208,10 @@ namespace Assets.Scripts.Gameplay.People
                 {
                     workTarget.DoWork(this);
                 }
+                else
+                {
+                    colorer.SetJobColor(Job.Idle);
+                }
                 yield return new WaitForSeconds(1f);
             }
         }
