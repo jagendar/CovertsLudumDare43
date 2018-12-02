@@ -59,7 +59,11 @@ namespace Assets.Scripts.Gameplay.UserInput
             if (isValidPosition && Input.GetMouseButtonUp(0) && !ignoreClicks)
             {
                 gameplayController.World.CreateNewBuilding(template, tile.Position);
-                EndBuilding();
+
+                if (!Input.GetKey(KeyCode.LeftShift))
+                {
+                    EndBuilding();
+                }
             }
 
             ignoreClicks = false;
