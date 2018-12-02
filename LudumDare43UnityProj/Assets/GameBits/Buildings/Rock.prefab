@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4180838036557442}
   - component: {fileID: 114944272613212068}
+  - component: {fileID: 111841484880459534}
   m_Layer: 0
   m_Name: Rock
   m_TagString: Untagged
@@ -259,6 +260,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1812281881404938}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!111 &111841484880459534
+Animation:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1468533199537274}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 575c9bb9bd2b8d94aac2371749618244, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 575c9bb9bd2b8d94aac2371749618244, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!114 &114944272613212068
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -272,3 +288,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   amount: 300
   resourceType: 1
+  selfDestroying: 1
+  blocksBuilding: 1
+  placedTile: {fileID: 0}
