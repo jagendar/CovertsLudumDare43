@@ -96,7 +96,7 @@ namespace Assets.Scripts.Gameplay.World
             {
                 if(people[i].currentTile == tile)
                 {
-                    Object.Destroy(people[i]);
+                    Object.Destroy(people[i].gameObject);
                 }
             }
         }
