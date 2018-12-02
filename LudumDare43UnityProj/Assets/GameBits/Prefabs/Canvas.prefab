@@ -102,7 +102,7 @@ GameObject:
   m_Component:
   - component: {fileID: 224982420752291948}
   - component: {fileID: 114814346387077892}
-  - component: {fileID: 114850539377141100}
+  - component: {fileID: 114417900895803292}
   m_Layer: 5
   m_Name: SelectionCommandButtons
   m_TagString: Untagged
@@ -1252,6 +1252,22 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114417900895803292
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1107980704647208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90d17d31a4c2c884286756a3e416b20a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  confirmYesButton: {fileID: 114431171836896268}
+  confirmNoButton: {fileID: 114503220161383096}
+  destroyButton: {fileID: 114857538417938944}
+  buttonsContainer: {fileID: 224714448697053912}
+  offset: {x: 0, y: 25}
 --- !u!114 &114431171836896268
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1749,21 +1765,6 @@ MonoBehaviour:
   m_Text: '200
 
 '
---- !u!114 &114850539377141100
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1107980704647208}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90d17d31a4c2c884286756a3e416b20a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  confirmYesButton: {fileID: 114431171836896268}
-  confirmNoButton: {fileID: 114503220161383096}
-  destroyButton: {fileID: 114857538417938944}
-  offset: {x: 0, y: 0}
 --- !u!114 &114857538417938944
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2163,7 +2164,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0.000057276393, y: 550.3226}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1000, y: 50}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!224 &224141773619446064
@@ -2294,11 +2295,11 @@ RectTransform:
   m_Father: {fileID: 224563450550058492}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: -100}
   m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0.5, y: 1}
 --- !u!224 &224359175087424434
 RectTransform:
   m_ObjectHideFlags: 1
@@ -2754,7 +2755,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: 550.3226}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1000, y: 50}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!224 &224951985534612802
