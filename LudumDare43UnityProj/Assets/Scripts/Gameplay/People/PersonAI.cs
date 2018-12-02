@@ -11,7 +11,9 @@ namespace Assets.Scripts.Gameplay.People
     {
         [SerializeField] PersonColorer colorer;
         [SerializeField] LayerMask tileLayermask;
-        
+        [SerializeField] Animation wiggleAnim;
+
+
         public bool ReachedDestination = false;
         public Tile currentTile { get; private set; }
 
@@ -31,6 +33,8 @@ namespace Assets.Scripts.Gameplay.People
         private void Start()
         {
             colorer.SetJobColor(Job.Idle);
+            wiggleAnim.Play();
+            RunWiggle(false);
         }
 
         private void UpdateCurrentTile()
@@ -61,6 +65,7 @@ namespace Assets.Scripts.Gameplay.People
         {
             transform.localScale = new Vector3(2, 2, 2);
             Idle();
+            RunWiggle(true);
         }
 
         internal void Idle()
@@ -85,6 +90,7 @@ namespace Assets.Scripts.Gameplay.People
 
         internal void DroppedOn(ObjectsUnderCursor underCursor)
         {
+            RunWiggle(false);
             Tile tile = underCursor.Tile;
             if (tile != null)
             {
@@ -199,6 +205,15 @@ namespace Assets.Scripts.Gameplay.People
                     workTarget.DoWork(this);
                 }
                 yield return new WaitForSeconds(1f);
+            }
+        }
+
+        private void RunWiggle(bool wiggling)
+        {
+            wiggleAnim["wiggle"].speed = wiggling ? 1 : 0;
+            if(!wiggling)
+            {
+                wiggleAnim["wiggle"].time = 0;
             }
         }
     }

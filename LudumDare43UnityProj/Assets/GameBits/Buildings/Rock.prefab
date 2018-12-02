@@ -273,7 +273,7 @@ Animation:
   m_Animations:
   - {fileID: 7400000, guid: 575c9bb9bd2b8d94aac2371749618244, type: 2}
   m_WrapMode: 0
-  m_PlayAutomatically: 1
+  m_PlayAutomatically: 0
   m_AnimatePhysics: 0
   m_CullingType: 0
 --- !u!114 &114944272613212068
@@ -290,6 +290,7 @@ MonoBehaviour:
   amount: 300
   resourceType: 1
   Anim: {fileID: 0}
+  Worker: {fileID: 0}
   selfDestroying: 1
   blocksBuilding: 1
   placedTile: {fileID: 0}
