@@ -23,7 +23,7 @@ namespace Assets.Scripts.Gameplay.People
         private void Awake()
         {
             UpdateCurrentTile();
-
+            GameplayController.instance.World.AddPerson(this);
             GameplayController.instance.CurrentResources.Population += 1;
             StartCoroutine(DoWork());
         }
@@ -53,6 +53,7 @@ namespace Assets.Scripts.Gameplay.People
             if (GameplayController.instance != null)
             {
                 GameplayController.instance.CurrentResources.Population -= 1;
+                GameplayController.instance.World.RemovePerson(this);
             }
         }
 
@@ -87,8 +88,15 @@ namespace Assets.Scripts.Gameplay.People
         {
             if (underCursor.Tile != null)
             {
+                if (underCursor.Tile.IsSacrificable)
+                {
+                    GameplayController.instance.VolcanoController.ResetSpeed();
+                    Destroy(gameObject);
+                    return;
+                }
                 transform.position = underCursor.Tile.transform.position;
             }
+
             transform.localScale = new Vector3(1, 1, 1);
 
             UpdateCurrentTile();

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Assets.Scripts.Gameplay.Buildings;
+using Assets.Scripts.Gameplay.People;
 using Assets.Scripts.Gameplay.Resources;
 using UnityEngine;
 
@@ -9,6 +10,7 @@ namespace Assets.Scripts.Gameplay.World
     {
         private readonly Tile[,] tiles;
         private readonly List<Building> buildings;
+        private readonly List<PersonAI> people;
 
         public int Width { get { return tiles.GetLength(0); } }
         public int Height { get { return tiles.GetLength(1); } }
@@ -17,6 +19,7 @@ namespace Assets.Scripts.Gameplay.World
         {
             tiles = new Tile[width, height];
             buildings = new List<Building>();
+            people = new List<PersonAI>();
         }
 
         public IEnumerable<Building> Buildings
@@ -76,9 +79,26 @@ namespace Assets.Scripts.Gameplay.World
             }
         }
 
+        public void AddPerson(PersonAI person)
+        {
+            people.Add(person);
+        }
+
+        public void RemovePerson(PersonAI person)
+        {
+            people.Remove(person);
+        }
+
         internal void DestroyPeopleOnTile(Tile tile)
         {
-            //Debug.LogError("People destroy NYI");
+            //note: people remove themselves from my list on destruction; I don't need to do it myself
+            for(int i = 0; i < people.Count; ++i)
+            {
+                if(people[i].currentTile == tile)
+                {
+                    Object.Destroy(people[i]);
+                }
+            }
         }
 
         internal void DestroyResourcesOnTile(Tile tile)
