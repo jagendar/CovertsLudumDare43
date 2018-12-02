@@ -27,8 +27,13 @@ namespace Assets.Scripts.Gameplay.UserInput
             UnderCursor = new ObjectsUnderCursor();
 
             buildModeController.SubControllerUpdate(this);
-            buildingSelectionController.SubControllerUpdate(this);
+            if (buildModeController.IsBuilding) return;
+
             personDragController.SubComponentUpdate(this);
+            if (personDragController.IsDragging) return;
+
+            buildingSelectionController.SubControllerUpdate(this);
+
         }
 
         public void Build(Building building)
