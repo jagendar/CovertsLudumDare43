@@ -39,7 +39,6 @@ namespace Assets.Scripts.Gameplay.Buildings
 
         public override void WorkerAssigned(PersonAI aI)
         {
-            Debug.Log("Assigned lumber");
             base.WorkerAssigned(aI);
             treesNearby = CheckNearbyResources(this.transform.position, checkTreeRadius, treeTag);
             if(treesNearby.Count == 0)
