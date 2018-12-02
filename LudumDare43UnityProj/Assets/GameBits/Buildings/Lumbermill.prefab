@@ -1018,6 +1018,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05f183309e04b3c49b2424bb63071321, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxWorkers: 1
+  maxWorkers: 2
   woodPerWork: 7
   checkTreeRadius: 5

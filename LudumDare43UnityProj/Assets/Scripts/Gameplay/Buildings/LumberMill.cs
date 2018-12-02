@@ -74,6 +74,20 @@ namespace Assets.Scripts.Gameplay.Buildings
             }
             if (aI.ReachedDestination)
             {
+                if (nearestTree == null || nearestTree.Worker != aI)
+                {
+                    aI.ReachedDestination = false;
+                    treesNearby = CheckNearbyTrees(this.transform.position, checkTreeRadius);
+                    if (treesNearby.Count == 0)
+                    {
+                        this.maxWorkers = 0;
+                        aI.Idle();
+                        return;
+                    }
+                    nearestTree = GetShortestDistance(this.transform.position, treesNearby);
+                    nearestTile = CheckNearbyTiles(nearestTree.placedTile);
+                    aI.MoveToPosition(nearestTile);
+                }
                 GameplayController.instance.CurrentResources.Wood += woodPerWork;
                 if (nearestTree.Anim != null)
                 {
@@ -97,8 +111,7 @@ namespace Assets.Scripts.Gameplay.Buildings
                 }
                 i++;
             }
-
-            //Debug.Log(trees.Count);
+            
             return trees;
         }
         
