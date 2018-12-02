@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Gameplay.People;
+﻿using Assets.Scripts.Gameplay;
+using Assets.Scripts.Gameplay.People;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,8 +11,8 @@ public class PersonDrag : MonoBehaviour {
     private bool dragging;
 
     [SerializeField] private LayerMask droppableLayers;
-
-	void Start ()
+    
+    void Start ()
     {
         cam = Camera.main;
         dragging = false;	
@@ -55,6 +56,7 @@ public class PersonDrag : MonoBehaviour {
         if (UnderCursor.name == "Dirt" || UnderCursor.name == "Lava")
         {
             Destroy(this.gameObject);
+            GameplayController.instance.VolcanoController.ResetSpeed();
         }
         else
         {
