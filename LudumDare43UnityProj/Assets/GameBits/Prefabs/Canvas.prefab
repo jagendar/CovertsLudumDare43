@@ -752,7 +752,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameplayController: {fileID: 0}
   building: {fileID: 114584067128922742, guid: 48edbd22a30179044aa727b751348c42, type: 2}
-  image: {fileID: 114163766290721052}
 --- !u!114 &114209672506316588
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -890,7 +889,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameplayController: {fileID: 0}
   building: {fileID: 114139130852902010, guid: 615ce5ed7f0f8bc42a54617a3de6b39a, type: 2}
-  image: {fileID: 114470283549730464}
 --- !u!114 &114326430398518586
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -937,7 +935,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameplayController: {fileID: 0}
   building: {fileID: 114251887078148882, guid: be4115518eac56047995afe8df18a506, type: 2}
-  image: {fileID: 114209672506316588}
 --- !u!114 &114470283549730464
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1299,7 +1296,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameplayController: {fileID: 0}
   building: {fileID: 114776534239860490, guid: 6b402dd95cfa2124ca620fd0dc3c3c1f, type: 2}
-  image: {fileID: 114783630426636592}
 --- !u!114 &114954780452726142
 MonoBehaviour:
   m_ObjectHideFlags: 1
