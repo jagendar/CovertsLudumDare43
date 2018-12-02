@@ -35,13 +35,15 @@ namespace Assets.Scripts.Gameplay.People
 
         private void UpdateCurrentTile()
         {
-            RaycastHit hitInfo = new RaycastHit();
-            bool hit = Physics.Raycast(transform.position, Vector3.down, out hitInfo, float.MaxValue, tileLayermask);
+            RaycastHit hitInfo;
+
+            // Note: We add an upward vector to the transform position to ensure that they start of the ray is above the tile
+            bool hit = Physics.Raycast(transform.position + Vector3.up, Vector3.down, out hitInfo, float.MaxValue, tileLayermask);
 
             if (hit)
             {
                 var tile = hitInfo.transform.gameObject.GetComponent<Tile>();
-                Debug.Assert(tile != null, "The collider object should also have a tile component");
+               Debug.Assert(tile != null, "The collider object should also have a tile component");
                 currentTile = tile;
             }
         }
@@ -83,6 +85,12 @@ namespace Assets.Scripts.Gameplay.People
 
         internal void DroppedOn(ObjectsUnderCursor underCursor)
         {
+            if (underCursor.Tile != null)
+            {
+                transform.position = underCursor.Tile.transform.position;
+            }
+            transform.localScale = new Vector3(1, 1, 1);
+
             UpdateCurrentTile();
 
             WorkableTarget target = underCursor.Building == null
@@ -95,13 +103,6 @@ namespace Assets.Scripts.Gameplay.People
                 workTarget.WorkerAssigned(this);
                 colorer.SetJobColor(workTarget.job);
             }
-
-            if (underCursor.Tile != null)
-            {
-                transform.position = underCursor.Tile.transform.position;
-            }
-
-            transform.localScale = new Vector3(1, 1, 1);
         }
 #if CLICK_DEBUG_MOVEMENT
         public void Update()
@@ -134,7 +135,9 @@ namespace Assets.Scripts.Gameplay.People
 
         private IEnumerator MoveToPositionCoroutine(Tile target)
         {
-            List<Tile> path = VolcanoAStar.GetPath(currentTile.Position, target.Position, GameplayController.instance.World);
+            var currentTileP = currentTile.Position;
+            var targetP = target.Position;
+            List<Tile> path = VolcanoAStar.GetPath(currentTileP, targetP, GameplayController.instance.World);
             if(path == null || path.Count == 0)
             {
                 yield break;
