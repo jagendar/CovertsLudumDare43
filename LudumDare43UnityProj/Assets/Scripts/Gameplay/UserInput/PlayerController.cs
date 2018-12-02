@@ -39,5 +39,10 @@ namespace Assets.Scripts.Gameplay.UserInput
         {
             buildModeController.StartBuilding(building);
         }
+
+        public void PlugVolcano()
+        {
+            Debug.Log("Duuude, youuuuu winnnnnnnn!");
+        }
     }
 }

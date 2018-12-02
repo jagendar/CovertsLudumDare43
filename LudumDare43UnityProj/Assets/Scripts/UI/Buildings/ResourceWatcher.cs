@@ -1,5 +1,5 @@
 ﻿using Assets.Scripts.Gameplay;
-using Assets.Scripts.Gameplay.Buildings;
+using Assets.Scripts.Gameplay.Resources;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,7 +8,7 @@ namespace Assets.Scripts.UI.Buildings
     public class ResourceWatcher : MonoBehaviour
     {
         [SerializeField] private GameplayController gameplayController;
-        [SerializeField] private Building building;
+        [SerializeField] private CostsResources resourceCost;
 
         private Button button;
 
@@ -19,7 +19,7 @@ namespace Assets.Scripts.UI.Buildings
 
         public void Update()
         {
-            button.interactable = gameplayController.CurrentResources >= building.Cost;
+            button.interactable = gameplayController.CurrentResources >= resourceCost.Cost;
         }
     }
 }
