@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -789,5 +789,5 @@ MonoBehaviour:
   angryBar: {fileID: 1240771369}
   eruptingLavaPrefab: {fileID: 114421705227922700, guid: 746db44427febe947a5a6548f05d4ca1,
     type: 2}
-  initialTimeBetweenEruptions: 10
-  eruptionSpeedAccelerationPercentage: 0.95
+  initialTimeBetweenEruptions: 4
+  eruptionSpeedAccelerationPercentage: 0.96
