@@ -141,3 +141,5 @@ MonoBehaviour:
   - {fileID: 23355935433840796}
   lavaMaterial: {fileID: 2100000, guid: 3d0c996da90ab4e4f86c5440e4f0f2e0, type: 2}
   buildable: 0
+  sacrifiable: 0
+  deadly: 1
