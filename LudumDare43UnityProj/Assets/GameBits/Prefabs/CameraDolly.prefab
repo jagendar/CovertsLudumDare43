@@ -131,7 +131,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minCamera: {x: -110, y: 45, z: -110}
   maxCamera: {x: 110, y: 45, z: 110}
-  panSpeed: 3
+  panSpeed: 2
   rotationTime: 0.1
   zoomAmount: 5
   zoomMin: 5
