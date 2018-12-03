@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using Assets.Scripts.Gameplay.Buildings;
+using Assets.Scripts.Gameplay.Resources;
 using Assets.Scripts.Gameplay.World;
 using UnityEngine;
 
@@ -8,6 +11,7 @@ namespace Assets.Scripts.Gameplay.UserInput
     public class BuildModeController : MonoBehaviour
     {
         private Building template;
+        private IEnumerable<ResourceHighlight> currentlyHighlighted;
 
         [SerializeField] private LayerMask layerMask;
         [SerializeField] private GameplayController gameplayController = null;
@@ -18,6 +22,11 @@ namespace Assets.Scripts.Gameplay.UserInput
         private bool isShiftBuilding;
 
         public bool IsBuilding { get; private set; }
+
+        public void Awake()
+        {
+            currentlyHighlighted = new List<ResourceHighlight>();
+        }
 
         public void StartBuilding(Building buildingTemplate)
         {
@@ -38,6 +47,7 @@ namespace Assets.Scripts.Gameplay.UserInput
             IsBuilding = false;
             isShiftBuilding = false;
             template = null;
+            SetHighlights(currentlyHighlighted, false);
             if (hologram != null)
             {
                 Destroy(hologram.gameObject);
@@ -59,6 +69,7 @@ namespace Assets.Scripts.Gameplay.UserInput
             bool isValidPosition = tile != null && Util.CanBuildAt(gameplayController.World, tile.Position, template);
 
             UpdateHologramState(tile, isValidPosition);
+            UpdateHighlightedResources(hologram.transform.position);
 
             if (isValidPosition && Input.GetMouseButtonUp(0) && !ignoreClicks)
             {
@@ -75,6 +86,28 @@ namespace Assets.Scripts.Gameplay.UserInput
             }
 
             ignoreClicks = false;
+        }
+
+        private void UpdateHighlightedResources(Vector3 position)
+        {
+            var workableTarget = template.GetComponent<WorkableTarget>();
+            if (workableTarget == null) return;
+
+            SetHighlights(currentlyHighlighted, false);
+
+            currentlyHighlighted = workableTarget.CheckNearbyResources(position)
+                .Select(r => r.GetComponent<ResourceHighlight>())
+                .Where(rh => rh != null);
+
+            SetHighlights(currentlyHighlighted, true);
+        }
+
+        private void SetHighlights(IEnumerable<ResourceHighlight> highlights, bool newValue)
+        {
+            foreach (var resourceHighlight in currentlyHighlighted)
+            {
+                resourceHighlight.IsHighlighted = newValue;
+            }
         }
 
         private bool CheckShouldCancel()
