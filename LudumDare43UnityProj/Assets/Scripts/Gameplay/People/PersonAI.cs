@@ -125,6 +125,7 @@ namespace Assets.Scripts.Gameplay.People
             workTarget = target;
             workTarget.WorkerAssigned(this);
             colorer.SetJobColor(workTarget.job);
+            UpdateCurrentTile();
         }
 
         internal void DroppedOnTile(Tile tile)
