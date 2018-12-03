@@ -31,8 +31,13 @@ namespace Assets.Scripts.Gameplay.World
         }
 
         public abstract void DoWork(PersonAI aI);
+
         public abstract Job job { get; }
-        
+
+        public abstract int ResourceRadius { get; }
+
+        public abstract string ResourceTag { get; }
+
 
         protected Tile CheckNearbyTiles(Tile tile, World world)
         {
@@ -50,15 +55,15 @@ namespace Assets.Scripts.Gameplay.World
             return null;
         }
 
-        protected List<CollectableResource> CheckNearbyResources(Vector3 center, float radius, string tag)
+        public List<CollectableResource> CheckNearbyResources(Vector3 center)
         {
-            Collider[] hitColliders = Physics.OverlapSphere(center, radius);
+            Collider[] hitColliders = Physics.OverlapSphere(center, ResourceRadius);
             List<CollectableResource> resources = new List<CollectableResource>();
 
             int i = 0;
             while (i < hitColliders.Length)
             {
-                if (hitColliders[i].tag == tag && hitColliders[i].gameObject.GetComponent<CollectableResource>().Worker == null)
+                if (hitColliders[i].tag == ResourceTag && hitColliders[i].gameObject.GetComponent<CollectableResource>().Worker == null)
                 {
                     resources.Add(hitColliders[i].gameObject.GetComponent<CollectableResource>());
                 }

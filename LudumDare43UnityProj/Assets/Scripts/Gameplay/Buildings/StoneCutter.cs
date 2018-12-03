@@ -1,7 +1,6 @@
 ﻿using Assets.Scripts.Gameplay.People;
 using Assets.Scripts.Gameplay.World;
 using Assets.Scripts.Gameplay.Resources;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -19,11 +18,20 @@ namespace Assets.Scripts.Gameplay.Buildings
         private Tile nearestTile;
         private World.World world;
 
+        public override int ResourceRadius
+        {
+            get { return checkStoneRadius; }
+        }
+
+        public override string ResourceTag
+        {
+            get { return stoneTag; }
+        }
 
         private void Start()
         {
             world = GameplayController.instance.World;
-            stoneNearby = CheckNearbyResources(this.transform.position, checkStoneRadius, stoneTag);
+            stoneNearby = CheckNearbyResources(this.transform.position);
             if (stoneNearby.Count == 0)
             {
                 this.maxWorkers = 0;
@@ -43,7 +51,7 @@ namespace Assets.Scripts.Gameplay.Buildings
             base.WorkerAssigned(aI);
             aI.transform.position = spawnSpot.position;
             aI.UpdateCurrentTile();
-            stoneNearby = CheckNearbyResources(this.transform.position, checkStoneRadius, stoneTag);
+            stoneNearby = CheckNearbyResources(this.transform.position);
             if(stoneNearby.Count == 0)
             {
                 this.maxWorkers = 0;
@@ -67,7 +75,7 @@ namespace Assets.Scripts.Gameplay.Buildings
             if (nearestStone == null)
             {
                 aI.ReachedDestination = false;
-                stoneNearby = CheckNearbyResources(this.transform.position, checkStoneRadius, stoneTag);
+                stoneNearby = CheckNearbyResources(this.transform.position);
                 if (stoneNearby.Count == 0)
                 {
                     this.maxWorkers = 0;
@@ -83,7 +91,7 @@ namespace Assets.Scripts.Gameplay.Buildings
                 if (nearestStone == null || nearestStone.Worker != aI)
                 {
                     aI.ReachedDestination = false;
-                    stoneNearby = CheckNearbyResources(this.transform.position, checkStoneRadius, stoneTag);
+                    stoneNearby = CheckNearbyResources(this.transform.position);
                     if (stoneNearby.Count == 0)
                     {
                         this.maxWorkers = 0;

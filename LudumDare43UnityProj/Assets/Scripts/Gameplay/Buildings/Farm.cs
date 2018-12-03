@@ -1,7 +1,5 @@
 ﻿using Assets.Scripts.Gameplay.People;
 using Assets.Scripts.Gameplay.World;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Assets.Scripts.Gameplay.Buildings
@@ -10,13 +8,23 @@ namespace Assets.Scripts.Gameplay.Buildings
     {
         [SerializeField] private int foodPerWork = 7;
         [SerializeField] private Animation animPlayer;
-        
+
         public override Job job
         {
             get
             {
                 return Job.Farmer;
             }
+        }
+
+        public override int ResourceRadius
+        {
+            get { return -1; }
+        }
+
+        public override string ResourceTag
+        {
+            get { return null; }
         }
 
         public override void WorkerAssigned(PersonAI aI)

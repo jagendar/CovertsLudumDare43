@@ -19,11 +19,20 @@ namespace Assets.Scripts.Gameplay.Buildings
         private Tile nearestTile;
         private World.World world;
 
-        
+        public override int ResourceRadius
+        {
+            get { return checkTreeRadius; }
+        }
+
+        public override string ResourceTag
+        {
+            get { return treeTag; }
+        }
+
         private void Start()
         {
             world = GameplayController.instance.World;
-            treesNearby = CheckNearbyResources(this.transform.position, checkTreeRadius, treeTag);
+            treesNearby = CheckNearbyResources(this.transform.position);
             if (treesNearby.Count == 0)
             {
                 this.maxWorkers = 0;
@@ -43,7 +52,7 @@ namespace Assets.Scripts.Gameplay.Buildings
             base.WorkerAssigned(aI);
             aI.transform.position = spawnSpot.position;
             aI.UpdateCurrentTile();
-            treesNearby = CheckNearbyResources(this.transform.position, checkTreeRadius, treeTag);
+            treesNearby = CheckNearbyResources(this.transform.position);
             if(treesNearby.Count == 0)
             {
                 this.maxWorkers = 0;
@@ -67,7 +76,7 @@ namespace Assets.Scripts.Gameplay.Buildings
             if(nearestTree == null)
             {
                 aI.ReachedDestination = false;
-                treesNearby = CheckNearbyResources(this.transform.position, checkTreeRadius, treeTag);
+                treesNearby = CheckNearbyResources(this.transform.position);
                 if(treesNearby.Count == 0)
                 {
                     this.maxWorkers = 0;
@@ -83,7 +92,7 @@ namespace Assets.Scripts.Gameplay.Buildings
                 if (nearestTree == null || nearestTree.Worker != aI)
                 {
                     aI.ReachedDestination = false;
-                    treesNearby = CheckNearbyResources(this.transform.position, checkTreeRadius, treeTag);
+                    treesNearby = CheckNearbyResources(this.transform.position);
                     if (treesNearby.Count == 0)
                     {
                         this.maxWorkers = 0;
