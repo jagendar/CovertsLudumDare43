@@ -63,7 +63,10 @@ namespace Assets.Scripts.Gameplay.Resources
 
         private void OnDestroy()
         {
-            theWorld.RemoveResource(this);
+            if (theWorld != null)
+            {
+                theWorld.RemoveResource(this);
+            }
         }
     }
 }

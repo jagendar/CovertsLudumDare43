@@ -73,6 +73,7 @@ namespace Assets.Scripts.Gameplay.People
             transform.localScale = new Vector3(2, 2, 2);
             Idle();
             napParticle.Stop();
+            napParticle.Clear();
             RunWiggle(true);
         }
 

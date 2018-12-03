@@ -36,6 +36,7 @@ namespace Assets.Scripts.Gameplay.World
             Location current = null;
             var start = new Location { X = source.x, Y = source.y };
             var target = new Location { X = destination.x, Y = destination.y };
+            target.heuristic = ComputeHScore(start.X, start.Y, target.X, target.Y);
 
             var openList = new List<Location>();
             var closedList = new List<Location>();
@@ -65,7 +66,7 @@ namespace Assets.Scripts.Gameplay.World
                     break;
                 }
 
-                var adjacentSquares = GetWalkableAdjacentSquares(current.X, current.Y, world);
+                var adjacentSquares = GetWalkableAdjacentSquares(current.X, current.Y, world, target.heuristic);
                 g++;
 
                 foreach (var adjacentSquare in adjacentSquares)
@@ -85,8 +86,13 @@ namespace Assets.Scripts.Gameplay.World
                         adjacentSquare.totalCost = adjacentSquare.distanceFromStart + adjacentSquare.heuristic;
                         adjacentSquare.Parent = current;
 
-                        // and add it to the open list
-                        openList.Insert(0, adjacentSquare);
+
+                        //Mike - restricting pathfinding from getting too far away, so there's no spikes when trying to reach unreachable targets
+                        if (adjacentSquare.heuristic < 10 * target.heuristic)
+                        {
+                            // and add it to the open list
+                            openList.Insert(0, adjacentSquare);
+                        }
                     }
                     else
                     {
@@ -115,7 +121,7 @@ namespace Assets.Scripts.Gameplay.World
             return steps;
         }
 
-        static IEnumerable<Location> GetWalkableAdjacentSquares(int x, int y, World map)
+        static IEnumerable<Location> GetWalkableAdjacentSquares(int x, int y, World map, float targetHeuristic)
         {
             float tileHeight = map[x, y].Height;
             const float maxDeltaHeight = .6f;
@@ -127,7 +133,10 @@ namespace Assets.Scripts.Gameplay.World
                         new Location { X = x + 1, Y = y },
                     };
 
-            return proposedLocations.Where(l => map[l.X,l.Y].IsWalkable && Mathf.Abs(map[l.X, l.Y].Height - tileHeight) < maxDeltaHeight);
+            return proposedLocations.Where(
+                l => map[l.X,l.Y].IsWalkable && 
+                Mathf.Abs(map[l.X, l.Y].Height - tileHeight) < maxDeltaHeight && 
+                l.heuristic < 10 * targetHeuristic);
         }
 
         static int ComputeHScore(int x, int y, int targetX, int targetY)
