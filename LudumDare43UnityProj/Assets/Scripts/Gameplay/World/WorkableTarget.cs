@@ -1,6 +1,5 @@
 ﻿using Assets.Scripts.Gameplay.People;
 using Assets.Scripts.Gameplay.Resources;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 

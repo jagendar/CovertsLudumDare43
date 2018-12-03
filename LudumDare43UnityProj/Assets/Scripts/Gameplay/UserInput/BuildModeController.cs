@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using Assets.Scripts.Gameplay.Buildings;
-using Assets.Scripts.Gameplay.Resources;
 using Assets.Scripts.Gameplay.World;
 using UnityEngine;
 
