@@ -537,7 +537,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: dcd8d9c126d98fe41a0c00a8647b2c4b, type: 3}
-    m_FontSize: 60
+    m_FontSize: 57
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -556,6 +556,8 @@ MonoBehaviour:
 
     - Click and drag a person to a farm, quarry, or lumber mill to assign them to
     work there.
+
+    - Houses will generate more people over time.
 
     - Make sure to place quarries within a few tiles of the stone and wood you want
     to gather.
