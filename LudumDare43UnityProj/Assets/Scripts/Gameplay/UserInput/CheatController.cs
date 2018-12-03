@@ -7,6 +7,7 @@ namespace Assets.Scripts.Gameplay.UserInput
     {
         private bool cheatsEnabled = false;
         [SerializeField] private GameplayController gameplayController;
+        [SerializeField] private GameObject cheatFace;
 
         public void Update()
         {
@@ -16,6 +17,10 @@ namespace Assets.Scripts.Gameplay.UserInput
                     && Input.GetKeyDown(KeyCode.F9))
                 {
                     cheatsEnabled = true;
+                    if(cheatFace != null)
+                    {
+                        cheatFace.SetActive(true);
+                    }
                 }
 
                 return;
