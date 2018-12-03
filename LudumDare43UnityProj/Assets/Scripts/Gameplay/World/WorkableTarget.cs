@@ -88,5 +88,13 @@ namespace Assets.Scripts.Gameplay.World
 
             return tree;
         }
+
+        protected void SetBuildingEmpty(List<GameObject> resources)
+        {
+            for(int i=0; i<resources.Count; i++)
+            {
+                Destroy(resources[i].gameObject);
+            }
+        }
     }
 }

@@ -1052,3 +1052,6 @@ MonoBehaviour:
   checkTreeRadius: 5
   treeTag: Tree
   spawnSpot: {fileID: 4312871019602810}
+  lumber:
+  - {fileID: 1130168981717488}
+  - {fileID: 1657239403460292}

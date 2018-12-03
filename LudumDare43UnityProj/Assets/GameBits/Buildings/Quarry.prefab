@@ -2103,3 +2103,7 @@ MonoBehaviour:
   checkStoneRadius: 5
   stoneTag: Rock
   spawnSpot: {fileID: 4598257292546006}
+  stones:
+  - {fileID: 1718922018795340}
+  - {fileID: 1333387411040344}
+  - {fileID: 1688728220295554}

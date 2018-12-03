@@ -12,7 +12,8 @@ namespace Assets.Scripts.Gameplay.Buildings
         [SerializeField] private int woodPerWork;
         [SerializeField] private int checkTreeRadius;
         [SerializeField] private string treeTag;
-        [SerializeField] Transform spawnSpot;
+        [SerializeField] private Transform spawnSpot;
+        [SerializeField] private List<GameObject> lumber;
 
         private List<CollectableResource> treesNearby;
         private CollectableResource nearestTree;
@@ -35,6 +36,7 @@ namespace Assets.Scripts.Gameplay.Buildings
             treesNearby = CheckNearbyResources(this.transform.position);
             if (treesNearby.Count == 0)
             {
+                SetBuildingEmpty(lumber);
                 this.maxWorkers = 0;
             }
         }
@@ -55,6 +57,7 @@ namespace Assets.Scripts.Gameplay.Buildings
             treesNearby = CheckNearbyResources(this.transform.position);
             if(treesNearby.Count == 0)
             {
+                SetBuildingEmpty(lumber);
                 this.maxWorkers = 0;
                 aI.Idle();
                 return;
@@ -79,6 +82,7 @@ namespace Assets.Scripts.Gameplay.Buildings
                 treesNearby = CheckNearbyResources(this.transform.position);
                 if(treesNearby.Count == 0)
                 {
+                    SetBuildingEmpty(lumber);
                     this.maxWorkers = 0;
                     aI.Idle();
                     return;
@@ -95,6 +99,7 @@ namespace Assets.Scripts.Gameplay.Buildings
                     treesNearby = CheckNearbyResources(this.transform.position);
                     if (treesNearby.Count == 0)
                     {
+                        SetBuildingEmpty(lumber);
                         this.maxWorkers = 0;
                         aI.Idle();
                         return;
