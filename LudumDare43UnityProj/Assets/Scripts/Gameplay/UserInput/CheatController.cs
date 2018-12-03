@@ -5,14 +5,23 @@ namespace Assets.Scripts.Gameplay.UserInput
 {
     public class CheatController : MonoBehaviour
     {
-        [SerializeField] private bool cheatsEnabled = false;
+        private bool cheatsEnabled = false;
         [SerializeField] private GameplayController gameplayController;
 
         public void Update()
         {
-            if (!cheatsEnabled) return;
+            if (!cheatsEnabled)
+            {
+                if((Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl))
+                    && Input.GetKeyDown(KeyCode.F9))
+                {
+                    cheatsEnabled = true;
+                }
 
-            if (Input.GetKey(KeyCode.RightShift) && Input.GetKeyDown(KeyCode.R))
+                return;
+            }
+
+            if (Input.GetKeyDown(KeyCode.F10))
             {
                 gameplayController.CurrentResources = new ResourceCollection
                 {

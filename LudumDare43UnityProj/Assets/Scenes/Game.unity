@@ -485,7 +485,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82af0cce75b36c04c91bcda3ae8b5df6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cheatsEnabled: 1
   gameplayController: {fileID: 638018101}
 --- !u!1001 &646439433
 Prefab:
