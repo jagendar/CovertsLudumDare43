@@ -96,7 +96,7 @@ namespace Assets.Scripts.Gameplay.UserInput
             SetHighlights(currentlyHighlighted, false);
 
             currentlyHighlighted = workableTarget.CheckNearbyResources(position)
-                .Select(r => r.GetComponent<WorldObjectHightlight>())
+                .Select(r => r == null ? null : r.GetComponent<WorldObjectHightlight>())
                 .Where(rh => rh != null);
 
             SetHighlights(currentlyHighlighted, true);
