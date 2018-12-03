@@ -388,6 +388,7 @@ GameObject:
   - component: {fileID: 114251887078148882}
   - component: {fileID: 65946123291965664}
   - component: {fileID: 114701819494169032}
+  - component: {fileID: 114490978110368644}
   m_Layer: 10
   m_Name: Quarry
   m_TagString: Untagged
@@ -2086,6 +2087,19 @@ MonoBehaviour:
     Population: 0
   size: {x: 3, y: 3}
   constructionHologram: {fileID: 114718631352732078, guid: 3cb7d371afe90d04991e00210ef09de6,
+    type: 2}
+--- !u!114 &114490978110368644
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1745545720794114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f469b49446ca687448c7f964921c0929, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  highlightTemplate: {fileID: 1997949310820792, guid: 20af0610b2eee0d45b51dfe186b97e22,
     type: 2}
 --- !u!114 &114701819494169032
 MonoBehaviour:

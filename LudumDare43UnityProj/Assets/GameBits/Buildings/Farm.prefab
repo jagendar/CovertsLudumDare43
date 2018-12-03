@@ -74,6 +74,7 @@ GameObject:
   - component: {fileID: 65999285329968696}
   - component: {fileID: 114773815867031004}
   - component: {fileID: 111182652891114324}
+  - component: {fileID: 114498080308687504}
   m_Layer: 10
   m_Name: Farm
   m_TagString: Untagged
@@ -1384,6 +1385,19 @@ Animation:
   m_PlayAutomatically: 0
   m_AnimatePhysics: 0
   m_CullingType: 0
+--- !u!114 &114498080308687504
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1141515691389028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f469b49446ca687448c7f964921c0929, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  highlightTemplate: {fileID: 1997949310820792, guid: 20af0610b2eee0d45b51dfe186b97e22,
+    type: 2}
 --- !u!114 &114773815867031004
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1409,11 +1423,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60692e4e4d53cd74fa276309e6f208d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  size: {x: 3, y: 3}
   cost:
     Wood: 100
     Stone: 0
     Food: 0
     Population: 0
+  size: {x: 3, y: 3}
   constructionHologram: {fileID: 114942260883138680, guid: 02071bf05a6f3b84f9dfd3060d72bce2,
     type: 2}
