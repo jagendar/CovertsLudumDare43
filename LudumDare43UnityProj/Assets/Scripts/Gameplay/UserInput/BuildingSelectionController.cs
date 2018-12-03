@@ -42,7 +42,7 @@ namespace Assets.Scripts.Gameplay.UserInput
             var workableTarget = building.GetComponent<WorkableTarget>();
             if (workableTarget == null) return;
 
-            currentlyHighlighted = workableTarget.CheckNearbyResources(building.transform.position)
+            currentlyHighlighted = workableTarget.CheckNearbyResources(building.transform.position, true)
                 .Where(r => r != null)
                 .Select(r => r.GetComponent<WorldObjectHightlight>())
                 .Where(rh => rh != null);

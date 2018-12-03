@@ -54,7 +54,7 @@ namespace Assets.Scripts.Gameplay.World
             return null;
         }
 
-        public List<CollectableResource> CheckNearbyResources(Vector3 center)
+        public List<CollectableResource> CheckNearbyResources(Vector3 center, bool allowWorkers = false)
         {
             Collider[] hitColliders = Physics.OverlapSphere(center, ResourceRadius);
             List<CollectableResource> resources = new List<CollectableResource>();
@@ -62,7 +62,7 @@ namespace Assets.Scripts.Gameplay.World
             int i = 0;
             while (i < hitColliders.Length)
             {
-                if (hitColliders[i].tag == ResourceTag && hitColliders[i].gameObject.GetComponent<CollectableResource>().Worker == null)
+                if (hitColliders[i].tag == ResourceTag && (allowWorkers || hitColliders[i].gameObject.GetComponent<CollectableResource>().Worker == null))
                 {
                     resources.Add(hitColliders[i].gameObject.GetComponent<CollectableResource>());
                 }
