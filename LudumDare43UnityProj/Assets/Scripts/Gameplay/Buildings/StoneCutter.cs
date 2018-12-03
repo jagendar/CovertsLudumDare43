@@ -11,7 +11,8 @@ namespace Assets.Scripts.Gameplay.Buildings
         [SerializeField] private int stonePerWork;
         [SerializeField] private int checkStoneRadius;
         [SerializeField] private string stoneTag;
-        [SerializeField] Transform spawnSpot;
+        [SerializeField] private Transform spawnSpot;
+        [SerializeField] private List<GameObject> stones;
 
         private List<CollectableResource> stoneNearby;
         private CollectableResource nearestStone;
@@ -34,6 +35,7 @@ namespace Assets.Scripts.Gameplay.Buildings
             stoneNearby = CheckNearbyResources(this.transform.position);
             if (stoneNearby.Count == 0)
             {
+                SetBuildingEmpty(stones);
                 this.maxWorkers = 0;
             }
         }
@@ -54,6 +56,7 @@ namespace Assets.Scripts.Gameplay.Buildings
             stoneNearby = CheckNearbyResources(this.transform.position);
             if(stoneNearby.Count == 0)
             {
+                SetBuildingEmpty(stones);
                 this.maxWorkers = 0;
                 aI.Idle();
                 return;
@@ -78,6 +81,7 @@ namespace Assets.Scripts.Gameplay.Buildings
                 stoneNearby = CheckNearbyResources(this.transform.position);
                 if (stoneNearby.Count == 0)
                 {
+                    SetBuildingEmpty(stones);
                     this.maxWorkers = 0;
                     aI.Idle();
                     return;
@@ -94,6 +98,7 @@ namespace Assets.Scripts.Gameplay.Buildings
                     stoneNearby = CheckNearbyResources(this.transform.position);
                     if (stoneNearby.Count == 0)
                     {
+                        SetBuildingEmpty(stones);
                         this.maxWorkers = 0;
                         aI.Idle();
                         return;
