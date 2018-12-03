@@ -43,6 +43,7 @@ namespace Assets.Scripts.Gameplay.UserInput
             if (workableTarget == null) return;
 
             currentlyHighlighted = workableTarget.CheckNearbyResources(building.transform.position)
+                .Where(r => r != null)
                 .Select(r => r.GetComponent<WorldObjectHightlight>())
                 .Where(rh => rh != null);
 
@@ -51,7 +52,7 @@ namespace Assets.Scripts.Gameplay.UserInput
 
         private void SetHighlights(IEnumerable<WorldObjectHightlight> highlights, bool newValue)
         {
-            foreach (var resourceHighlight in currentlyHighlighted)
+            foreach (var resourceHighlight in highlights.Where(h => h != null))
             {
                 resourceHighlight.IsHighlighted = newValue;
             }
