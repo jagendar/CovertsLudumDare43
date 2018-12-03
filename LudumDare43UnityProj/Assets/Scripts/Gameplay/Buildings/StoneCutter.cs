@@ -69,7 +69,10 @@ namespace Assets.Scripts.Gameplay.Buildings
 
         public override void WorkerFreed(PersonAI aI)
         {
-            nearestStone.Worker = null;
+            if (nearestStone != null)
+            {
+                nearestStone.Worker = null;
+            }
             base.WorkerFreed(aI);  
         }
 
