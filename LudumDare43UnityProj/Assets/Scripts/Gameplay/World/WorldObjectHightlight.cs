@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 
-namespace Assets.Scripts.Gameplay.Resources
+namespace Assets.Scripts.Gameplay.World
 {
-    public class ResourceHighlight : MonoBehaviour
+    public class WorldObjectHightlight : MonoBehaviour
     {
         [SerializeField] private GameObject highlightTemplate;
 
@@ -18,6 +18,11 @@ namespace Assets.Scripts.Gameplay.Resources
         public void Update()
         {
             highlightInstance.SetActive(IsHighlighted);
+        }
+
+        public void OnDestroy()
+        {
+            Destroy(highlightInstance);
         }
     }
 }

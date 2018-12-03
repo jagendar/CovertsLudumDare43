@@ -11,7 +11,7 @@ namespace Assets.Scripts.Gameplay.UserInput
     public class BuildModeController : MonoBehaviour
     {
         private Building template;
-        private IEnumerable<ResourceHighlight> currentlyHighlighted;
+        private IEnumerable<WorldObjectHightlight> currentlyHighlighted;
 
         [SerializeField] private LayerMask layerMask;
         [SerializeField] private GameplayController gameplayController = null;
@@ -25,7 +25,7 @@ namespace Assets.Scripts.Gameplay.UserInput
 
         public void Awake()
         {
-            currentlyHighlighted = new List<ResourceHighlight>();
+            currentlyHighlighted = new List<WorldObjectHightlight>();
         }
 
         public void StartBuilding(Building buildingTemplate)
@@ -96,13 +96,13 @@ namespace Assets.Scripts.Gameplay.UserInput
             SetHighlights(currentlyHighlighted, false);
 
             currentlyHighlighted = workableTarget.CheckNearbyResources(position)
-                .Select(r => r.GetComponent<ResourceHighlight>())
+                .Select(r => r.GetComponent<WorldObjectHightlight>())
                 .Where(rh => rh != null);
 
             SetHighlights(currentlyHighlighted, true);
         }
 
-        private void SetHighlights(IEnumerable<ResourceHighlight> highlights, bool newValue)
+        private void SetHighlights(IEnumerable<WorldObjectHightlight> highlights, bool newValue)
         {
             foreach (var resourceHighlight in currentlyHighlighted)
             {
