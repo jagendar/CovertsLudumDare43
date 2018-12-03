@@ -88,7 +88,7 @@ namespace Assets.Scripts.Gameplay.World
 
 
                         //Mike - restricting pathfinding from getting too far away, so there's no spikes when trying to reach unreachable targets
-                        if (adjacentSquare.heuristic < 10 * target.heuristic)
+                        if (adjacentSquare.heuristic < 8 * target.heuristic)
                         {
                             // and add it to the open list
                             openList.Insert(0, adjacentSquare);
